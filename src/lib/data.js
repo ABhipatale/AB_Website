@@ -16,14 +16,22 @@ export const COMPANY = {
   logo: '/assets/Ab.png',
 }
 
+// Navbar links (Technologies intentionally omitted here — the section still
+// exists on the page and is linked from the footer).
 export const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Solutions', href: '#solutions' },
-  { label: 'Technologies', href: '#technologies' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
+]
+
+// Footer "Quick Links" — the full set, including Technologies.
+export const FOOTER_LINKS = [
+  ...NAV_LINKS.slice(0, 4),
+  { label: 'Technologies', href: '#technologies' },
+  ...NAV_LINKS.slice(4),
 ]
 
 // Four headline capabilities (used in About)
@@ -165,6 +173,9 @@ export const PROCESS = [
   { title: 'Support', desc: 'A full year of monitoring and improvements.' },
 ]
 
+// NOTE: The Pricing section was replaced by the "Projects — Coming Soon"
+// section. These figures are kept here so pricing can be restored later
+// without re-entering them. Currently unused.
 export const PRICING = [
   {
     name: 'Starter',

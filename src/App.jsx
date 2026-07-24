@@ -18,7 +18,7 @@ import WhyChooseUs from './components/sections/WhyChooseUs'
 import Technologies from './components/sections/Technologies'
 import Process from './components/sections/Process'
 import Guarantees from './components/sections/Guarantees'
-import Pricing from './components/sections/Pricing'
+import Projects from './components/sections/Projects'
 import FAQ from './components/sections/FAQ'
 import CTA from './components/sections/CTA'
 import Contact from './components/sections/Contact'
@@ -45,7 +45,7 @@ export default function App() {
         <Technologies />
         <Process />
         <Guarantees />
-        <Pricing />
+        <Projects />
         <FAQ />
         <CTA />
         <Contact />

@@ -4,7 +4,7 @@ import {
   FaWhatsapp, FaLinkedinIn, FaInstagram, FaFacebookF, FaXTwitter, FaGithub,
 } from 'react-icons/fa6'
 import Logo from './ui/Logo'
-import { NAV_LINKS, FOOTER_SERVICES, COMPANY } from '../lib/data'
+import { FOOTER_LINKS, FOOTER_SERVICES, COMPANY } from '../lib/data'
 import { fadeUp, stagger, viewport } from '../lib/motion'
 
 const SOCIALS = [
@@ -57,7 +57,7 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="mt-5 space-y-3">
-              {NAV_LINKS.map((l) => (
+              {FOOTER_LINKS.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
