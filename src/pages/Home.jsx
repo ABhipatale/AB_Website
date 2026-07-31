@@ -54,7 +54,12 @@ export default function Home() {
         />
         <link rel="canonical" href={`${COMPANY.url}/`} />
         <meta property="og:title" content="AB Technology Solution — Website Development Company in Maharashtra" />
+        <meta property="og:description" content="Professional websites, mobile apps, e-commerce and AI software for businesses across Maharashtra — Karad, Satara, Pune & Kolhapur." />
         <meta property="og:url" content={`${COMPANY.url}/`} />
+        <meta property="og:image" content={`${COMPANY.url}/assets/Ab.png`} />
+        <meta name="twitter:title" content="Website Development Company in Maharashtra | AB Technology Solution" />
+        <meta name="twitter:description" content="Websites, mobile apps, AI software and automation for Karad, Satara, Pune & Kolhapur." />
+        <meta name="twitter:image" content={`${COMPANY.url}/assets/Ab.png`} />
         <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
       </Head>
 

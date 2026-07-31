@@ -75,11 +75,13 @@ export default function CityPage({ slug }) {
         <meta name="description" content={description} />
         <meta name="keywords" content={cityKeywords(city)} />
         <link rel="canonical" href={pageUrl} />
-        <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={pageUrl} />
         <meta property="og:image" content={`${COMPANY.url}/assets/Ab.png`} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${COMPANY.url}/assets/Ab.png`} />
         <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
