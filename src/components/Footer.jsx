@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 import { Phone, Mail, MapPin, ArrowUpRight, Heart } from 'lucide-react'
 import {
   FaWhatsapp, FaLinkedinIn, FaInstagram, FaFacebookF, FaXTwitter, FaGithub,
@@ -17,6 +18,9 @@ const SOCIALS = [
 
 export default function Footer() {
   const year = 2026 // build-time constant; update per release
+  const isHome = useLocation().pathname === '/'
+  // From a city page, section links point back to the home page (/#section).
+  const hrefFor = (hash) => (isHome ? hash : `/${hash}`)
 
   return (
     <footer className="relative overflow-hidden border-t border-line bg-white">
@@ -60,7 +64,7 @@ export default function Footer() {
               {FOOTER_LINKS.map((l) => (
                 <li key={l.href}>
                   <a
-                    href={l.href}
+                    href={hrefFor(l.href)}
                     className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors"
                   >
                     <span className="h-px w-3 bg-brand" />
@@ -80,7 +84,7 @@ export default function Footer() {
               {FOOTER_SERVICES.map((s) => (
                 <li key={s}>
                   <a
-                    href="#services"
+                    href={hrefFor('#services')}
                     className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors"
                   >
                     <span className="h-px w-3 bg-brand" />

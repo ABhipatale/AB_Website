@@ -11,9 +11,16 @@ export const COMPANY = {
   tagline: 'Your Digital Growth Partner',
   phone: '+91 7666287015',
   phoneRaw: '+917666287015',
-  email: 'hello@abtechnologysolution.com',
+  email: 'hello@abtechservices.store',
   whatsapp: 'https://wa.me/917666287015',
   logo: '/assets/Ab.png',
+  url: 'https://abtechservices.store',
+  // NAP — city/region only (no street address per current setup)
+  region: 'Maharashtra',
+  regionCode: 'MH',
+  country: 'India',
+  countryCode: 'IN',
+  baseCity: 'Karad',
 }
 
 // Navbar links (Technologies intentionally omitted here — the section still

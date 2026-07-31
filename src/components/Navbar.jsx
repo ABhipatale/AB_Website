@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, ArrowRight } from 'lucide-react'
 import Logo from './ui/Logo'
@@ -6,9 +7,16 @@ import Button from './ui/Button'
 import { NAV_LINKS, COMPANY } from '../lib/data'
 
 export default function Navbar() {
+  const { pathname } = useLocation()
+  const isHome = pathname === '/'
+
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('#home')
+
+  // Anchor links smooth-scroll on the home page; from a city page they point
+  // back to the relevant home section (e.g. "/#services").
+  const hrefFor = (hash) => (isHome ? hash : `/${hash}`)
 
   // Glass state on scroll
   useEffect(() => {
@@ -18,8 +26,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Scroll-spy for active link
+  // Scroll-spy for active link — only meaningful on the single-page home route
   useEffect(() => {
+    if (!isHome) return
     const sections = NAV_LINKS.map((l) => document.querySelector(l.href)).filter(Boolean)
     const io = new IntersectionObserver(
       (entries) => {
@@ -31,7 +40,7 @@ export default function Navbar() {
     )
     sections.forEach((s) => io.observe(s))
     return () => io.disconnect()
-  }, [])
+  }, [isHome])
 
   // Lock body scroll while mobile menu is open
   useEffect(() => {
@@ -55,18 +64,18 @@ export default function Navbar() {
               : 'border border-transparent bg-white/40 backdrop-blur-sm',
           ].join(' ')}
         >
-          <a href="#home" aria-label={COMPANY.name} className="shrink-0">
+          <a href={hrefFor('#home')} aria-label={COMPANY.name} className="shrink-0">
             <Logo />
           </a>
 
           {/* Desktop links */}
           <ul className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => {
-              const isActive = active === link.href
+              const isActive = isHome && active === link.href
               return (
                 <li key={link.href}>
                   <a
-                    href={link.href}
+                    href={hrefFor(link.href)}
                     className={[
                       'relative rounded-full px-3.5 py-2 text-sm font-semibold transition-colors',
                       isActive ? 'text-brand' : 'text-ink-soft',
@@ -95,7 +104,7 @@ export default function Navbar() {
               <Phone className="size-4" />
               {COMPANY.phone}
             </a>
-            <Button href="#contact" size="md" className="hidden sm:inline-flex" icon={ArrowRight}>
+            <Button href={hrefFor('#contact')} size="md" className="hidden sm:inline-flex" icon={ArrowRight}>
               Get Started
             </Button>
             <button
@@ -147,11 +156,11 @@ export default function Navbar() {
                     transition={{ delay: 0.06 * i + 0.1 }}
                   >
                     <a
-                      href={link.href}
+                      href={hrefFor(link.href)}
                       onClick={() => setOpen(false)}
                       className={[
                         'flex items-center justify-between rounded-xl px-4 py-3.5 text-lg font-semibold transition-colors',
-                        active === link.href
+                        isHome && active === link.href
                           ? 'bg-brand-soft text-brand'
                           : 'text-ink',
                       ].join(' ')}
@@ -164,7 +173,7 @@ export default function Navbar() {
               </ul>
 
               <div className="mt-auto flex flex-col gap-3 pt-6">
-                <Button href="#contact" onClick={() => setOpen(false)} size="lg" className="w-full" icon={ArrowRight}>
+                <Button href={hrefFor('#contact')} onClick={() => setOpen(false)} size="lg" className="w-full" icon={ArrowRight}>
                   Get Started
                 </Button>
                 <a
