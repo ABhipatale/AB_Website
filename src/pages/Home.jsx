@@ -15,7 +15,7 @@ import FAQ from '../components/sections/FAQ'
 import CTA from '../components/sections/CTA'
 import Contact from '../components/sections/Contact'
 
-import { COMPANY } from '../lib/data'
+import { COMPANY, FAQS, SERVICES } from '../lib/data'
 import { SERVED_AREAS } from '../lib/cities'
 
 const localBusiness = {
@@ -24,6 +24,7 @@ const localBusiness = {
   '@id': `${COMPANY.url}/#business`,
   name: COMPANY.name,
   image: `${COMPANY.url}/assets/Ab.png`,
+  logo: `${COMPANY.url}/assets/Ab.png`,
   url: COMPANY.url,
   telephone: COMPANY.phone,
   email: COMPANY.email,
@@ -33,13 +34,34 @@ const localBusiness = {
     '@type': 'PostalAddress',
     addressLocality: COMPANY.baseCity,
     addressRegion: COMPANY.region,
+    postalCode: '415110',
     addressCountry: COMPANY.countryCode,
   },
+  geo: { '@type': 'GeoCoordinates', latitude: 17.2893, longitude: 74.1809 },
   areaServed: SERVED_AREAS.map((a) => ({ '@type': 'City', name: a })),
   knowsAbout: [
     'Web Development', 'Website Design', 'Mobile App Development',
     'E-commerce Development', 'React JS', 'Laravel', 'SEO', 'AI Software',
   ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Web development services',
+    itemListElement: SERVICES.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: s.title, description: s.desc },
+    })),
+  },
+}
+
+// Mirrors the visible FAQ section, so it is eligible for FAQ rich results.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
 }
 
 export default function Home() {
@@ -51,17 +73,19 @@ export default function Home() {
         </title>
         <meta
           name="description"
-          content="AB Tech Services is a professional website development company in Maharashtra serving Karad, Satara, Pune & Kolhapur. We build modern websites, mobile apps, e-commerce stores and AI software. Call +91 7666287015."
+          content="AB Tech Services is a professional website development company in Maharashtra serving Karad, Satara, Sangli, Pune & Kolhapur. We build modern websites, mobile apps, e-commerce stores and AI software. Call +91 7666287015."
         />
         <link rel="canonical" href={`${COMPANY.url}/`} />
         <meta property="og:title" content="AB Tech Services — Website Development Company in Maharashtra" />
-        <meta property="og:description" content="Professional websites, mobile apps, e-commerce and AI software for businesses across Maharashtra — Karad, Satara, Pune & Kolhapur." />
+        <meta property="og:description" content="Professional websites, mobile apps, e-commerce and AI software for businesses across Maharashtra — Karad, Satara, Sangli, Pune & Kolhapur." />
         <meta property="og:url" content={`${COMPANY.url}/`} />
         <meta property="og:image" content={`${COMPANY.url}/assets/Ab.png`} />
         <meta name="twitter:title" content="Website Development Company in Maharashtra | AB Tech Services" />
-        <meta name="twitter:description" content="Websites, mobile apps, AI software and automation for Karad, Satara, Pune & Kolhapur." />
+        <meta name="twitter:description" content="Websites, mobile apps, AI software and automation for Karad, Satara, Sangli, Pune & Kolhapur." />
         <meta name="twitter:image" content={`${COMPANY.url}/assets/Ab.png`} />
+        <meta property="og:image:alt" content="AB Tech Services — website development company in Maharashtra" />
         <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Head>
 
       <Hero />

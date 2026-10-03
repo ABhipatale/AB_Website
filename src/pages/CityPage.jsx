@@ -22,25 +22,54 @@ export default function CityPage({ slug }) {
   const title = `Website Developer in ${city.name} | Web Development Company — ${COMPANY.name}`
   const description = `Looking for a website developer in ${city.name}? ${COMPANY.name} builds modern, responsive, SEO-friendly websites, e-commerce stores, mobile apps & custom software for ${city.name} businesses. Call ${COMPANY.phone}.`
 
+  // Honest LocalBusiness: the real base address is Karad; each city page
+  // declares the city (and nearby towns) as the area served — no fake offices.
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    '@id': `${pageUrl}#business`,
-    name: `${COMPANY.name} — ${city.name}`,
+    '@id': `${COMPANY.url}/#business`,
+    name: COMPANY.name,
     image: `${COMPANY.url}/assets/Ab.png`,
-    url: pageUrl,
+    logo: `${COMPANY.url}/assets/Ab.png`,
+    url: COMPANY.url,
     telephone: COMPANY.phone,
     email: COMPANY.email,
     priceRange: '₹₹',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: city.name,
+      addressLocality: COMPANY.baseCity,
       addressRegion: COMPANY.region,
-      postalCode: city.pin,
+      postalCode: '415110',
       addressCountry: COMPANY.countryCode,
     },
-    geo: { '@type': 'GeoCoordinates', latitude: city.geo.lat, longitude: city.geo.lng },
+    geo: { '@type': 'GeoCoordinates', latitude: 17.2893, longitude: 74.1809 },
     areaServed: [city.name, ...city.nearby].map((n) => ({ '@type': 'City', name: n })),
+  }
+
+  // City-specific service offering, linked to the business above.
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${pageUrl}#service`,
+    name: `Website Development in ${city.name}`,
+    serviceType: 'Website Development',
+    description,
+    url: pageUrl,
+    provider: { '@id': `${COMPANY.url}/#business` },
+    areaServed: {
+      '@type': 'City',
+      name: city.name,
+      containedInPlace: { '@type': 'State', name: COMPANY.region },
+      geo: { '@type': 'GeoCoordinates', latitude: city.geo.lat, longitude: city.geo.lng },
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `Web development services in ${city.name}`,
+      itemListElement: SERVICES.map((sv) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: `${sv.title} in ${city.name}`, description: sv.desc },
+      })),
+    },
   }
 
   const faqSchema = {
@@ -82,7 +111,11 @@ export default function CityPage({ slug }) {
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={`${COMPANY.url}/assets/Ab.png`} />
+        <meta property="og:image:alt" content={`Website developer in ${city.name} — ${COMPANY.name}`} />
+        <meta name="geo.placename" content={`${city.name}, ${COMPANY.region}`} />
+        <meta name="geo.position" content={`${city.geo.lat};${city.geo.lng}`} />
         <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Head>
@@ -156,6 +189,57 @@ export default function CityPage({ slug }) {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Local, city-specific content (unique per page) ── */}
+      <section className="relative py-14 lg:py-20">
+        <div className="container-x grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
+          <motion.div variants={stagger(0.1)} initial="hidden" whileInView="show" viewport={viewport}>
+            <motion.h2 variants={fadeUp} className="text-3xl font-extrabold text-ink sm:text-4xl">
+              Website design & development company in <span className="text-gradient">{city.name}</span>
+            </motion.h2>
+            {city.about.map((para) => (
+              <motion.p key={para.slice(0, 24)} variants={fadeUp} className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
+                {para}
+              </motion.p>
+            ))}
+
+            <motion.h3 variants={fadeUp} className="mt-8 text-lg font-bold text-ink">
+              Businesses we build for in {city.name}
+            </motion.h3>
+            <motion.ul variants={fadeUp} className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+              {city.industries.map((ind) => (
+                <li key={ind} className="flex items-center gap-2.5 text-sm font-medium text-ink-soft">
+                  <Check className="size-4 shrink-0 text-brand" /> {ind}
+                </li>
+              ))}
+            </motion.ul>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+            className="self-start rounded-3xl border border-line bg-surface p-6 sm:p-7"
+          >
+            <h3 className="text-lg font-bold text-ink">Areas we cover in {city.name}</h3>
+            <p className="mt-1 text-sm text-muted">Website development across {city.district}, including:</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {city.localities.map((l) => (
+                <li
+                  key={l}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink-soft"
+                >
+                  <MapPin className="size-3.5 text-brand" /> {l}
+                </li>
+              ))}
+            </ul>
+            <Button href="#city-contact" size="md" icon={ArrowRight} className="mt-6">
+              Get a free quote in {city.name}
+            </Button>
+          </motion.div>
         </div>
       </section>
 

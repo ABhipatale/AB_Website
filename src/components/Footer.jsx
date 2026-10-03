@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { Phone, Mail, MapPin, ArrowUpRight, Heart } from 'lucide-react'
 import {
   FaWhatsapp, FaLinkedinIn, FaInstagram, FaFacebookF, FaXTwitter, FaGithub,
@@ -7,6 +7,7 @@ import {
 import Logo from './ui/Logo'
 import { FOOTER_LINKS, FOOTER_SERVICES, COMPANY } from '../lib/data'
 import { fadeUp, stagger, viewport } from '../lib/motion'
+import { CITIES } from '../lib/cities'
 
 const SOCIALS = [
   { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
@@ -132,6 +133,16 @@ export default function Footer() {
             </a>
           </motion.div>
         </motion.div>
+
+        {/* City pages — internal links for local SEO */}
+        <nav aria-label="Website developer by city" className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line py-5 text-sm">
+          <span className="font-semibold text-ink">Website developer in:</span>
+          {CITIES.map((c) => (
+            <Link key={c.slug} to={`/${c.path}`} className="text-muted transition-colors hover:text-brand">
+              {c.name}
+            </Link>
+          ))}
+        </nav>
 
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-line py-6 sm:flex-row">
