@@ -63,7 +63,7 @@ export default function Technologies() {
                 hidden: { opacity: 0, y: 18, scale: 0.95 },
                 show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: EASE } },
               }}
-              className="group flex flex-col items-center gap-3 rounded-2xl border border-line bg-white p-6 shadow-soft"
+              className="group hover-lift flex flex-col items-center gap-3 rounded-2xl border border-line bg-white p-6 shadow-soft"
             >
               <span className="grid size-12 place-items-center rounded-xl bg-surface">
                 <Icon className="size-7" style={{ color }} />

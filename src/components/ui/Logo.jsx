@@ -34,13 +34,13 @@ export default function Logo({ withWordmark = true, light = false, className = '
             'font-display text-[0.95rem] font-extrabold tracking-tight',
             light ? 'text-white' : 'text-ink',
           ].join(' ')}>
-            AB Technology
+            AB Tech
           </span>
           <span className={[
-            'text-[0.62rem] font-semibold uppercase tracking-[0.22em]',
-            light ? 'text-sky-300' : 'text-brand',
+            'text-[0.62rem] font-semibold uppercase tracking-[0.26em]',
+            light ? 'text-cyan-300' : 'text-accent',
           ].join(' ')}>
-            Solution
+            Services
           </span>
         </span>
       )}

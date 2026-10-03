@@ -58,7 +58,7 @@ export default function WhyChooseUs() {
               <motion.div
                 key={r.title}
                 variants={fadeUp}
-                className="group relative overflow-hidden rounded-2xl border border-line bg-white p-6 shadow-soft"
+                className="group hover-lift relative overflow-hidden rounded-2xl border border-line bg-white p-6 shadow-soft"
               >
                 <span className={`pointer-events-none absolute -right-6 -top-6 size-20 rounded-full bg-gradient-to-br ${grad(i)} opacity-10 blur-xl`} />
                 <span className={`relative grid size-12 place-items-center rounded-xl bg-gradient-to-br ${grad(i)} text-white shadow-[0_8px_20px_-6px_rgba(37,99,235,0.6)]`}>

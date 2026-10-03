@@ -12,7 +12,7 @@ export const CITIES = [
     pin: '415110',
     nearby: ['Satara', 'Sangli', 'Islampur', 'Wai', 'Kolhapur'],
     intro:
-      'AB Technology Solution is a professional website development company serving Karad and the surrounding Satara district. We build modern, responsive, SEO-friendly websites, mobile apps and custom software for local businesses that want to grow online.',
+      'AB Tech Services is a professional website development company serving Karad and the surrounding Satara district. We build modern, responsive, SEO-friendly websites, mobile apps and custom software for local businesses that want to grow online.',
   },
   {
     slug: 'satara',
@@ -23,7 +23,7 @@ export const CITIES = [
     pin: '415001',
     nearby: ['Karad', 'Wai', 'Phaltan', 'Shirwal', 'Pune'],
     intro:
-      'Looking for a reliable website developer in Satara? AB Technology Solution designs and builds high-performance websites, e-commerce stores and mobile apps for businesses across Satara and nearby towns.',
+      'Looking for a reliable website developer in Satara? AB Tech Services designs and builds high-performance websites, e-commerce stores and mobile apps for businesses across Satara and nearby towns.',
   },
   {
     slug: 'pune',
@@ -34,7 +34,7 @@ export const CITIES = [
     pin: '411001',
     nearby: ['Baramati', 'Shirwal', 'Satara', 'Ahmednagar', 'Mumbai'],
     intro:
-      'AB Technology Solution is a modern web development company serving Pune. From startups to established enterprises, we deliver websites, SaaS platforms, mobile apps and AI-powered software engineered to premium standards.',
+      'AB Tech Services is a modern web development company serving Pune. From startups to established enterprises, we deliver websites, SaaS platforms, mobile apps and AI-powered software engineered to premium standards.',
   },
   {
     slug: 'kolhapur',
@@ -45,7 +45,7 @@ export const CITIES = [
     pin: '416001',
     nearby: ['Ichalkaranji', 'Kagal', 'Jaysingpur', 'Sangli', 'Miraj'],
     intro:
-      'AB Technology Solution provides professional website design and development services in Kolhapur. We help local shops, manufacturers, hospitals and startups get fast, secure, SEO-ready websites and apps.',
+      'AB Tech Services provides professional website design and development services in Kolhapur. We help local shops, manufacturers, hospitals and startups get fast, secure, SEO-ready websites and apps.',
   },
 ]
 
@@ -65,7 +65,7 @@ export const SERVED_AREAS = [
 export const cityFaqs = (city) => [
   {
     q: `Do you provide website development services in ${city.name}?`,
-    a: `Yes. AB Technology Solution actively works with businesses in ${city.name} and across ${city.district}, building websites, e-commerce stores, mobile apps and custom software. We work remotely and can meet online or on a call to plan your project.`,
+    a: `Yes. AB Tech Services actively works with businesses in ${city.name} and across ${city.district}, building websites, e-commerce stores, mobile apps and custom software. We work remotely and can meet online or on a call to plan your project.`,
   },
   {
     q: `How much does a website cost in ${city.name}?`,

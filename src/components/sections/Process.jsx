@@ -78,7 +78,7 @@ export default function Process() {
                   >
                     <div
                       className={[
-                        'group inline-flex w-full max-w-md gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft',
+                        'group hover-lift inline-flex w-full max-w-md gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft',
                         left ? 'lg:flex-row-reverse lg:text-right' : '',
                       ].join(' ')}
                     >

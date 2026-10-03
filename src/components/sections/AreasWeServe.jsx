@@ -34,7 +34,7 @@ export default function AreasWeServe() {
             <motion.div key={c.slug} variants={fadeUp}>
               <Link
                 to={`/${c.path}`}
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-6 shadow-soft"
+                className="group hover-lift relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-6 shadow-soft"
               >
                 <span className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${grad(i)}`} />
                 <span className={`grid size-12 place-items-center rounded-xl bg-gradient-to-br ${grad(i)} text-white shadow-[0_10px_22px_-8px_rgba(37,99,235,0.5)]`}>

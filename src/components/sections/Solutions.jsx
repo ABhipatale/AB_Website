@@ -32,7 +32,7 @@ export default function Solutions() {
               <motion.article
                 key={s.title}
                 variants={fadeUp}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-line bg-white p-7 shadow-soft"
+                className="group hover-lift relative flex flex-col overflow-hidden rounded-3xl border border-line bg-white p-7 shadow-soft"
               >
                 {/* colourful top strip + corner glow */}
                 <span className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${g}`} />

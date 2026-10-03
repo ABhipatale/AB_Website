@@ -29,7 +29,7 @@ export default function Guarantees() {
             <motion.div
               key={g.title}
               variants={fadeUp}
-              className="group relative overflow-hidden rounded-2xl border border-line bg-white p-7 shadow-soft"
+              className="group hover-lift relative overflow-hidden rounded-2xl border border-line bg-white p-7 shadow-soft"
             >
               <span className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${grad(i)}`} />
               <span className={`grid size-12 place-items-center rounded-xl bg-gradient-to-br ${grad(i)} text-white shadow-[0_8px_20px_-6px_rgba(37,99,235,0.6)]`}>

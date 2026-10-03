@@ -7,8 +7,8 @@ import {
 } from 'lucide-react'
 
 export const COMPANY = {
-  name: 'AB Technology Solution',
-  tagline: 'Your Digital Growth Partner',
+  name: 'AB Tech Services',
+  tagline: 'Building Powerful Digital Solutions for Modern Businesses',
   phone: '+91 7666287015',
   phoneRaw: '+917666287015',
   email: 'hello@abtechservices.store',
@@ -51,18 +51,18 @@ export const CORE_SERVICES = [
 
 // Full services grid
 export const SERVICES = [
-  { icon: Globe, title: 'Website Development', desc: 'High-performance corporate & marketing websites.', tag: 'Web' },
-  { icon: ShoppingCart, title: 'E-Commerce Website', desc: 'Conversion-first stores with secure checkout.', tag: 'Web' },
-  { icon: Smartphone, title: 'Mobile Apps', desc: 'Cross-platform apps for iOS and Android.', tag: 'Apps' },
-  { icon: Bot, title: 'AI Integration', desc: 'GPT-powered assistants, search & workflows.', tag: 'AI' },
-  { icon: MessageCircle, title: 'WhatsApp Integration', desc: 'Automated messaging & customer support.', tag: 'Automation' },
-  { icon: CreditCard, title: 'Razorpay Integration', desc: 'Seamless payments, subscriptions & payouts.', tag: 'Payments' },
-  { icon: Users, title: 'CRM Development', desc: 'Track leads, deals and customers in one place.', tag: 'Platforms' },
-  { icon: Building2, title: 'ERP Development', desc: 'Unify inventory, billing, HR and finance.', tag: 'Platforms' },
-  { icon: Workflow, title: 'Business Automation', desc: 'Connect tools and automate operations end-to-end.', tag: 'Automation' },
-  { icon: CloudCog, title: 'Cloud Deployment', desc: 'Reliable, auto-scaling cloud infrastructure.', tag: 'Cloud' },
-  { icon: Code2, title: 'API Development', desc: 'Secure, well-documented REST & GraphQL APIs.', tag: 'Web' },
-  { icon: Blocks, title: 'Custom Software', desc: 'Bespoke platforms built around your process.', tag: 'Platforms' },
+  { icon: Globe, title: 'Website Development', desc: 'High-performance corporate & marketing websites.', tag: 'Web', art: 'web' },
+  { icon: ShoppingCart, title: 'E-Commerce Website', desc: 'Conversion-first stores with secure checkout.', tag: 'Web', art: 'ecommerce' },
+  { icon: Smartphone, title: 'Mobile Apps', desc: 'Cross-platform apps for iOS and Android.', tag: 'Apps', art: 'mobile' },
+  { icon: Bot, title: 'AI Integration', desc: 'GPT-powered assistants, search & workflows.', tag: 'AI', art: 'ai' },
+  { icon: MessageCircle, title: 'WhatsApp Integration', desc: 'Automated messaging & customer support.', tag: 'Automation', art: 'chat' },
+  { icon: CreditCard, title: 'Razorpay Integration', desc: 'Seamless payments, subscriptions & payouts.', tag: 'Payments', art: 'payments' },
+  { icon: Users, title: 'CRM Development', desc: 'Track leads, deals and customers in one place.', tag: 'Platforms', art: 'crm' },
+  { icon: Building2, title: 'ERP Development', desc: 'Unify inventory, billing, HR and finance.', tag: 'Platforms', art: 'erp' },
+  { icon: Workflow, title: 'Business Automation', desc: 'Connect tools and automate operations end-to-end.', tag: 'Automation', art: 'automation' },
+  { icon: CloudCog, title: 'Cloud Deployment', desc: 'Reliable, auto-scaling cloud infrastructure.', tag: 'Cloud', art: 'cloud' },
+  { icon: Code2, title: 'API Development', desc: 'Secure, well-documented REST & GraphQL APIs.', tag: 'Web', art: 'api' },
+  { icon: Blocks, title: 'Custom Software', desc: 'Bespoke platforms built around your process.', tag: 'Platforms', art: 'custom' },
 ]
 
 // Honest facts about the offering — no fabricated track record.

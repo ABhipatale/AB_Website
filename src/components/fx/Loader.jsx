@@ -65,7 +65,7 @@ export default function Loader({ onDone }) {
               transition={{ delay: 0.15 }}
               className="font-display text-lg font-extrabold tracking-tight text-ink"
             >
-              AB Technology Solution
+              AB Tech Services
             </motion.p>
             <motion.p
               initial={{ opacity: 0 }}

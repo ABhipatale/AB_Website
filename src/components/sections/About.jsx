@@ -27,7 +27,7 @@ export default function About() {
           eyebrow="About Us"
           title="A premium technology partner for"
           highlight="ambitious companies"
-          subtitle="AB Technology Solution is a full-service software studio. We blend elegant design with robust engineering to build digital products that look world-class and perform even better."
+          subtitle="AB Tech Services is a full-service software studio. We blend elegant design with robust engineering to build digital products that look world-class and perform even better."
         />
 
         <div className="mt-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
@@ -103,7 +103,7 @@ export default function About() {
               {VALUES.map((v) => (
                 <div
                   key={v.title}
-                  className="group flex gap-4 rounded-2xl border border-line bg-white p-4 shadow-soft"
+                  className="group hover-lift flex gap-4 rounded-2xl border border-line bg-white p-4 shadow-soft"
                 >
                   <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand">
                     <v.icon className="size-5" />

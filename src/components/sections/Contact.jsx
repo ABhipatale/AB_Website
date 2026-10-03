@@ -46,7 +46,7 @@ export default function Contact() {
     setTimeout(() => {
       setStatus('sent')
       const text = encodeURIComponent(
-        `Hi AB Technology Solution!%0A%0AName: ${form.name}%0AEmail: ${form.email}%0APhone: ${form.phone}%0AService: ${form.service}%0A%0A${form.message}`,
+        `Hi AB Tech Services!%0A%0AName: ${form.name}%0AEmail: ${form.email}%0APhone: ${form.phone}%0AService: ${form.service}%0A%0A${form.message}`,
       )
       window.open(`${COMPANY.whatsapp}?text=${text}`, '_blank', 'noopener')
       setTimeout(() => setStatus('idle'), 4000)
@@ -98,7 +98,7 @@ export default function Contact() {
             {/* Map */}
             <div className="relative flex-1 overflow-hidden rounded-3xl border border-line shadow-soft">
               <iframe
-                title="AB Technology Solution location"
+                title="AB Tech Services location"
                 src="https://www.google.com/maps?q=India&output=embed"
                 className="h-full min-h-[260px] w-full grayscale-[0.2]"
                 loading="lazy"

@@ -148,7 +148,7 @@ export default function CityPage({ slug }) {
               <div className="overflow-hidden rounded-2xl border border-line shadow-lift">
                 <img
                   src="/assets/banner1.png"
-                  alt={`Website development in ${city.name} — AB Technology Solution`}
+                  alt={`Website development in ${city.name} — AB Tech Services`}
                   width="1694"
                   height="929"
                   className="block aspect-[1694/929] w-full object-cover"
@@ -276,7 +276,7 @@ export default function CityPage({ slug }) {
 
             <div className="mt-6 overflow-hidden rounded-3xl border border-line shadow-soft">
               <iframe
-                title={`AB Technology Solution — ${city.name}`}
+                title={`AB Tech Services — ${city.name}`}
                 src={`https://www.google.com/maps?q=${encodeURIComponent(`${city.name}, ${COMPANY.region}, India`)}&output=embed`}
                 className="h-[320px] w-full"
                 loading="lazy"

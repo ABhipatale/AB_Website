@@ -151,7 +151,7 @@ export default function Projects() {
             <motion.article
               key={title}
               variants={fadeUp}
-              className="group relative overflow-hidden rounded-3xl border border-line bg-white shadow-soft"
+              className="group hover-lift relative overflow-hidden rounded-3xl border border-line bg-white shadow-soft"
             >
               {/* Preview window */}
               <div className={`relative h-52 overflow-hidden bg-gradient-to-br ${tint}`}>

@@ -78,7 +78,7 @@ export default function Navbar() {
                     href={hrefFor(link.href)}
                     className={[
                       'relative rounded-full px-3.5 py-2 text-sm font-semibold transition-colors',
-                      isActive ? 'text-brand' : 'text-ink-soft',
+                      isActive ? 'text-brand' : 'text-ink-soft hover:text-brand',
                     ].join(' ')}
                   >
                     {link.label}

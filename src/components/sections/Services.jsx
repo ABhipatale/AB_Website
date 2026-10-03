@@ -4,36 +4,42 @@ import SectionHeading from '../ui/SectionHeading'
 import Button from '../ui/Button'
 import { stagger, fadeUp, viewport } from '../../lib/motion'
 import { grad } from '../../lib/palette'
+import useMouseGlow from '../../hooks/useMouseGlow'
+import ServiceArt from '../ui/ServiceArt'
 import { SERVICES } from '../../lib/data'
 
-function ServiceCard({ icon: Icon, title, desc, tag, i }) {
+function ServiceCard({ icon: Icon, title, desc, tag, art, i }) {
   const g = grad(i)
+  const glowRef = useMouseGlow()
   return (
     <motion.article
+      ref={glowRef}
       variants={fadeUp}
       data-cursor
-      className="group relative overflow-hidden rounded-2xl border border-line bg-white p-6 shadow-soft"
+      className="group hover-lift spotlight relative flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-soft"
     >
-      {/* colourful top strip + corner glow */}
-      <span className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${g}`} />
-      <span className={`pointer-events-none absolute -right-8 -top-8 size-24 rounded-full bg-gradient-to-br ${g} opacity-10 blur-2xl`} />
-
-      <div className="flex items-start justify-between">
-        <span className={`relative grid size-13 place-items-center rounded-2xl bg-gradient-to-br ${g} text-white shadow-[0_10px_22px_-8px_rgba(37,99,235,0.5)]`}>
-          <Icon className="size-6" />
-        </span>
-        <span className="rounded-full border border-line px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wide text-muted">
+      {/* illustration banner */}
+      <div className="relative h-36 overflow-hidden">
+        <ServiceArt art={art} title={title} />
+        <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-wide text-ink shadow-sm backdrop-blur">
           {tag}
         </span>
       </div>
 
-      <h3 className="mt-5 flex items-center gap-1 text-lg font-bold text-ink">
-        {title}
-        <ArrowUpRight className="size-4 text-brand" />
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted">{desc}</p>
+      {/* body with overlapping icon chip */}
+      <div className="relative flex flex-1 flex-col px-6 pb-6">
+        <span className="relative -mt-7 grid size-14 place-items-center rounded-2xl border border-line bg-white text-brand shadow-lift">
+          <Icon className="size-6" />
+        </span>
 
-      <span className={`mt-4 block h-0.5 w-10 rounded-full bg-gradient-to-r ${g}`} />
+        <h3 className="mt-4 flex items-center gap-1 text-lg font-bold text-ink">
+          {title}
+          <ArrowUpRight className="size-4 text-brand transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted">{desc}</p>
+
+        <span className={`mt-4 block h-0.5 w-10 rounded-full bg-gradient-to-r ${g} transition-all duration-300 group-hover:w-16`} />
+      </div>
     </motion.article>
   )
 }
@@ -59,6 +65,7 @@ export default function Services() {
           {SERVICES.map((s, i) => (
             <ServiceCard key={s.title} {...s} i={i} />
           ))}
+          {/* (illustrations are original SVG art — no external images) */}
         </motion.div>
 
         <motion.div

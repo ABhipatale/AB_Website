@@ -38,8 +38,8 @@ export default function Footer() {
           <motion.div variants={fadeUp}>
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-              {COMPANY.name} is your digital growth partner — building premium websites,
-              apps, AI software and automation that help you scale.
+              {COMPANY.name} builds powerful digital solutions for modern businesses —
+              premium websites, apps, AI software and automation that help you scale.
             </p>
             <div className="mt-6 flex gap-2.5">
               {SOCIALS.map((s) => (
@@ -65,7 +65,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <a
                     href={hrefFor(l.href)}
-                    className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors"
+                    className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-brand"
                   >
                     <span className="h-px w-3 bg-brand" />
                     {l.label}
@@ -85,7 +85,7 @@ export default function Footer() {
                 <li key={s}>
                   <a
                     href={hrefFor('#services')}
-                    className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors"
+                    className="group inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-brand"
                   >
                     <span className="h-px w-3 bg-brand" />
                     {s}
