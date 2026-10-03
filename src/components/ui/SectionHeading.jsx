@@ -33,7 +33,7 @@ export default function SectionHeading({
             isCenter ? 'mx-auto' : '',
           ].join(' ')}
         >
-          <span className="size-1.5 animate-pulse rounded-full bg-gradient-to-r from-sky-500 to-brand" />
+          <span className="size-1.5 rounded-full bg-gradient-to-r from-sky-500 to-brand" />
           <span className="bg-gradient-to-r from-brand via-blue-600 to-sky-600 bg-clip-text text-transparent">
             {eyebrow}
           </span>

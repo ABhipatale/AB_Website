@@ -37,7 +37,7 @@
 
   /* Layered, premium shadows */
   --shadow-soft: 0 1px 2px rgb(15 23 42 / 0.04), 0 6px 20px -8px rgb(15 23 42 / 0.08);
-  --shadow-lift: 0 2px 6px rgb(15 23 42 / 0.05), 0 28px 56px -20px rgb(15 23 42 / 0.20);
+  --shadow-lift: 0 2px 6px rgb(15 23 42 / 0.04), 0 22px 44px -20px rgb(15 23 42 / 0.16);
   --shadow-glow: 0 20px 60px -18px rgb(37 99 235 / 0.45);
   --shadow-glow-cyan: 0 20px 60px -18px rgb(6 182 212 / 0.4);
 
@@ -150,7 +150,6 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: gradient-pan 6s linear infinite;
   }
 
   /* Bright variant for dark surfaces */
@@ -160,7 +159,6 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: gradient-pan 6s linear infinite;
   }
 
   /* Animated blue → cyan gradient fill for buttons / bars / panels */
@@ -171,7 +169,6 @@
   .gradient-brand-animated {
     background: linear-gradient(100deg, #1d4ed8, #2563eb 35%, #06b6d4 70%, #1d4ed8 100%);
     background-size: 220% auto;
-    animation: gradient-pan 6s linear infinite;
   }
 
   /* ── Premium interaction utilities ── */
@@ -184,9 +181,9 @@
   }
   @media (hover: hover) {
     .hover-lift:hover {
-      transform: translateY(-6px);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-lift);
-      border-color: rgb(37 99 235 / 0.28);
+      border-color: rgb(37 99 235 / 0.22);
     }
   }
 
