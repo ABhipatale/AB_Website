@@ -32,7 +32,7 @@ export default function CityPage({ slug }) {
     image: `${COMPANY.url}/assets/Ab.png`,
     logo: `${COMPANY.url}/assets/Ab.png`,
     url: COMPANY.url,
-    telephone: COMPANY.phone,
+    telephone: COMPANY.phoneRaw,
     email: COMPANY.email,
     priceRange: '₹₹',
     address: {

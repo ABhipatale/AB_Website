@@ -26,7 +26,7 @@ const localBusiness = {
   image: `${COMPANY.url}/assets/Ab.png`,
   logo: `${COMPANY.url}/assets/Ab.png`,
   url: COMPANY.url,
-  telephone: COMPANY.phone,
+  telephone: COMPANY.phoneRaw,
   email: COMPANY.email,
   priceRange: '₹₹',
   slogan: COMPANY.tagline,
@@ -73,7 +73,7 @@ export default function Home() {
         </title>
         <meta
           name="description"
-          content="AB Tech Services is a professional website development company in Maharashtra serving Karad, Satara, Sangli, Pune & Kolhapur. We build modern websites, mobile apps, e-commerce stores and AI software. Call +91 7666287015."
+          content="AB Tech Services is a professional website development company in Maharashtra serving Karad, Satara, Sangli, Pune & Kolhapur. We build modern websites, mobile apps, e-commerce stores and AI software. Call 96 89 03 03 01."
         />
         <link rel="canonical" href={`${COMPANY.url}/`} />
         <meta property="og:title" content="AB Tech Services — Website Development Company in Maharashtra" />

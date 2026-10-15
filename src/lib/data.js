@@ -9,10 +9,10 @@ import {
 export const COMPANY = {
   name: 'AB Tech Services',
   tagline: 'Building Powerful Digital Solutions for Modern Businesses',
-  phone: '+91 7666287015',
-  phoneRaw: '+917666287015',
+  phone: '96 89 03 03 01',
+  phoneRaw: '+919689030301',
   email: 'hello@abtechservices.store',
-  whatsapp: 'https://wa.me/917666287015',
+  whatsapp: 'https://wa.me/919689030301',
   logo: '/assets/Ab.png',
   url: 'https://abtechservices.store',
   // NAP — city/region only (no street address per current setup)
