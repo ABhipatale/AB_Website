@@ -53,6 +53,17 @@ export const WORK = [
     linkLabel: 'Enquire on WhatsApp',
     whatsapp: true,
   },
+  {
+    type: 'Application',
+    icon: Smartphone,
+    title: 'Saanj Garva Bar Management System',
+    desc: 'Bar & restaurant management application for Saanj Garva — table orders, KOT, fast billing, liquor stock tracking and daily sales reports in one place.',
+    image: '/assets/saanj-garva-logo.svg',
+    imageAlt: 'Saanj Garva Bar Management System logo — app by AB Tech Services',
+    href: whatsappFor('Saanj Garva Bar Management System'),
+    linkLabel: 'Enquire on WhatsApp',
+    whatsapp: true,
+  },
 ]
 
 export default function OurWork() {
@@ -71,7 +82,7 @@ export default function OurWork() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="mt-9 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-9 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {WORK.map((w) => (
             <motion.a
@@ -147,7 +158,7 @@ export function OurWorkStrip() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5"
         >
           {WORK.map((w) => (
             <motion.a

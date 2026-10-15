@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c2d12"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="drink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde68a"/>
+      <stop offset="1" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="44" fill="url(#bg)"/>
+  <!-- evening sun (saanj) -->
+  <circle cx="138" cy="62" r="18" fill="#fde68a" opacity=".9"/>
+  <!-- glass -->
+  <path d="M62 52h76l-38 46z" fill="url(#drink)"/>
+  <path d="M56 46h88l-44 54z" fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M100 100v42" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <path d="M76 146h48" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+  <!-- billing bars -->
+  <g fill="#fff" opacity=".85">
+    <rect x="40" y="160" width="12" height="16" rx="3"/>
+    <rect x="58" y="152" width="12" height="24" rx="3"/>
+    <rect x="130" y="156" width="12" height="20" rx="3"/>
+    <rect x="148" y="148" width="12" height="28" rx="3"/>
+  </g>
+</svg>
