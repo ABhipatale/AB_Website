@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react'
  */
 export default function Particles({ density = 46, className = '' }) {
   const canvasRef = useRef(null)
-
+    
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
