@@ -106,7 +106,7 @@ export default function Hero() {
             </span>
             Available for new projects
             <span className="mx-1 h-3 w-px bg-line" />
-            <span className="flex items-center gap-1 text-brand"><Sparkles className="size-3" /> AB Tech Services</span>
+            <span className="flex items-center gap-1 text-brand"><Sparkles className="size-3" /> Abnexa</span>
           </motion.div>
 
           <motion.h1
@@ -163,7 +163,7 @@ export default function Hero() {
               <div className="overflow-hidden rounded-md bg-white">
                 <img
                   src="/assets/banner1.png"
-                  alt="AB Tech Services — website & app showcase"
+                  alt="Abnexa — website & app showcase"
                   width="1694" height="929" fetchPriority="high"
                   className="block aspect-[1694/929] w-full object-cover"
                 />
@@ -181,7 +181,7 @@ export default function Hero() {
             className="absolute -bottom-10 right-0 w-[30%] max-w-[150px] sm:-right-4"
           >
             <div className="animate-float-med overflow-hidden rounded-[1.1rem] border-4 border-slate-800 bg-slate-800 shadow-lift">
-              <img src="/assets/banner-mobile.png" alt="AB Tech Services — mobile view" width="426" height="897" className="block aspect-[142/299] w-full rounded-[0.7rem] object-cover" />
+              <img src="/assets/banner-mobile.png" alt="Abnexa — mobile view" width="426" height="897" className="block aspect-[142/299] w-full rounded-[0.7rem] object-cover" />
             </div>
           </motion.div>
 

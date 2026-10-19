@@ -7,7 +7,7 @@ export default function ServiceArt({ art = 'web', title = '', className = '' }) 
     <div className={`relative h-full w-full overflow-hidden bg-gradient-to-br from-blue-600 to-cyan-500 ${className}`}>
       <img
         src={`/assets/services/${art}.png`}
-        alt={title ? `${title} — AB Tech Services` : 'AB Tech Services service'}
+        alt={title ? `${title} — Abnexa` : 'Abnexa service'}
         width="600"
         height="380"
         loading="lazy"

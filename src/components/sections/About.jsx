@@ -27,7 +27,7 @@ export default function About() {
           eyebrow="About Us"
           title="A premium technology partner for"
           highlight="ambitious companies"
-          subtitle="AB Tech Services is a full-service software studio. We blend elegant design with robust engineering to build digital products that look world-class and perform even better."
+          subtitle="Abnexa is a full-service software studio. We blend elegant design with robust engineering to build digital products that look world-class and perform even better."
         />
 
         <div className="mt-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-12">

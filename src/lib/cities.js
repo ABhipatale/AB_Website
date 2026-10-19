@@ -12,7 +12,7 @@ export const CITIES = [
     pin: '415110',
     nearby: ['Satara', 'Sangli', 'Islampur', 'Wai', 'Kolhapur'],
     intro:
-      'AB Tech Services is a professional website development company serving Karad and the surrounding Satara district. We build modern, responsive, SEO-friendly websites, mobile apps and custom software for local businesses that want to grow online.',
+      'Abnexa is a professional website development company serving Karad and the surrounding Satara district. We build modern, responsive, SEO-friendly websites, mobile apps and custom software for local businesses that want to grow online.',
     localities: [
       'Shaniwar Peth', 'Mangalwar Peth', 'Somwar Peth', 'Malkapur', 'Vidyanagar',
       'Saidapur', 'Ogalewadi', 'Koyna Vasahat', 'Karad MIDC', 'Umbraj',
@@ -35,7 +35,7 @@ export const CITIES = [
     pin: '415001',
     nearby: ['Karad', 'Wai', 'Phaltan', 'Shirwal', 'Pune'],
     intro:
-      'Looking for a reliable website developer in Satara? AB Tech Services designs and builds high-performance websites, e-commerce stores and mobile apps for businesses across Satara and nearby towns.',
+      'Looking for a reliable website developer in Satara? Abnexa designs and builds high-performance websites, e-commerce stores and mobile apps for businesses across Satara and nearby towns.',
     localities: [
       'Sadar Bazar', 'Powai Naka', 'Shahupuri', 'Godoli', 'Karanje',
       'Rajwada', 'Satara MIDC', 'Koregaon', 'Yadogopal Peth', 'Pratapganj Peth',
@@ -58,7 +58,7 @@ export const CITIES = [
     pin: '411001',
     nearby: ['Baramati', 'Shirwal', 'Satara', 'Ahmednagar', 'Mumbai'],
     intro:
-      'AB Tech Services is a modern web development company serving Pune. From startups to established enterprises, we deliver websites, SaaS platforms, mobile apps and AI-powered software engineered to premium standards.',
+      'Abnexa is a modern web development company serving Pune. From startups to established enterprises, we deliver websites, SaaS platforms, mobile apps and AI-powered software engineered to premium standards.',
     localities: [
       'Hinjewadi', 'Kothrud', 'Baner', 'Wakad', 'Viman Nagar', 'Hadapsar',
       'Kharadi', 'Shivajinagar', 'Pimpri-Chinchwad', 'Magarpatta',
@@ -81,7 +81,7 @@ export const CITIES = [
     pin: '416001',
     nearby: ['Ichalkaranji', 'Kagal', 'Jaysingpur', 'Sangli', 'Miraj'],
     intro:
-      'AB Tech Services provides professional website design and development services in Kolhapur. We help local shops, manufacturers, hospitals and startups get fast, secure, SEO-ready websites and apps.',
+      'Abnexa provides professional website design and development services in Kolhapur. We help local shops, manufacturers, hospitals and startups get fast, secure, SEO-ready websites and apps.',
     localities: [
       'Rajarampuri', 'Shahupuri', 'Tarabai Park', 'Laxmipuri', 'Kasaba Bawada',
       'Shiroli MIDC', 'Gokul Shirgaon MIDC', 'Mahadwar Road', 'Nagala Park', 'Ujalaiwadi',
@@ -104,7 +104,7 @@ export const CITIES = [
     pin: '416416',
     nearby: ['Miraj', 'Kolhapur', 'Islampur', 'Karad', 'Tasgaon'],
     intro:
-      'AB Tech Services is a professional website development company serving Sangli and Miraj. We design and build modern, mobile-friendly, SEO-ready websites, e-commerce stores, mobile apps and custom business software for Sangli businesses that want more customers online.',
+      'Abnexa is a professional website development company serving Sangli and Miraj. We design and build modern, mobile-friendly, SEO-ready websites, e-commerce stores, mobile apps and custom business software for Sangli businesses that want more customers online.',
     localities: [
       'Vishrambag', 'Vijaynagar', 'Market Yard', 'Kupwad MIDC', 'Madhavnagar',
       'Gaonbhag', 'Sangli–Miraj Road', 'Ganpati Peth', 'Khanbhag', 'Sangliwadi',
@@ -140,7 +140,7 @@ export const cityFaqs = (city) => [
   },
   {
     q: `Do you provide website development services in ${city.name}?`,
-    a: `Yes. AB Tech Services actively works with businesses in ${city.name} and across ${city.district}, building websites, e-commerce stores, mobile apps and custom software. We work remotely and can meet online or on a call to plan your project.`,
+    a: `Yes. Abnexa actively works with businesses in ${city.name} and across ${city.district}, building websites, e-commerce stores, mobile apps and custom software. We work remotely and can meet online or on a call to plan your project.`,
   },
   {
     q: `How much does a website cost in ${city.name}?`,

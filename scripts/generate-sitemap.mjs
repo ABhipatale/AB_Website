@@ -3,7 +3,7 @@
 import { writeFileSync } from 'node:fs'
 import { CITIES } from '../src/lib/cities.js'
 
-const SITE = 'https://abtechservices.store'
+const SITE = 'https://abnexa.in'
 const today = new Date().toISOString().slice(0, 10)
 
 const urls = [

@@ -9,7 +9,10 @@
     <link rel="apple-touch-icon" href="/assets/Ab.png" />
 
     <!-- Page title and description are injected per route (see src/pages/*) -->
-    <meta name="author" content="AB Tech Services" />
+    <meta name="author" content="Abnexa" />
+    <meta name="application-name" content="Abnexa" />
+    <meta name="apple-mobile-web-app-title" content="Abnexa" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- Local / geo targeting (constant across pages) -->
     <meta name="geo.region" content="IN-MH" />
@@ -18,7 +21,7 @@
 
     <!-- Constant social metadata — page-specific title/description/url/image are injected per page -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="AB Tech Services" />
+    <meta property="og:site_name" content="Abnexa" />
     <meta property="og:locale" content="en_IN" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -32,25 +35,44 @@
 
     <!-- Site-level structured data (per-page LocalBusiness is injected by each page) -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "AB Tech Services",
-        "url": "https://abtechservices.store/",
-        "publisher": {
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://abnexa.in/#website",
+          "name": "Abnexa",
+          "alternateName": ["AB Technology Solution", "abnexa.in"],
+          "url": "https://abnexa.in/",
+          "inLanguage": "en-IN",
+          "publisher": { "@id": "https://abnexa.in/#organization" }
+        },
+        {
+          "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "AB Tech Services",
-          "logo": "https://abtechservices.store/assets/Ab.png",
+          "@id": "https://abnexa.in/#organization",
+          "name": "Abnexa",
+          "alternateName": ["AB Technology Solution", "AB Tech Services"],
+          "slogan": "AB Technology Solution",
+          "url": "https://abnexa.in/",
+          "logo": "https://abnexa.in/assets/Ab.png",
+          "email": "support@abnexa.in",
           "telephone": "+919689030301",
-          "areaServed": "Maharashtra, India"
+          "areaServed": "Maharashtra, India",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+919689030301",
+            "contactType": "sales",
+            "areaServed": "IN",
+            "availableLanguage": ["English", "Hindi", "Marathi"]
+          }
         }
-      }
+      ]
     </script>
   </head>
   <body>
     <div id="root"></div>
     <noscript>
-      AB Tech Services — Building Powerful Digital Solutions for Modern Businesses. Please enable JavaScript, or call 96 89 03 03 01.
+      Abnexa — Building Powerful Digital Solutions for Modern Businesses. Please enable JavaScript, or call 96 89 03 03 01.
     </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>

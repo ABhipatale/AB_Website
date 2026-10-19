@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abtechservices.store/sitemap.xml
+Sitemap: https://abnexa.in/sitemap.xml

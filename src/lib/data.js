@@ -7,14 +7,17 @@ import {
 } from 'lucide-react'
 
 export const COMPANY = {
-  name: 'AB Tech Services',
-  tagline: 'Building Powerful Digital Solutions for Modern Businesses',
+  name: 'Abnexa',
+  tagline: 'AB Technology Solution',
+  // Earlier brand names — kept in structured data so Google links the old
+  // name and domain to the new Abnexa brand.
+  alternateNames: ['AB Technology Solution', 'AB Tech Services'],
   phone: '96 89 03 03 01',
   phoneRaw: '+919689030301',
-  email: 'hello@abtechservices.store',
+  email: 'support@abnexa.in',
   whatsapp: 'https://wa.me/919689030301',
   logo: '/assets/Ab.png',
-  url: 'https://abtechservices.store',
+  url: 'https://abnexa.in',
   // NAP — city/region only (no street address per current setup)
   region: 'Maharashtra',
   regionCode: 'MH',

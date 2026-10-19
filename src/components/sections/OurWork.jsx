@@ -7,7 +7,7 @@ import { COMPANY } from '../../lib/data'
 
 // Apps aren't public, so their cards open a WhatsApp enquiry instead.
 const whatsappFor = (name) =>
-  `${COMPANY.whatsapp}?text=${encodeURIComponent(`Hi AB Tech Services! I'm interested in the ${name}. Please share more details.`)}`
+  `${COMPANY.whatsapp}?text=${encodeURIComponent(`Hi Abnexa! I'm interested in the ${name}. Please share more details.`)}`
 
 export const WORK = [
   {
@@ -16,7 +16,7 @@ export const WORK = [
     title: 'Hotel Atithi, Karad',
     desc: 'Official restaurant website for Hotel Atithi in Karad — fast, mobile-friendly and SEO-ready, showcasing the hotel and helping guests find and contact it online.',
     image: '/assets/atithilogo.png',
-    imageAlt: 'Hotel Atithi Karad logo — website by AB Tech Services',
+    imageAlt: 'Hotel Atithi Karad logo — website by Abnexa',
     href: 'https://hotelatithikarad.in',
     linkLabel: 'hotelatithikarad.in',
   },
@@ -26,7 +26,7 @@ export const WORK = [
     title: 'Hotel Mamacha Mala',
     desc: 'Responsive restaurant website for Hotel Mamacha Mala — a clean, modern online presence built to showcase the hotel and bring in more customers.',
     image: '/assets/logo.png',
-    imageAlt: 'Hotel Mamacha Mala logo — website by AB Tech Services',
+    imageAlt: 'Hotel Mamacha Mala logo — website by Abnexa',
     href: 'https://mamacha-mala.vercel.app/',
     linkLabel: 'Visit website',
   },
@@ -36,7 +36,7 @@ export const WORK = [
     title: 'Jar Management System',
     desc: 'Water-jar delivery management application for water suppliers — manage customers, daily jar deliveries and payments in one place.',
     image: '/assets/banner.jpg',
-    imageAlt: 'Jar Management System for water suppliers — app by AB Tech Services',
+    imageAlt: 'Jar Management System for water suppliers — app by Abnexa',
     cover: true,
     href: whatsappFor('Jar Management System'),
     linkLabel: 'Enquire on WhatsApp',
@@ -48,7 +48,7 @@ export const WORK = [
     title: 'Face Detection System',
     desc: 'AI-powered face detection application that detects and recognises faces from camera or images — for attendance, security and access control.',
     image: '/assets/face-detection-logo.svg',
-    imageAlt: 'Face Detection System logo — app by AB Tech Services',
+    imageAlt: 'Face Detection System logo — app by Abnexa',
     href: whatsappFor('Face Detection System'),
     linkLabel: 'Enquire on WhatsApp',
     whatsapp: true,
@@ -59,7 +59,7 @@ export const WORK = [
     title: 'Saanj Garva Bar Management System',
     desc: 'Bar & restaurant management application for Saanj Garva — table orders, KOT, fast billing, liquor stock tracking and daily sales reports in one place.',
     image: '/assets/saanj-garva-logo.svg',
-    imageAlt: 'Saanj Garva Bar Management System logo — app by AB Tech Services',
+    imageAlt: 'Saanj Garva Bar Management System logo — app by Abnexa',
     href: whatsappFor('Saanj Garva Bar Management System'),
     linkLabel: 'Enquire on WhatsApp',
     whatsapp: true,
@@ -74,7 +74,7 @@ export default function OurWork() {
           eyebrow="Our Work"
           title="Websites & apps we've"
           highlight="delivered"
-          subtitle="Real products built by AB Tech Services for real businesses — from restaurant websites to custom business applications."
+          subtitle="Real products built by Abnexa for real businesses — from restaurant websites to custom business applications."
         />
 
         <motion.div
