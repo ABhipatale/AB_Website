@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const LAYERS = ['mark-black', 'mark-orange', 'wordmark', 'lines', 'software']
+const LAYERS = ['mark-light', 'mark-orange', 'wordmark-light', 'lines', 'software-light']
 const TOTAL_MS = 2700
 
 /**

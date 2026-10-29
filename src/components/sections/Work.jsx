@@ -19,9 +19,9 @@ export default function Work() {
         <SectionLabel n="04">Selected work</SectionLabel>
         <div className="mt-6 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <h2 className="reveal max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-            Built for real businesses <span className="text-gray">and working every day.</span>
+            Built for real businesses <span className="text-muted">and working every day.</span>
           </h2>
-          <p className="tag reveal text-gray">
+          <p className="tag reveal text-muted">
             {String(WORK.length).padStart(2, '0')} projects · websites &amp; software
           </p>
         </div>
@@ -33,13 +33,13 @@ export default function Work() {
                 href={w.href ?? enquiry(w)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-4 rounded-2xl px-2 py-6 transition-colors duration-300 hover:bg-white sm:px-4 lg:grid-cols-[2.5rem_5.5rem_minmax(0,1.1fr)_minmax(0,1.3fr)_auto] lg:gap-x-8 lg:py-7"
+                className="group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-4 rounded-2xl px-2 py-6 transition-colors duration-300 hover:bg-panel sm:px-4 lg:grid-cols-[2.5rem_5.5rem_minmax(0,1.1fr)_minmax(0,1.3fr)_auto] lg:gap-x-8 lg:py-7"
               >
-                <span className="tag hidden text-gray transition-colors group-hover:text-orange lg:block">
+                <span className="tag hidden text-muted transition-colors group-hover:text-orange lg:block">
                   {String(i + 1).padStart(2, '0')}
                 </span>
 
-                <span className="grid size-16 place-items-center overflow-hidden rounded-2xl border border-line bg-paper-2 sm:size-20 lg:size-22">
+                <span className="img-reveal relative grid size-16 place-items-center overflow-hidden rounded-2xl border border-line bg-panel transition-colors duration-500 group-hover:border-orange/60 sm:size-20 lg:size-22">
                   <img
                     src={w.image}
                     alt={w.imageAlt}
@@ -55,14 +55,14 @@ export default function Work() {
                   <span className="mt-1.5 block font-display text-xl font-semibold leading-snug sm:text-2xl">{w.name}</span>
                 </span>
 
-                <span className="col-span-2 text-[0.95rem] leading-relaxed text-gray lg:col-span-1">{w.desc}</span>
+                <span className="col-span-2 text-[0.95rem] leading-relaxed text-muted lg:col-span-1">{w.desc}</span>
 
                 <span className="col-span-2 flex items-center justify-between gap-4 lg:col-span-1 lg:justify-end">
-                  <span className="tag inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-ink transition-colors group-hover:border-ink/30">
+                  <span className="tag inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-fg transition-colors group-hover:border-orange/60">
                     {!w.href && <WhatsAppIcon className="size-3.5" />}
                     {w.linkLabel ?? 'Ask for similar'}
                   </span>
-                  <span className="grid size-11 shrink-0 place-items-center rounded-full bg-ink text-paper transition-colors duration-300 group-hover:bg-orange">
+                  <span className="grid size-11 shrink-0 place-items-center gloss rounded-full border border-line bg-panel text-fg transition-colors duration-300 group-hover:border-orange group-hover:bg-orange group-hover:text-night">
                     <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:rotate-45" />
                   </span>
                 </span>
@@ -74,7 +74,7 @@ export default function Work() {
         {/* invitation  */}
         <a
           href="#contact"
-          className="reveal group relative mt-10 flex flex-col justify-between gap-6 overflow-hidden rounded-[1.75rem] bg-ink p-8 text-paper sm:flex-row sm:items-center sm:p-10"
+          className="reveal group relative mt-10 flex flex-col justify-between gap-6 gloss overflow-hidden rounded-[1.75rem] border border-line bg-panel p-8 text-fg transition-colors duration-500 hover:border-orange/50 sm:flex-row sm:items-center sm:p-10"
         >
           <img
             src="/brand/abnexa-mark-light.png"
@@ -86,12 +86,12 @@ export default function Work() {
             className="pointer-events-none absolute -right-10 -top-16 size-64 opacity-[0.07] transition-transform duration-700 ease-out-soft group-hover:rotate-12"
           />
           <span className="relative">
-            <span className="tag block text-paper/50">Open slot</span>
+            <span className="tag block text-muted">Open slot</span>
             <span className="mt-2 block font-display text-3xl font-semibold leading-tight sm:text-4xl">
-              Your project <span className="text-orange">could be next.</span>
+              Your project <span className="text-gloss">could be next.</span>
             </span>
           </span>
-          <span className="btn btn-primary relative shrink-0 self-start whitespace-nowrap group-hover:!bg-paper group-hover:!text-ink sm:self-auto">
+          <span className="btn btn-primary relative shrink-0 self-start whitespace-nowrap group-lit sm:self-auto">
             Start a conversation <ArrowRight className="arrow size-4" />
           </span>
         </a>

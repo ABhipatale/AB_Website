@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowRight, Check, Mail, Phone } from 'lucide-react'
 
 import WhatsAppIcon from '../ui/WhatsAppIcon'
 import { COMPANY, PROJECT_TYPES, BUDGETS, whatsappLink } from '../../lib/data'
+import { ENQUIRE_EVENT } from '../../lib/enquire'
 
 const EMPTY = { name: '', email: '', phone: '', type: '', budget: '', message: '' }
 
@@ -35,9 +36,9 @@ function compose(v) {
 function Field({ id, label, optional, error, children }) {
   return (
     <div>
-      <label htmlFor={id} className="flex justify-between text-sm font-medium text-paper/80">
+      <label htmlFor={id} className="flex justify-between text-sm font-medium text-fg/80">
         {label}
-        {optional && <span className="text-paper/40">Optional</span>}
+        {optional && <span className="text-muted">Optional</span>}
       </label>
       {children}
       {error && (
@@ -50,7 +51,7 @@ function Field({ id, label, optional, error, children }) {
 }
 
 const input =
-  'mt-2 block w-full rounded-xl border bg-ink-2 px-4 py-3 text-paper placeholder:text-paper/30 transition-colors focus:border-orange focus:outline-none'
+  'mt-2 block w-full rounded-xl border bg-night px-4 py-3 shadow-[inset_0_2px_8px_rgb(0_0_0/0.6)] text-fg placeholder:text-fg/45 transition-colors focus:border-orange focus:outline-none'
 
 /**
  * There is no backend, so a valid enquiry opens WhatsApp with every field
@@ -60,6 +61,22 @@ export default function Contact() {
   const [v, setV] = useState(EMPTY)
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle') // idle | sent | blocked
+
+  // a service or product CTA picked the project type — never overwrite
+  // something the visitor already typed
+  useEffect(() => {
+    const onEnquire = ({ detail }) => {
+      setStatus('idle')
+      setErrors({})
+      setV((s) => ({
+        ...s,
+        type: detail.type ?? s.type,
+        message: s.message.trim() ? s.message : (detail.message ?? s.message),
+      }))
+    }
+    window.addEventListener(ENQUIRE_EVENT, onEnquire)
+    return () => window.removeEventListener(ENQUIRE_EVENT, onEnquire)
+  }, [])
 
   const set = (k) => (e) => {
     setV((s) => ({ ...s, [k]: e.target.value }))
@@ -88,29 +105,29 @@ export default function Contact() {
     id: `c-${k}`,
     'aria-invalid': !!errors[k],
     'aria-describedby': errors[k] ? `c-${k}-err` : undefined,
-    className: `${input} ${errors[k] ? 'border-orange' : 'border-line-dark'}`,
+    className: `${input} ${errors[k] ? 'border-orange' : 'border-line'}`,
   })
 
   return (
-    <section id="contact" className="bg-ink py-20 text-paper sm:py-28">
+    <section id="contact" className="bg-night-2 py-20 text-fg sm:py-28">
       <div className="wrap grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <div>
-          <p className="tag reveal flex items-center gap-3 text-paper/60">
+          <p className="tag reveal flex items-center gap-3 text-muted">
             <span className="text-orange">08</span>
             <span className="rule" /> Contact
           </p>
           <h2 className="reveal mt-6 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
             Have an idea?
-            <span className="block text-orange">Let&apos;s make it real.</span>
+            <span className="text-gloss block">Let&apos;s make it real.</span>
           </h2>
-          <p className="reveal mt-8 max-w-md text-lg leading-relaxed text-paper/65">
+          <p className="reveal mt-8 max-w-md text-lg leading-relaxed text-fg/65">
             Tell us what you have in mind. We&apos;ll reply with honest advice, a clear plan and a fixed quote.
           </p>
 
           <ul className="reveal mt-10 space-y-4">
             <li>
               <a href={`tel:${COMPANY.phoneRaw}`} className="group inline-flex items-center gap-4">
-                <span className="grid size-11 place-items-center rounded-full border border-line-dark transition-colors group-hover:border-orange group-hover:text-orange">
+                <span className="grid size-11 place-items-center rounded-full border border-line transition-colors group-hover:border-orange group-hover:text-orange">
                   <Phone className="size-4" />
                 </span>
                 <span className="font-display text-lg">{COMPANY.phone}</span>
@@ -118,7 +135,7 @@ export default function Contact() {
             </li>
             <li>
               <a href={`mailto:${COMPANY.email}`} className="group inline-flex items-center gap-4">
-                <span className="grid size-11 place-items-center rounded-full border border-line-dark transition-colors group-hover:border-orange group-hover:text-orange">
+                <span className="grid size-11 place-items-center rounded-full border border-line transition-colors group-hover:border-orange group-hover:text-orange">
                   <Mail className="size-4" />
                 </span>
                 <span className="font-display text-lg">{COMPANY.email}</span>
@@ -126,7 +143,7 @@ export default function Contact() {
             </li>
             <li>
               <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-4">
-                <span className="grid size-11 place-items-center rounded-full border border-line-dark transition-colors group-hover:border-orange group-hover:text-orange">
+                <span className="grid size-11 place-items-center rounded-full border border-line transition-colors group-hover:border-orange group-hover:text-orange">
                   <WhatsAppIcon />
                 </span>
                 <span className="font-display text-lg">Chat on WhatsApp</span>
@@ -135,7 +152,7 @@ export default function Contact() {
           </ul>
         </div>
 
-        <div className="reveal rounded-[1.75rem] border border-line-dark bg-[#1b1b1b] p-6 sm:p-9">
+        <div className="gloss reveal rounded-[1.75rem] border border-line bg-panel p-6 sm:p-9">
           {status === 'idle' ? (
             <form noValidate onSubmit={submit} className="grid gap-5 sm:grid-cols-2">
               <Field id="c-name" label="Name" error={errors.name}>
@@ -177,21 +194,21 @@ export default function Contact() {
                 </Field>
               </div>
               <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-                <button type="submit" className="btn btn-primary justify-center hover:!bg-paper hover:!text-ink">
+                <button type="submit" className="btn btn-primary justify-center">
                   Start a Conversation <ArrowRight className="arrow size-4" />
                 </button>
-                <p className="text-xs text-paper/45">Opens WhatsApp with your details filled in.</p>
+                <p className="text-xs text-muted">Opens WhatsApp with your details filled in.</p>
               </div>
             </form>
           ) : (
             <div role="status" className="flex min-h-[26rem] flex-col justify-center">
-              <span className="grid size-14 place-items-center rounded-full bg-orange text-white">
+              <span className="grid size-14 place-items-center rounded-full bg-orange text-night">
                 <Check className="size-6" />
               </span>
               <h3 className="mt-6 font-display text-3xl font-semibold">
                 {status === 'sent' ? 'Almost there!' : 'One more step'}
               </h3>
-              <p className="mt-3 max-w-md leading-relaxed text-paper/65">
+              <p className="mt-3 max-w-md leading-relaxed text-fg/65">
                 {status === 'sent'
                   ? 'WhatsApp opened in a new tab with your message ready — just press send. We usually reply the same working day.'
                   : 'Your browser blocked the WhatsApp window. Use one of the options below to send your enquiry.'}
@@ -200,7 +217,7 @@ export default function Contact() {
                 <a href={whatsappLink(compose(v))} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   <WhatsAppIcon /> Open WhatsApp
                 </a>
-                <a href={mailto} className="btn border border-line-dark hover:border-orange">
+                <a href={mailto} className="btn border border-line hover:border-orange">
                   <Mail className="size-4" /> Send by email instead
                 </a>
               </div>
@@ -210,7 +227,7 @@ export default function Contact() {
                   setV(EMPTY)
                   setStatus('idle')
                 }}
-                className="link mt-8 self-start text-sm text-paper/60"
+                className="link mt-8 self-start text-sm text-muted"
               >
                 Start a new enquiry
               </button>

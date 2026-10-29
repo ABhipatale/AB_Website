@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 
-/** Full horizontal ABnexa Software lockup. `light` for dark backgrounds. */
-export function Logo({ light = false, className = 'h-9 w-auto' }) {
+/** Full horizontal ABnexa Software lockup — the light artwork for the dark theme. */
+export function Logo({ className = 'h-9 w-auto' }) {
   return (
     <img
-      src={light ? '/brand/abnexa-logo-light.png' : '/brand/abnexa-logo.png'}
+      src="/brand/abnexa-logo-light.png"
       alt="ABnexa Software"
       width="900"
       height="258"
@@ -14,10 +14,10 @@ export function Logo({ light = false, className = 'h-9 w-auto' }) {
 }
 
 /** The AB monogram on its own. */
-export function Mark({ light = false, className = 'size-10' }) {
+export function Mark({ className = 'size-10' }) {
   return (
     <img
-      src={light ? '/brand/abnexa-mark-light.png' : '/brand/abnexa-mark.png'}
+      src="/brand/abnexa-mark-light.png"
       alt=""
       aria-hidden="true"
       width="512"
@@ -27,9 +27,9 @@ export function Mark({ light = false, className = 'size-10' }) {
   )
 }
 
-export function HomeLink({ className, children }) {
+export function HomeLink({ className, children, ...rest }) {
   return (
-    <Link to="/" aria-label="ABnexa Software — home" className={className}>
+    <Link to="/" aria-label="ABnexa Software — home" className={className} {...rest}>
       {children}
     </Link>
   )

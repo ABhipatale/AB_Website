@@ -55,6 +55,7 @@ export const SERVICE_GROUPS = [
     desc: 'Fast, mobile-first business websites that explain what you do and turn visitors into calls and enquiries.',
     includes: ['Website Development', 'Landing pages', 'SEO-ready structure'],
     cta: 'Plan my website',
+    type: 'Website',
   },
   {
     title: 'SEO & Google Ranking',
@@ -62,6 +63,7 @@ export const SERVICE_GROUPS = [
     desc: 'We optimise your website so customers find you on Google — local SEO, Google Business Profile, fast pages and content built around what people actually search for.',
     includes: ['Local SEO', 'Google Business Profile', 'On-page SEO', 'Speed & Core Web Vitals'],
     cta: 'Grow my Google ranking',
+    type: 'SEO & Google ranking',
   },
   {
     title: 'E-commerce Solutions',
@@ -69,6 +71,7 @@ export const SERVICE_GROUPS = [
     desc: 'Online stores with a clean catalogue, simple checkout and payments that work from day one.',
     includes: ['E-Commerce Website', 'Razorpay Integration', 'Order management'],
     cta: 'Start my store',
+    type: 'E-commerce store',
   },
   {
     title: 'Custom Software & Web Apps',
@@ -76,6 +79,7 @@ export const SERVICE_GROUPS = [
     desc: 'Billing, inventory, CRM and management systems shaped around the way your business already works.',
     includes: ['Custom Software', 'CRM Development', 'ERP Development', 'API Development'],
     cta: 'Discuss my software',
+    type: 'Custom software / web app',
   },
   {
     title: 'Mobile Application Development',
@@ -83,6 +87,7 @@ export const SERVICE_GROUPS = [
     desc: 'Android and iOS apps for your customers or your team — built from a single codebase.',
     includes: ['Mobile Apps', 'Android & iOS', 'Admin dashboards'],
     cta: 'Talk about my app',
+    type: 'Mobile app',
   },
   {
     title: 'Automation, AI & Integrations',
@@ -90,6 +95,7 @@ export const SERVICE_GROUPS = [
     desc: 'Remove repetitive work: WhatsApp messages, reminders, reports and AI features connected to your tools.',
     includes: ['Business Automation', 'WhatsApp Integration', 'AI Integration'],
     cta: 'Automate my work',
+    type: 'Automation / integration',
   },
   {
     title: '24/7 Support & Maintenance',
@@ -97,6 +103,7 @@ export const SERVICE_GROUPS = [
     desc: 'Round-the-clock support after launch — hosting, updates, fixes and monitoring, so your website or app keeps running while you focus on your business.',
     includes: ['24/7 support', 'Cloud Deployment', 'Updates & fixes', 'Monitoring'],
     cta: 'Ask about support',
+    type: 'Maintenance & support',
   },
 ]
 
@@ -109,7 +116,7 @@ export const PRODUCTS = [
     features: ['Customer records', 'Daily jar deliveries', 'Payment tracking'],
     image: '/assets/jar-management-logo.webp',
     imageAlt: 'Jar Management System logo — SaaS by Abnexa',
-    tint: '#e7f1ff',
+    tint: '#2f8cff',
   },
   {
     name: 'Face Detection & Attendance System',
@@ -118,7 +125,7 @@ export const PRODUCTS = [
     features: ['Face recognition', 'Automatic attendance', 'Access records'],
     image: '/assets/face-attendance-logo.webp',
     imageAlt: 'Face Detection & Attendance System logo — SaaS by Abnexa',
-    tint: '#e5ecff',
+    tint: '#4f6bff',
   },
   {
     name: 'Dairy Milk Collection System',
@@ -127,7 +134,7 @@ export const PRODUCTS = [
     features: ['Farmer entries', 'Daily collection', 'Farmer payments'],
     image: '/assets/dairy-milk-logo.svg',
     imageAlt: 'Dairy Milk Collection System logo — SaaS by Abnexa',
-    tint: '#e4f5ea',
+    tint: '#22c55e',
   },
 ]
 
@@ -186,6 +193,7 @@ export const HIGHLIGHTS = [
 
 export const PROJECT_TYPES = [
   'Website',
+  'SEO & Google ranking',
   'E-commerce store',
   'Custom software / web app',
   'Mobile app',

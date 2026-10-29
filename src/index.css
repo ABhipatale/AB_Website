@@ -4,14 +4,14 @@
 @theme {
   --color-orange: #ff7100;
   --color-orange-deep: #e05f00;
-  --color-orange-soft: #fff1e5;
-  --color-ink: #151515;
-  --color-ink-2: #2a2a2a;
-  --color-paper: #faf9f6;
-  --color-paper-2: #f2f0ea;
-  --color-gray: #777777;
-  --color-line: #e4e1d9;
-  --color-line-dark: #2e2e2e;
+  --color-orange-soft: #2a1608;
+  /* dark theme surfaces, darkest first */
+  --color-night: #0a0a0a;
+  --color-night-2: #111111;
+  --color-panel: #171717;
+  --color-fg: #f5f5f5;
+  --color-muted: #a3a3a3;
+  --color-line: #292929;
 
   --font-display: 'Sora', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -28,8 +28,8 @@ html {
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-ink);
+  background: var(--color-night);
+  color: var(--color-fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -37,7 +37,7 @@ body {
 
 ::selection {
   background: var(--color-orange);
-  color: #fff;
+  color: var(--color-night);
 }
 
 :focus-visible {
@@ -47,8 +47,8 @@ body {
 }
 
 select option {
-  background: var(--color-ink);
-  color: var(--color-paper);
+  background: var(--color-panel);
+  color: var(--color-fg);
 }
 
 /* ── Layout helpers ────────────────────────────────────────── */
@@ -84,6 +84,9 @@ select option {
 @layer components {
   /* ── Buttons ───────────────────────────────────────────────── */
   .btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
@@ -95,22 +98,82 @@ select option {
     transition:
       background-color 0.25s,
       color 0.25s,
+      box-shadow 0.25s,
       transform 0.25s var(--ease-out-soft);
   }
-  .btn-primary {
-    background: var(--color-orange);
-    color: #fff;
+  /* a band of light crosses the button on hover */
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.45) 50%, transparent 70%);
+    transform: translateX(-130%);
+    transition: transform 0.75s var(--ease-out-soft);
+    pointer-events: none;
   }
-  .btn-primary:hover {
-    background: var(--color-ink);
+  .btn:hover::after,
+  .group:hover .btn::after {
+    transform: translateX(130%);
+  }
+
+  /* glossy orange: lit from above, dark text for 7:1 contrast */
+  .btn-primary {
+    color: var(--color-night);
+    background: linear-gradient(180deg, #ff9443 0%, var(--color-orange) 50%, #ec6600 100%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.4),
+      inset 0 -1px 0 rgb(0 0 0 / 0.18),
+      0 10px 26px -12px rgb(255 113 0 / 0.7);
+  }
+  .btn-primary:hover,
+  .group:hover .btn-primary.group-lit {
+    background: linear-gradient(180deg, #ffffff 0%, var(--color-fg) 55%, #dcdcdc 100%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.9),
+      inset 0 -1px 0 rgb(0 0 0 / 0.12),
+      0 10px 26px -12px rgb(255 255 255 / 0.35);
   }
   .btn-dark {
-    background: var(--color-ink);
-    color: var(--color-paper);
+    color: var(--color-fg);
+    background: linear-gradient(180deg, #262626 0%, var(--color-panel) 100%);
+    box-shadow:
+      inset 0 0 0 1px var(--color-line),
+      inset 0 1px 0 rgb(255 255 255 / 0.1);
   }
   .btn-dark:hover {
-    background: var(--color-orange);
+    color: var(--color-night);
+    background: linear-gradient(180deg, #ff9443 0%, var(--color-orange) 50%, #ec6600 100%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4);
   }
+
+  /* Glossy card: a lit top edge and soft light falling down the surface */
+  .gloss {
+    background-image: linear-gradient(180deg, rgb(255 255 255 / 0.065) 0%, rgb(255 255 255 / 0.015) 38%, transparent 70%);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.09),
+      0 30px 60px -36px rgb(0 0 0 / 0.9);
+  }
+
+  /* Frosted glass for the floating header */
+  .glass {
+    background-image: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.02));
+    box-shadow:
+      inset 0 0 0 1px rgb(255 255 255 / 0.08),
+      inset 0 1px 0 rgb(255 255 255 / 0.12),
+      0 14px 32px -16px rgb(0 0 0 / 0.9);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+  }
+
+  /* Glossy orange lettering for highlighted words */
+  .text-gloss {
+    background: linear-gradient(180deg, #ffa45e 0%, var(--color-orange) 52%, #e25c00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .btn:active {
     transform: scale(0.97);
   }
@@ -148,6 +211,22 @@ select option {
   transform: none;
 }
 
+/* Headline lines rise out of a mask, one group after another */
+.js .reveal.lines { opacity: 1; transform: none; }
+.lines .ln {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.js .lines .ln > span {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 1s var(--ease-out-soft);
+  transition-delay: var(--d, 0ms);
+}
+.js .lines.is-in .ln > span { transform: none; }
+
 /* Process line fills once its section is in view */
 .progress-line {
   transform-origin: left;
@@ -182,7 +261,7 @@ html:not(.js) .progress-line {
   inset: 0;
   display: grid;
   place-items: center;
-  background: var(--color-paper);
+  background: var(--color-night);
   animation: splash-wipe 0.55s cubic-bezier(0.76, 0, 0.24, 1) 2.05s forwards;
 }
 .splash-edge {
@@ -222,7 +301,7 @@ html:not(.js) .progress-line {
 }
 
 /* 2 · monogram: black ring, then orange ring, unmasked from its centre */
-.sl-mark-black {
+.sl-mark-light {
   animation: splash-ring-black 0.7s var(--ease-out-soft) 0.25s forwards;
 }
 .sl-mark-orange {
@@ -242,20 +321,20 @@ html:not(.js) .progress-line {
 }
 
 /* 3 · wordmark wipe + one light sweep across it */
-.sl-wordmark {
+.sl-wordmark-light {
   animation: splash-wordmark 0.6s var(--ease-out-soft) 0.95s forwards;
 }
 .splash-sheen {
   position: absolute;
   inset: 0;
-  -webkit-mask: url('/brand/splash-wordmark.webp') center / 100% 100% no-repeat;
-  mask: url('/brand/splash-wordmark.webp') center / 100% 100% no-repeat;
+  -webkit-mask: url('/brand/splash-wordmark-light.webp') center / 100% 100% no-repeat;
+  mask: url('/brand/splash-wordmark-light.webp') center / 100% 100% no-repeat;
   background: linear-gradient(105deg, transparent 42%, rgb(255 255 255 / 0.8) 50%, transparent 58%) 120% 0 / 250% 100% no-repeat;
   animation: splash-sheen 0.75s ease-in-out 1.4s forwards;
 }
 
 /* 4 · SOFTWARE settles from wide spacing; orange lines extend outward */
-.sl-software {
+.sl-software-light {
   transform-origin: 65% 84%;
   animation: splash-software 0.6s var(--ease-out-soft) 1.25s forwards;
 }
@@ -311,7 +390,8 @@ html:not(.js) .progress-line {
 }
 
 /* While the splash plays, hold the hero's entrance until the reveal */
-.splash-on #home .reveal { transition-delay: calc(var(--d, 0ms) + 1.9s); }
+.splash-on #home .reveal,
+.splash-on #home .lines .ln > span { transition-delay: calc(var(--d, 0ms) + 1.9s); }
 
 /* ── Hero brand signature (.hm) ─────────────────────────────
    Absolute timings from page entry; --hm-o shifts the whole sequence:
@@ -346,10 +426,10 @@ html:not(.js) .progress-line {
 .hm-ring svg { transition: color 0.5s; }
 
 /* phase 2 · monogram formation from its real pieces */
-.hm-black-ring { animation: hm-black 0.8s var(--ease-out-soft) calc(0.6s + var(--hm-o)) both; }
+.hm-light-ring { animation: hm-black 0.8s var(--ease-out-soft) calc(0.6s + var(--hm-o)) both; }
 .hm-orange-ring { animation: hm-orange 0.8s var(--ease-out-soft) calc(0.78s + var(--hm-o)) both; }
 .hm-orange-bar { animation: hm-rise 0.5s var(--ease-out-soft) calc(1s + var(--hm-o)) both; }
-.hm-black-bar { animation: hm-rise 0.5s var(--ease-out-soft) calc(1.12s + var(--hm-o)) both; }
+.hm-light-bar { animation: hm-rise 0.5s var(--ease-out-soft) calc(1.12s + var(--hm-o)) both; }
 
 /* phase 3 · digital energy */
 .hm-glow {
@@ -364,8 +444,8 @@ html:not(.js) .progress-line {
   transition: opacity 0.6s, transform 0.8s var(--ease-out-soft);
 }
 .hm-sheen {
-  -webkit-mask: url('/brand/abnexa-mark.png') center / 100% 100% no-repeat;
-  mask: url('/brand/abnexa-mark.png') center / 100% 100% no-repeat;
+  -webkit-mask: url('/brand/abnexa-mark-light.png') center / 100% 100% no-repeat;
+  mask: url('/brand/abnexa-mark-light.png') center / 100% 100% no-repeat;
   background: linear-gradient(115deg, transparent 44%, rgb(255 255 255 / 0.38) 50%, transparent 56%) 130% 0 / 260% 100% no-repeat;
   animation: hm-sheen 0.7s ease-in-out calc(1.55s + var(--hm-o)) both;
 }
@@ -429,7 +509,56 @@ html:not(.js) .progress-line {
     transition-duration: 0.01ms !important;
   }
   .js .reveal { opacity: 1; transform: none; }
+  .js .lines .ln > span { transform: none; }
   .progress-line { transform: scaleX(1); }
   .splash { display: none; }
   .hm, .hm * { animation-delay: -10s !important; }
+}
+
+/* ── Full-screen menu: a circle grows out of the Menu button ── */
+.menu {
+  --origin: calc(100% - 3.25rem) 2.4rem;
+  clip-path: circle(0 at var(--origin));
+  visibility: hidden;
+  transition:
+    clip-path 0.7s var(--ease-out-soft),
+    visibility 0s linear 0.7s;
+}
+.menu.is-open {
+  clip-path: circle(150vmax at var(--origin));
+  visibility: visible;
+  transition: clip-path 0.8s var(--ease-out-soft);
+}
+@media (min-width: 640px) {
+  .menu { --origin: calc(100% - 4rem) 3rem; }
+}
+.menu-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+.menu.is-open .menu-item {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s var(--ease-out-soft),
+    transform 0.7s var(--ease-out-soft);
+  transition-delay: calc(220ms + var(--i, 0) * 55ms);
+}
+
+/* Project thumbnails: an orange panel slides off as the row enters */
+.img-reveal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-orange);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.9s var(--ease-out-soft) calc(var(--d, 0ms) + 0.25s);
+}
+.js .reveal:not(.is-in) .img-reveal::after {
+  transform: scaleX(1);
+  transition: none;
 }

@@ -8,7 +8,7 @@ export default function FAQ({ items, title = 'Questions, answered.', n = '07', i
   const [open, setOpen] = useState(0)
 
   return (
-    <section id={id} className="bg-paper-2 py-20 sm:py-28">
+    <section id={id} className="border-t border-line bg-night-2 py-20 sm:py-28">
       <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <SectionLabel n={n}>FAQ</SectionLabel>
@@ -33,7 +33,7 @@ export default function FAQ({ items, title = 'Questions, answered.', n = '07', i
                     {f.q}
                     <span
                       className={`grid size-8 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
-                        on ? 'rotate-45 border-orange bg-orange text-white' : 'border-gray/40'
+                        on ? 'rotate-45 border-orange bg-orange text-night' : 'border-muted/40'
                       }`}
                     >
                       <Plus className="size-4" />
@@ -45,7 +45,7 @@ export default function FAQ({ items, title = 'Questions, answered.', n = '07', i
                   className={`grid transition-[grid-template-rows] duration-500 ease-out-soft ${on ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-2xl pb-6 leading-relaxed text-gray">{f.a}</p>
+                    <p className="max-w-2xl pb-6 leading-relaxed text-muted">{f.a}</p>
                   </div>
                 </div>
               </li>

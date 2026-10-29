@@ -4,14 +4,15 @@ import { ArrowRight, Plus } from 'lucide-react'
 import SectionLabel from '../ui/SectionLabel'
 import Preview from '../ui/Preview'
 import { SERVICE_GROUPS } from '../../lib/data'
+import { enquire } from '../../lib/enquire'
 
 const isDesktop = () => window.matchMedia('(min-width: 1024px)').matches
 
 function Detail({ s, compact = false }) {
   return (
     <div>
-      {!compact && <Preview variant={s.preview} className="w-full rounded-2xl bg-paper-2" />}
-      <p className={`${compact ? '' : 'mt-6'} leading-relaxed text-gray`}>{s.desc}</p>
+      {!compact && <Preview variant={s.preview} className="gloss w-full rounded-2xl border border-line bg-panel" />}
+      <p className={`${compact ? '' : 'mt-6'} leading-relaxed text-muted`}>{s.desc}</p>
       <ul className="mt-4 flex flex-wrap gap-2">
         {s.includes.map((x) => (
           <li key={x} className="rounded-full border border-line px-3 py-1 text-xs font-medium">
@@ -19,7 +20,11 @@ function Detail({ s, compact = false }) {
           </li>
         ))}
       </ul>
-      <a href="#contact" className="link mt-6 inline-flex items-center gap-2 text-sm font-semibold">
+      <a
+        href="#contact"
+        onClick={enquire({ type: s.type })}
+        className="link mt-6 inline-flex items-center gap-2 text-sm font-semibold"
+      >
         {s.cta} <ArrowRight className="size-4" />
       </a>
     </div>
@@ -39,7 +44,7 @@ export default function Services() {
       <div className="wrap">
         <SectionLabel n="02">Services</SectionLabel>
         <h2 className="reveal mt-6 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-          What we can build <span className="text-gray">for your business.</span>
+          What we can build <span className="text-muted">for your business.</span>
         </h2>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
@@ -52,23 +57,25 @@ export default function Services() {
                     type="button"
                     onClick={() => setActive(on && !isDesktop() ? -1 : i)}
                     onMouseEnter={() => isDesktop() && setActive(i)}
-                    onFocus={() => setActive(i)}
+                    // on touch, focus fires just before click — opening here
+                    // would make that click close the row again
+                    onFocus={() => isDesktop() && setActive(i)}
                     aria-expanded={on}
                     className="group flex w-full items-center gap-5 py-6 text-left"
                   >
-                    <span className={`tag w-6 transition-colors ${on ? 'text-orange' : 'text-gray'}`}>
+                    <span className={`tag w-6 transition-colors ${on ? 'text-orange' : 'text-muted'}`}>
                       0{i + 1}
                     </span>
                     <span
                       className={`flex-1 font-display text-xl font-semibold transition-[color,transform] duration-300 sm:text-2xl ${
-                        on ? 'translate-x-1 text-ink' : 'text-ink/55 group-hover:text-ink'
+                        on ? 'translate-x-1 text-fg' : 'text-fg/55 group-hover:text-fg'
                       }`}
                     >
                       {s.title}
                     </span>
                     <span
                       className={`grid size-9 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
-                        on ? 'rotate-45 border-orange bg-orange text-white' : 'border-line'
+                        on ? 'rotate-45 border-orange bg-orange text-night' : 'border-line'
                       }`}
                     >
                       <Plus className="size-4" />

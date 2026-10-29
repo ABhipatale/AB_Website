@@ -117,21 +117,21 @@ export default function CityPage({ slug }) {
       {/* ── Hero ── */}
       <section className="relative overflow-hidden pb-16 pt-28 sm:pt-36">
         <div className="wrap">
-          <nav aria-label="Breadcrumb" className="tag reveal flex items-center gap-2 text-gray">
+          <nav aria-label="Breadcrumb" className="tag reveal flex items-center gap-2 text-muted">
             <Link to="/" className="hover:text-orange">Home</Link>
             <span>/</span>
-            <span className="text-ink">{city.name}</span>
+            <span className="text-fg">{city.name}</span>
           </nav>
 
           <div className="mt-8 grid items-end gap-12 lg:grid-cols-[1.3fr_0.7fr]">
             <div>
-              <p className="tag reveal flex items-center gap-3 text-gray">
+              <p className="tag reveal flex items-center gap-3 text-muted">
                 <span className="rule" /> Serving {city.name}, {COMPANY.region}
               </p>
               <h1 className="reveal mt-6 font-display text-[2.6rem] font-bold leading-[1.03] tracking-tight sm:text-6xl lg:text-7xl">
-                Website Developer in <span className="text-orange">{city.name}</span>
+                Website Developer in <span className="text-gloss">{city.name}</span>
               </h1>
-              <p className="reveal mt-8 max-w-2xl text-lg leading-relaxed text-gray">{city.intro}</p>
+              <p className="reveal mt-8 max-w-2xl text-lg leading-relaxed text-muted">{city.intro}</p>
               <div className="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
                 <a href="#city-contact" className="btn btn-primary">
                   Get Free Consultation <ArrowRight className="arrow size-4" />
@@ -142,8 +142,8 @@ export default function CityPage({ slug }) {
               </div>
             </div>
             <div className="reveal hidden lg:block">
-              <img src="/brand/abnexa-mark.png" alt="" aria-hidden="true" width="512" height="512" className="ring-a ml-auto w-full max-w-xs" />
-              <p className="tag mt-6 text-right text-gray">
+              <img src="/brand/abnexa-mark-light.png" alt="" aria-hidden="true" width="512" height="512" className="ring-a ml-auto w-full max-w-xs" />
+              <p className="tag mt-6 text-right text-muted">
                 {city.geo.lat.toFixed(2)}°N · {city.geo.lng.toFixed(2)}°E
               </p>
             </div>
@@ -152,14 +152,14 @@ export default function CityPage({ slug }) {
       </section>
 
       {/* ── Local, city-specific content (unique per page) ── */}
-      <section className="bg-ink py-20 text-paper sm:py-24">
+      <section className="bg-night-2 py-20 text-fg sm:py-24">
         <div className="wrap grid gap-14 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <h2 className="reveal font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-              Website design &amp; development company in <span className="text-orange">{city.name}</span>
+              Website design &amp; development company in <span className="text-gloss">{city.name}</span>
             </h2>
             {city.about.map((para) => (
-              <p key={para.slice(0, 24)} className="reveal mt-6 text-lg leading-relaxed text-paper/70">
+              <p key={para.slice(0, 24)} className="reveal mt-6 text-lg leading-relaxed text-fg/70">
                 {para}
               </p>
             ))}
@@ -167,21 +167,21 @@ export default function CityPage({ slug }) {
 
           <div className="space-y-10">
             <div className="reveal">
-              <h3 className="tag text-paper/50">Businesses we build for in {city.name}</h3>
-              <ul className="mt-4 border-t border-line-dark">
+              <h3 className="tag text-muted">Businesses we build for in {city.name}</h3>
+              <ul className="mt-4 border-t border-line">
                 {city.industries.map((ind) => (
-                  <li key={ind} className="flex items-center gap-3 border-b border-line-dark py-3">
+                  <li key={ind} className="flex items-center gap-3 border-b border-line py-3">
                     <span className="size-1.5 rounded-full bg-orange" /> {ind}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="reveal">
-              <h3 className="tag text-paper/50">Areas we cover in {city.name}</h3>
-              <p className="mt-2 text-sm text-paper/50">Website development across {city.district}, including:</p>
+              <h3 className="tag text-muted">Areas we cover in {city.name}</h3>
+              <p className="mt-2 text-sm text-muted">Website development across {city.district}, including:</p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {city.localities.map((l) => (
-                  <li key={l} className="rounded-full border border-line-dark px-3 py-1.5 text-sm text-paper/80">
+                  <li key={l} className="rounded-full border border-line px-3 py-1.5 text-sm text-fg/80">
                     {l}
                   </li>
                 ))}
@@ -195,9 +195,9 @@ export default function CityPage({ slug }) {
       <section className="py-20 sm:py-24">
         <div className="wrap">
           <h2 className="reveal max-w-3xl font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-            Web development services in <span className="text-orange">{city.name}</span>
+            Web development services in <span className="text-gloss">{city.name}</span>
           </h2>
-          <p className="reveal mt-4 max-w-2xl text-gray">
+          <p className="reveal mt-4 max-w-2xl text-muted">
             Everything a {city.name} business needs to launch, grow and stand out online.
           </p>
           <ul className="mt-12 grid border-t border-line sm:grid-cols-2 lg:grid-cols-3">
@@ -206,7 +206,7 @@ export default function CityPage({ slug }) {
                 <span className="tag pt-1 text-orange">{String(i + 1).padStart(2, '0')}</span>
                 <span>
                   <h3 className="font-display text-lg font-semibold">{s.title}</h3>
-                  <p className="mt-1 text-sm text-gray">{s.desc}</p>
+                  <p className="mt-1 text-sm text-muted">{s.desc}</p>
                 </span>
               </li>
             ))}
@@ -215,17 +215,17 @@ export default function CityPage({ slug }) {
       </section>
 
       {/* ── Why choose us in {city} ── */}
-      <section className="bg-paper-2 py-20 sm:py-24">
+      <section className="bg-night-2 py-20 sm:py-24">
         <div className="wrap">
           <h2 className="reveal font-display text-3xl font-semibold tracking-tight sm:text-4xl">
             Why {city.name} businesses choose us
           </h2>
           <ul className="mt-12 grid gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {VALUES.map((v, i) => (
-              <li key={v.title} className="bg-paper p-6">
+              <li key={v.title} className="gloss bg-panel p-6">
                 <span className="tag text-orange">0{i + 1}</span>
                 <h3 className="mt-3 font-display text-lg font-semibold">{v.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray">{v.desc}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{v.desc}</p>
               </li>
             ))}
           </ul>
@@ -247,18 +247,18 @@ export default function CityPage({ slug }) {
                   {n.to ? (
                     <Link
                       to={`/${n.to}`}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-ink px-4 py-2 text-sm font-semibold transition-colors hover:bg-ink hover:text-paper"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm font-semibold transition-colors hover:border-orange hover:text-orange"
                     >
                       {n.name} <ArrowUpRight className="size-3.5 text-orange" />
                     </Link>
                   ) : (
-                    <span className="inline-flex rounded-full border border-line px-4 py-2 text-sm text-gray">{n.name}</span>
+                    <span className="inline-flex rounded-full border border-line px-4 py-2 text-sm text-muted">{n.name}</span>
                   )}
                 </li>
               ))}
             </ul>
 
-            <p className="tag mt-12 text-gray">We also build websites in</p>
+            <p className="tag mt-12 text-muted">We also build websites in</p>
             <ul className="mt-4 border-t border-line">
               {CITIES.filter((c) => c.slug !== city.slug).map((c) => (
                 <li key={c.slug} className="border-b border-line">
@@ -287,26 +287,26 @@ export default function CityPage({ slug }) {
       </section>
 
       {/* ── Contact CTA ── */}
-      <section id="city-contact" className="bg-ink py-20 text-paper sm:py-28">
+      <section id="city-contact" className="bg-night-2 py-20 text-fg sm:py-28">
         <div className="wrap">
           <h2 className="reveal max-w-4xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-            Ready to build your website in <span className="text-orange">{city.name}?</span>
+            Ready to build your website in <span className="text-gloss">{city.name}?</span>
           </h2>
-          <p className="reveal mt-6 max-w-xl text-lg text-paper/65">
+          <p className="reveal mt-6 max-w-xl text-lg text-fg/65">
             Get a free consultation and a clear, fixed quote for your {city.name} business.
           </p>
           <div className="reveal mt-10 flex flex-wrap gap-3">
-            <a href={`tel:${COMPANY.phoneRaw}`} className="btn btn-primary hover:!bg-paper hover:!text-ink">
+            <a href={`tel:${COMPANY.phoneRaw}`} className="btn btn-primary">
               <Phone className="size-4" /> Call {COMPANY.phone}
             </a>
-            <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="btn border border-line-dark hover:border-orange">
+            <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="btn border border-line hover:border-orange">
               <WhatsAppIcon /> WhatsApp Us
             </a>
-            <a href="/#contact" className="btn border border-line-dark hover:border-orange">
+            <a href="/#contact" className="btn border border-line hover:border-orange">
               Send project details <ArrowRight className="arrow size-4" />
             </a>
           </div>
-          <p className="tag mt-10 text-paper/45">
+          <p className="tag mt-10 text-muted">
             {COMPANY.name} · {city.name}, {COMPANY.region}, {COMPANY.country}
           </p>
         </div>

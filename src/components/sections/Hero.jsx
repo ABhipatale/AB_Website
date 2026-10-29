@@ -12,7 +12,7 @@ const MARKERS = [
 
 // The original monogram split into its four exact pixel shapes (shared
 // 512×512 canvas), so they can move separately and still form the logo.
-const SHAPES = ['black-ring', 'orange-ring', 'orange-bar', 'black-bar']
+const SHAPES = ['light-ring', 'orange-ring', 'orange-bar', 'light-bar']
 
 /**
  * Hero brand signature: orbit and guides draw in, the monogram assembles
@@ -40,7 +40,7 @@ function HeroMark() {
         {MARKERS.map((m) => (
           <circle
             key={m.x}
-            className={`hm-marker ${m.c === 'orange' ? 'fill-orange' : 'fill-ink'}`}
+            className={`hm-marker ${m.c === 'orange' ? 'fill-orange' : 'fill-fg'}`}
             cx={m.x}
             cy={m.y}
             r={m.r}
@@ -79,13 +79,13 @@ function HeroMark() {
       </div>
 
       {/* annotations */}
-      <span className="tag absolute left-0 top-[8%] flex items-center gap-2 text-gray">
+      <span className="tag absolute left-0 top-[8%] flex items-center gap-2 text-muted">
         <span className="size-1.5 rounded-full bg-orange" /> Idea
       </span>
-      <span className="tag absolute right-0 top-[40%] flex items-center gap-2 text-gray">
-        Design <span className="size-1.5 rounded-full bg-ink" />
+      <span className="tag absolute right-0 top-[40%] flex items-center gap-2 text-muted">
+        Design <span className="size-1.5 rounded-full bg-fg" />
       </span>
-      <span className="tag absolute bottom-[6%] left-[12%] flex items-center gap-2 text-gray">
+      <span className="tag absolute bottom-[6%] left-[12%] flex items-center gap-2 text-muted">
         <span className="size-1.5 rounded-full bg-orange" /> Digital reality
       </span>
     </div>
@@ -97,30 +97,33 @@ export default function Hero() {
     <section id="home" className="relative overflow-hidden pb-20 pt-28 sm:pt-36 lg:pb-28">
       <div className="wrap grid items-center gap-14 lg:grid-cols-[1.25fr_0.75fr]">
         <div>
-          <p className="tag reveal flex flex-wrap items-center gap-3 text-gray">
+          <p className="tag reveal flex flex-wrap items-center gap-3 text-muted">
             <span className="rule" />
             Website &amp; software development · {COMPANY.baseCity}, {COMPANY.region}
           </p>
 
-          <h1
-            className="reveal mt-7 font-display text-[2.7rem] font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-[5.4rem]"
-            style={{ '--d': '80ms' }}
-          >
-            Good ideas
-            <br />
-            deserve <span className="text-orange">better</span>
-            <br />
-            technology.
+          <h1 className="reveal lines mt-7 font-display text-[2.7rem] font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-[5.4rem]">
+            <span className="ln">
+              <span style={{ '--d': '60ms' }}>Good ideas</span>
+            </span>{' '}
+            <span className="ln">
+              <span style={{ '--d': '170ms' }}>
+                deserve <span className="text-gloss">better</span>
+              </span>
+            </span>{' '}
+            <span className="ln">
+              <span style={{ '--d': '280ms' }}>technology.</span>
+            </span>
           </h1>
 
           <p
-            className="reveal mt-8 max-w-lg text-lg leading-relaxed text-gray sm:text-xl"
-            style={{ '--d': '160ms' }}
+            className="reveal mt-8 max-w-lg text-lg leading-relaxed text-muted sm:text-xl"
+            style={{ '--d': '420ms' }}
           >
             We design and build digital products, websites and software that help businesses move forward.
           </p>
 
-          <div className="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-5" style={{ '--d': '240ms' }}>
+          <div className="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-5" style={{ '--d': '540ms' }}>
             <a href="#contact" className="btn btn-primary">
               Let&apos;s Build Something <ArrowRight className="arrow size-4" />
             </a>
@@ -134,7 +137,7 @@ export default function Hero() {
       </div>
 
       <div className="wrap mt-16 hidden sm:block">
-        <div className="tag flex items-center justify-between border-t border-line pt-5 text-gray">
+        <div className="tag flex items-center justify-between border-t border-line pt-5 text-muted">
           <span>ABnexa — Ideas into digital reality</span>
           <span>Websites · SEO · 24/7 Support</span>
           <a href="#about" className="hover:text-orange">Scroll ↓</a>
