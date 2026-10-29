@@ -3,10 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#2563EB" />
+    <meta name="theme-color" content="#151515" />
 
-    <link rel="icon" type="image/png" href="/assets/Ab.png" />
-    <link rel="apple-touch-icon" href="/assets/Ab.png" />
+    <link rel="icon" type="image/png" href="/brand/favicon.png" />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+
+    <!-- `js`: scroll-reveal styles only apply once JS runs, so pre-rendered HTML stays visible.
+         Splash: plays once per session and never with reduced motion. (`splash-on` is removed when it ends; `splash-play` stays to time the hero.) -->
+    <script>
+      (function () {
+        var d = document.documentElement
+        d.classList.add('js')
+        try {
+          if (matchMedia('(prefers-reduced-motion: reduce)').matches || sessionStorage.getItem('abx-splash')) {
+            d.classList.add('no-splash')
+          } else {
+            sessionStorage.setItem('abx-splash', '1')
+            d.classList.add('splash-on', 'splash-play')
+          }
+          // hero signature: full entrance once per session
+          if (sessionStorage.getItem('abx-hero')) d.classList.add('hero-seen')
+        } catch (e) {
+          d.classList.add('splash-on', 'splash-play')
+        }
+      })()
+    </script>
+    <link rel="preload" as="image" type="image/webp" href="/brand/splash-mark-black.webp" />
+    <link rel="preload" as="image" type="image/webp" href="/brand/splash-mark-orange.webp" />
+    <link rel="preload" as="image" type="image/webp" href="/brand/splash-wordmark.webp" />
+    <link rel="preload" as="image" type="image/webp" href="/brand/splash-software.webp" />
+    <link rel="preload" as="image" type="image/webp" href="/brand/splash-lines.webp" />
 
     <!-- Page title and description are injected per route (see src/pages/*) -->
     <meta name="author" content="Abnexa" />
@@ -29,7 +55,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Poppins:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Sora:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 

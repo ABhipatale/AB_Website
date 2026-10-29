@@ -1,18 +1,14 @@
 import { Head } from 'vite-react-ssg'
 
 import Hero from '../components/sections/Hero'
-import About from '../components/sections/About'
+import Statement from '../components/sections/Statement'
 import Services from '../components/sections/Services'
-import Solutions from '../components/sections/Solutions'
-import WhyChooseUs from '../components/sections/WhyChooseUs'
-import Technologies from '../components/sections/Technologies'
+import Products from '../components/sections/Products'
+import Work from '../components/sections/Work'
 import Process from '../components/sections/Process'
-import Guarantees from '../components/sections/Guarantees'
-import OurWork, { OurWorkStrip } from '../components/sections/OurWork'
-import Projects from '../components/sections/Projects'
-import AreasWeServe from '../components/sections/AreasWeServe'
+import Why from '../components/sections/Why'
 import FAQ from '../components/sections/FAQ'
-import CTA from '../components/sections/CTA'
+import Areas from '../components/sections/Areas'
 import Contact from '../components/sections/Contact'
 
 import { COMPANY, FAQS, SERVICES } from '../lib/data'
@@ -94,19 +90,14 @@ export default function Home() {
       </Head>
 
       <Hero />
-      <OurWorkStrip />
-      <About />
+      <Statement />
       <Services />
-      <Solutions />
-      <WhyChooseUs />
-      <Technologies />
+      <Products />
+      <Work />
       <Process />
-      <Guarantees />
-      <OurWork />
-      <Projects />
-      <AreasWeServe />
-      <FAQ />
-      <CTA />
+      <Why />
+      <FAQ items={FAQS} />
+      <Areas />
       <Contact />
     </>
   )

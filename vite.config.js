@@ -20,9 +20,7 @@ export default defineConfig({
     minify: 'esbuild',
     rollupOptions: {
       output: {
-        // Split the heavy animation lib out of the critical bundle (client only).
-        manualChunks(id, { getModuleInfo }) {
-          if (id.includes('node_modules/framer-motion')) return 'motion'
+        manualChunks(id) {
           if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) {
             return 'react'
           }

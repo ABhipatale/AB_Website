@@ -1,100 +1,57 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, MessageCircleQuestion } from 'lucide-react'
-import SectionHeading from '../ui/SectionHeading'
-import Button from '../ui/Button'
-import { stagger, fadeUp, viewport, EASE } from '../../lib/motion'
-import { FAQS, COMPANY } from '../../lib/data'
+import { Plus } from 'lucide-react'
 
-function Item({ q, a, isOpen, onToggle }) {
-  return (
-    <motion.div
-      variants={fadeUp}
-      className={[
-        'overflow-hidden rounded-2xl border bg-white transition-colors duration-300',
-        isOpen ? 'border-brand/30 shadow-soft' : 'border-line',
-      ].join(' ')}
-    >
-      <button
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-      >
-        <span className="font-semibold text-ink">{q}</span>
-        <span
-          className={[
-            'grid size-8 shrink-0 place-items-center rounded-full transition-all duration-300',
-            isOpen ? 'rotate-45 bg-brand text-white' : 'bg-brand-soft text-brand',
-          ].join(' ')}
-        >
-          <Plus className="size-4" />
-        </span>
-      </button>
+import SectionLabel from '../ui/SectionLabel'
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: EASE }}
-          >
-            <p className="px-6 pb-5 text-sm leading-relaxed text-muted">{a}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  )
-}
-
-export default function FAQ() {
+/** Accordion — answers stay in the DOM so they match the FAQ schema. */
+export default function FAQ({ items, title = 'Questions, answered.', n = '07', id = 'faq' }) {
   const [open, setOpen] = useState(0)
 
   return (
-    <section id="faq" className="relative py-14 lg:py-20">
-      <div className="container-x">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
-          {/* Left — heading + CTA */}
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <SectionHeading
-              align="left"
-              eyebrow="FAQ"
-              title="Questions?"
-              highlight="Answered."
-              subtitle="Everything you need to know before we start. Can't find your answer? We're one message away."
-            />
-            <div className="mt-8 rounded-3xl border border-line bg-surface p-6">
-              <span className="grid size-11 place-items-center rounded-xl bg-brand text-white">
-                <MessageCircleQuestion className="size-5" />
-              </span>
-              <p className="mt-4 font-bold text-ink">Still have questions?</p>
-              <p className="mt-1 text-sm text-muted">
-                Talk to our team and get clarity on scope, timeline and cost.
-              </p>
-              <Button href={`tel:${COMPANY.phoneRaw}`} variant="outline" size="md" className="mt-4">
-                Call {COMPANY.phone}
-              </Button>
-            </div>
-          </div>
-
-          {/* Right — accordion */}
-          <motion.div
-            variants={stagger(0.07)}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewport}
-            className="space-y-3"
-          >
-            {FAQS.map((f, i) => (
-              <Item
-                key={f.q}
-                {...f}
-                isOpen={open === i}
-                onToggle={() => setOpen(open === i ? -1 : i)}
-              />
-            ))}
-          </motion.div>
+    <section id={id} className="bg-paper-2 py-20 sm:py-28">
+      <div className="wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+        <div>
+          <SectionLabel n={n}>FAQ</SectionLabel>
+          <h2 className="reveal mt-6 font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+            {title}
+          </h2>
         </div>
+
+        <ul className="border-t border-line">
+          {items.map((f, i) => {
+            const on = open === i
+            return (
+              <li key={f.q} className="border-b border-line">
+                <h3>
+                  <button
+                    type="button"
+                    onClick={() => setOpen(on ? -1 : i)}
+                    aria-expanded={on}
+                    aria-controls={`${id}-a${i}`}
+                    className="flex w-full items-center justify-between gap-6 py-6 text-left font-display text-lg font-semibold"
+                  >
+                    {f.q}
+                    <span
+                      className={`grid size-8 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
+                        on ? 'rotate-45 border-orange bg-orange text-white' : 'border-gray/40'
+                      }`}
+                    >
+                      <Plus className="size-4" />
+                    </span>
+                  </button>
+                </h3>
+                <div
+                  id={`${id}-a${i}`}
+                  className={`grid transition-[grid-template-rows] duration-500 ease-out-soft ${on ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="max-w-2xl pb-6 leading-relaxed text-gray">{f.a}</p>
+                  </div>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )

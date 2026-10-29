@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14532d"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="can" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dfeee4"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="44" fill="url(#bg)"/>
+  <!-- soft hills -->
+  <path d="M0 150c40-22 80-22 120-6s60 14 80 4v8c0 26-18 44-44 44H44c-26 0-44-18-44-44z" fill="#ffffff" opacity=".12"/>
+  <!-- milk can -->
+  <rect x="80" y="34" width="40" height="12" rx="4" fill="#fff"/>
+  <path d="M84 46h32v10l14 14v76c0 7-6 12-12 12H82c-6 0-12-5-12-12V70l14-14z" fill="url(#can)"/>
+  <rect x="70" y="92" width="60" height="8" fill="#bfe3cc"/>
+  <!-- handles -->
+  <path d="M70 80h-8c-4 0-6 3-6 6v8c0 3 2 6 6 6h8" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M130 80h8c4 0 6 3 6 6v8c0 3-2 6-6 6h-8" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <!-- milk drop -->
+  <path d="M100 108c-8 11-13 18-13 25a13 13 0 0 0 26 0c0-7-5-14-13-25z" fill="#22c55e"/>
+  <!-- collected badge -->
+  <circle cx="146" cy="150" r="20" fill="#ff7100" stroke="#fff" stroke-width="5"/>
+  <path d="M137 150l6 6 12-13" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

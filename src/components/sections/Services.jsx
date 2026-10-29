@@ -1,90 +1,100 @@
-import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
-import SectionHeading from '../ui/SectionHeading'
-import Button from '../ui/Button'
-import { stagger, fadeUp, viewport } from '../../lib/motion'
-import { grad } from '../../lib/palette'
-import useMouseGlow from '../../hooks/useMouseGlow'
-import ServiceArt from '../ui/ServiceArt'
-import { SERVICES } from '../../lib/data'
+import { useState } from 'react'
+import { ArrowRight, Plus } from 'lucide-react'
 
-function ServiceCard({ icon: Icon, title, desc, tag, art, i }) {
-  const g = grad(i)
-  const glowRef = useMouseGlow()
+import SectionLabel from '../ui/SectionLabel'
+import Preview from '../ui/Preview'
+import { SERVICE_GROUPS } from '../../lib/data'
+
+const isDesktop = () => window.matchMedia('(min-width: 1024px)').matches
+
+function Detail({ s, compact = false }) {
   return (
-    <motion.article
-      ref={glowRef}
-      variants={fadeUp}
-      data-cursor
-      className="group hover-lift spotlight relative flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-soft"
-    >
-      {/* illustration banner */}
-      <div className="relative h-36 overflow-hidden">
-        <ServiceArt art={art} title={title} />
-        <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-wide text-ink shadow-sm backdrop-blur">
-          {tag}
-        </span>
-      </div>
-
-      {/* body with overlapping icon chip */}
-      <div className="relative flex flex-1 flex-col px-6 pb-6">
-        <span className="relative -mt-7 grid size-14 place-items-center rounded-2xl border border-line bg-white text-brand shadow-lift">
-          <Icon className="size-6" />
-        </span>
-
-        <h3 className="mt-4 flex items-center gap-1 text-lg font-bold text-ink">
-          {title}
-          <ArrowUpRight className="size-4 text-brand transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted">{desc}</p>
-
-        <span className={`mt-4 block h-0.5 w-10 rounded-full bg-gradient-to-r ${g} transition-all duration-300 group-hover:w-16`} />
-      </div>
-    </motion.article>
+    <div>
+      {!compact && <Preview variant={s.preview} className="w-full rounded-2xl bg-paper-2" />}
+      <p className={`${compact ? '' : 'mt-6'} leading-relaxed text-gray`}>{s.desc}</p>
+      <ul className="mt-4 flex flex-wrap gap-2">
+        {s.includes.map((x) => (
+          <li key={x} className="rounded-full border border-line px-3 py-1 text-xs font-medium">
+            {x}
+          </li>
+        ))}
+      </ul>
+      <a href="#contact" className="link mt-6 inline-flex items-center gap-2 text-sm font-semibold">
+        {s.cta} <ArrowRight className="size-4" />
+      </a>
+    </div>
   )
 }
 
+/**
+ * Editorial list: hover / focus / click a row to preview it on the right
+ * (desktop). On smaller screens each row expands in place.
+ */
 export default function Services() {
+  const [active, setActive] = useState(0)
+  const current = SERVICE_GROUPS[active]
+
   return (
-    <section id="services" className="relative py-14 lg:py-20">
-      <div className="container-x">
-        <SectionHeading
-          eyebrow="Our Services"
-          title="Comprehensive solutions to"
-          highlight="power your growth"
-          subtitle="From a marketing site to a full enterprise platform — every service is engineered to premium standards and built to scale."
-        />
+    <section id="services" className="py-20 sm:py-28">
+      <div className="wrap">
+        <SectionLabel n="02">Services</SectionLabel>
+        <h2 className="reveal mt-6 max-w-3xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+          What we can build <span className="text-gray">for your business.</span>
+        </h2>
 
-        <motion.div
-          variants={stagger(0.06)}
-          initial="hidden"
-          whileInView="show"
-          viewport={viewport}
-          className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {SERVICES.map((s, i) => (
-            <ServiceCard key={s.title} {...s} i={i} />
-          ))}
-          {/* (illustrations are original SVG art — no external images) */}
-        </motion.div>
+        <div className="mt-14 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+          <ul className="border-t border-line">
+            {SERVICE_GROUPS.map((s, i) => {
+              const on = active === i
+              return (
+                <li key={s.title} className="reveal border-b border-line" style={{ '--d': `${i * 50}ms` }}>
+                  <button
+                    type="button"
+                    onClick={() => setActive(on && !isDesktop() ? -1 : i)}
+                    onMouseEnter={() => isDesktop() && setActive(i)}
+                    onFocus={() => setActive(i)}
+                    aria-expanded={on}
+                    className="group flex w-full items-center gap-5 py-6 text-left"
+                  >
+                    <span className={`tag w-6 transition-colors ${on ? 'text-orange' : 'text-gray'}`}>
+                      0{i + 1}
+                    </span>
+                    <span
+                      className={`flex-1 font-display text-xl font-semibold transition-[color,transform] duration-300 sm:text-2xl ${
+                        on ? 'translate-x-1 text-ink' : 'text-ink/55 group-hover:text-ink'
+                      }`}
+                    >
+                      {s.title}
+                    </span>
+                    <span
+                      className={`grid size-9 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
+                        on ? 'rotate-45 border-orange bg-orange text-white' : 'border-line'
+                      }`}
+                    >
+                      <Plus className="size-4" />
+                    </span>
+                  </button>
 
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={viewport}
-          className="mt-8 flex flex-col items-center gap-4 rounded-3xl border border-line bg-surface px-8 py-6 text-center sm:flex-row sm:justify-between sm:text-left"
-        >
-          <div>
-            <p className="text-xl font-bold text-ink">Not sure which service you need?</p>
-            <p className="mt-1 text-sm text-muted">
-              Book a free consultation and we'll map the right solution for your business.
-            </p>
+                  {/* inline detail on mobile / tablet */}
+                  <div className={`grid transition-[grid-template-rows] duration-500 ease-out-soft lg:hidden ${on ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                    <div className="overflow-hidden">
+                      <div className="pb-7 pl-11">
+                        <Detail s={s} compact />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+
+          {/* sticky preview on desktop */}
+          <div className="hidden lg:block">
+            <div className="sticky top-28" aria-live="polite">
+              {current && <Detail s={current} />}
+            </div>
           </div>
-          <Button href="#contact" size="lg" icon={ArrowUpRight}>
-            Get Free Consultation
-          </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

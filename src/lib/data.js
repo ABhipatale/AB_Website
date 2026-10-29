@@ -1,11 +1,3 @@
-import {
-  Globe, Smartphone, Bot, Cog, ShoppingCart, MessageCircle,
-  CreditCard, Users, Building2, Workflow, CloudCog, Code2,
-  Blocks, Sparkles, ShieldCheck, Gauge, Search,
-  BadgeIndianRupee, Headset, Rocket, LayoutDashboard,
-  MessagesSquare, CalendarCheck, KeyRound, Wallet,
-} from 'lucide-react'
-
 export const COMPANY = {
   name: 'Abnexa',
   tagline: 'AB Technology Solution',
@@ -26,211 +18,188 @@ export const COMPANY = {
   baseCity: 'Karad',
 }
 
-// Navbar links (Technologies intentionally omitted here — the section still
-// exists on the page and is linked from the footer).
+export const whatsappLink = (text) => `${COMPANY.whatsapp}?text=${encodeURIComponent(text)}`
+
+// Absolute hashes so the same nav works from city pages too.
 export const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/#home' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Products', href: '/#products' },
+  { label: 'Work', href: '/#work' },
+  { label: 'About', href: '/#about' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
-// Footer "Quick Links" — the full set, including Technologies.
-export const FOOTER_LINKS = [
-  ...NAV_LINKS.slice(0, 4),
-  { label: 'Technologies', href: '#technologies' },
-  ...NAV_LINKS.slice(4),
-]
-
-// Four headline capabilities (used in About)
-export const CORE_SERVICES = [
-  { icon: Globe, title: 'Web Development', desc: 'Fast, scalable sites & web apps engineered for conversion.' },
-  { icon: Smartphone, title: 'Mobile App Development', desc: 'Native-grade iOS & Android apps from a single codebase.' },
-  { icon: Bot, title: 'AI Solutions', desc: 'Custom AI features, chatbots and intelligent automation.' },
-  { icon: Cog, title: 'Business Automation', desc: 'Automate operations and remove repetitive manual work.' },
-]
-
-// Full services grid
+// Service list used by the structured data (Home + city pages).
 export const SERVICES = [
-  { icon: Globe, title: 'Website Development', desc: 'High-performance corporate & marketing websites.', tag: 'Web', art: 'web' },
-  { icon: ShoppingCart, title: 'E-Commerce Website', desc: 'Conversion-first stores with secure checkout.', tag: 'Web', art: 'ecommerce' },
-  { icon: Smartphone, title: 'Mobile Apps', desc: 'Cross-platform apps for iOS and Android.', tag: 'Apps', art: 'mobile' },
-  { icon: Bot, title: 'AI Integration', desc: 'GPT-powered assistants, search & workflows.', tag: 'AI', art: 'ai' },
-  { icon: MessageCircle, title: 'WhatsApp Integration', desc: 'Automated messaging & customer support.', tag: 'Automation', art: 'chat' },
-  { icon: CreditCard, title: 'Razorpay Integration', desc: 'Seamless payments, subscriptions & payouts.', tag: 'Payments', art: 'payments' },
-  { icon: Users, title: 'CRM Development', desc: 'Track leads, deals and customers in one place.', tag: 'Platforms', art: 'crm' },
-  { icon: Building2, title: 'ERP Development', desc: 'Unify inventory, billing, HR and finance.', tag: 'Platforms', art: 'erp' },
-  { icon: Workflow, title: 'Business Automation', desc: 'Connect tools and automate operations end-to-end.', tag: 'Automation', art: 'automation' },
-  { icon: CloudCog, title: 'Cloud Deployment', desc: 'Reliable, auto-scaling cloud infrastructure.', tag: 'Cloud', art: 'cloud' },
-  { icon: Code2, title: 'API Development', desc: 'Secure, well-documented REST & GraphQL APIs.', tag: 'Web', art: 'api' },
-  { icon: Blocks, title: 'Custom Software', desc: 'Bespoke platforms built around your process.', tag: 'Platforms', art: 'custom' },
+  { title: 'Website Development', desc: 'High-performance corporate & marketing websites.' },
+  { title: 'E-Commerce Website', desc: 'Conversion-first stores with secure checkout.' },
+  { title: 'Mobile Apps', desc: 'Cross-platform apps for iOS and Android.' },
+  { title: 'AI Integration', desc: 'GPT-powered assistants, search & workflows.' },
+  { title: 'WhatsApp Integration', desc: 'Automated messaging & customer support.' },
+  { title: 'Razorpay Integration', desc: 'Seamless payments, subscriptions & payouts.' },
+  { title: 'CRM Development', desc: 'Track leads, deals and customers in one place.' },
+  { title: 'ERP Development', desc: 'Unify inventory, billing, HR and finance.' },
+  { title: 'Business Automation', desc: 'Connect tools and automate operations end-to-end.' },
+  { title: 'Cloud Deployment', desc: 'Reliable, auto-scaling cloud infrastructure.' },
+  { title: 'API Development', desc: 'Secure, well-documented REST & GraphQL APIs.' },
+  { title: 'Custom Software', desc: 'Bespoke platforms built around your process.' },
 ]
 
-// Honest facts about the offering — no fabricated track record.
-export const FACTS = [
-  { value: 12, suffix: '+', label: 'Services Offered' },
-  { value: 13, suffix: '+', label: 'Technologies We Use' },
-  { value: 7, suffix: '-Step', label: 'Delivery Process' },
-  { value: 1, suffix: '-Year', label: 'Support Included' },
-]
-
-export const REASONS = [
-  { icon: BadgeIndianRupee, title: 'Affordable', desc: 'Enterprise quality at a fair, transparent price.' },
-  { icon: ShieldCheck, title: 'Professional', desc: 'A disciplined, senior team and clean engineering.' },
-  { icon: Rocket, title: 'Fast Delivery', desc: 'Agile sprints that ship on a clear schedule.' },
-  { icon: Search, title: 'SEO Friendly', desc: 'Built to rank and be discovered from day one.' },
-  { icon: ShieldCheck, title: 'Secure', desc: 'Security and privacy engineered in by default.' },
-  { icon: Sparkles, title: 'Modern Technology', desc: 'A current, future-proof technology stack.' },
-  { icon: Headset, title: '1 Year Support', desc: 'A full year of support after every launch.' },
-  { icon: Gauge, title: 'Fast & Reliable', desc: 'Optimised for speed, uptime and scale.' },
-]
-
-// Brand marks handled in TechStack component (react-icons + monogram fallbacks)
-export const TECHNOLOGIES = [
-  'React', 'Laravel', 'Node.js', 'Python', 'Flutter', 'React Native',
-  'Docker', 'AWS', 'MySQL', 'MongoDB', 'OpenAI', 'GSAP', 'Tailwind',
-]
-
-// What we build — honest capability showcase (no invented client projects).
-export const SOLUTIONS = [
+// Visible services — grouped so the page stays short. `includes` keeps every
+// service from the schema list visible on the page.
+export const SERVICE_GROUPS = [
   {
-    icon: LayoutDashboard,
-    title: 'Web Apps & SaaS',
-    desc: 'Dashboards, admin panels and full SaaS products with authentication, billing and role-based access.',
-    points: ['React front-ends', 'Secure APIs', 'Subscription billing'],
-    accent: 'from-blue-500 to-sky-400',
+    title: 'Website Design & Development',
+    preview: 'web',
+    desc: 'Fast, mobile-first business websites that explain what you do and turn visitors into calls and enquiries.',
+    includes: ['Website Development', 'Landing pages', 'SEO-ready structure'],
+    cta: 'Plan my website',
   },
   {
-    icon: ShoppingCart,
-    title: 'E-Commerce',
-    desc: 'Fast, conversion-focused online stores with catalog, cart, secure payments and order management.',
-    points: ['Razorpay / Stripe', 'Inventory & orders', 'SEO-ready'],
-    accent: 'from-indigo-500 to-blue-500',
+    title: 'SEO & Google Ranking',
+    preview: 'seo',
+    desc: 'We optimise your website so customers find you on Google — local SEO, Google Business Profile, fast pages and content built around what people actually search for.',
+    includes: ['Local SEO', 'Google Business Profile', 'On-page SEO', 'Speed & Core Web Vitals'],
+    cta: 'Grow my Google ranking',
   },
   {
-    icon: Smartphone,
-    title: 'Mobile Apps',
-    desc: 'Cross-platform iOS & Android apps with native performance, push notifications and offline support.',
-    points: ['Flutter / React Native', 'Push notifications', 'App Store ready'],
-    accent: 'from-sky-500 to-cyan-400',
+    title: 'E-commerce Solutions',
+    preview: 'shop',
+    desc: 'Online stores with a clean catalogue, simple checkout and payments that work from day one.',
+    includes: ['E-Commerce Website', 'Razorpay Integration', 'Order management'],
+    cta: 'Start my store',
   },
   {
-    icon: Bot,
-    title: 'AI-Powered Software',
-    desc: 'Custom AI assistants, smart search, document processing and automation built on modern LLMs.',
-    points: ['GPT integrations', 'Smart chatbots', 'Workflow automation'],
-    accent: 'from-blue-600 to-indigo-500',
+    title: 'Custom Software & Web Apps',
+    preview: 'app',
+    desc: 'Billing, inventory, CRM and management systems shaped around the way your business already works.',
+    includes: ['Custom Software', 'CRM Development', 'ERP Development', 'API Development'],
+    cta: 'Discuss my software',
   },
   {
-    icon: Building2,
-    title: 'CRM & ERP Platforms',
-    desc: 'Tailored internal systems to manage leads, customers, inventory, billing, HR and finance in one place.',
-    points: ['Custom modules', 'Reports & analytics', 'Team permissions'],
-    accent: 'from-cyan-500 to-blue-500',
+    title: 'Mobile Application Development',
+    preview: 'mobile',
+    desc: 'Android and iOS apps for your customers or your team — built from a single codebase.',
+    includes: ['Mobile Apps', 'Android & iOS', 'Admin dashboards'],
+    cta: 'Talk about my app',
   },
   {
-    icon: Workflow,
-    title: 'Business Automation',
-    desc: 'Connect your tools and automate repetitive work — messaging, invoicing, syncing and notifications.',
-    points: ['Tool integrations', 'WhatsApp automation', 'Scheduled jobs'],
-    accent: 'from-blue-500 to-indigo-600',
+    title: 'Automation, AI & Integrations',
+    preview: 'auto',
+    desc: 'Remove repetitive work: WhatsApp messages, reminders, reports and AI features connected to your tools.',
+    includes: ['Business Automation', 'WhatsApp Integration', 'AI Integration'],
+    cta: 'Automate my work',
+  },
+  {
+    title: '24/7 Support & Maintenance',
+    preview: 'cloud',
+    desc: 'Round-the-clock support after launch — hosting, updates, fixes and monitoring, so your website or app keeps running while you focus on your business.',
+    includes: ['24/7 support', 'Cloud Deployment', 'Updates & fixes', 'Monitoring'],
+    cta: 'Ask about support',
   },
 ]
 
-// The AB Promise — real commitments, not fabricated reviews.
-export const GUARANTEES = [
+// Abnexa's own SaaS products.
+export const PRODUCTS = [
   {
-    icon: MessagesSquare,
-    title: 'Direct developer access',
-    desc: 'Talk to the engineer building your product — no middlemen, no account-manager wall.',
+    name: 'Jar Management System',
+    audience: 'For water suppliers',
+    desc: 'Manage water-jar customers, daily deliveries and payments in one place.',
+    features: ['Customer records', 'Daily jar deliveries', 'Payment tracking'],
+    image: '/assets/jar-management-logo.webp',
+    imageAlt: 'Jar Management System logo — SaaS by Abnexa',
+    tint: '#e7f1ff',
   },
   {
-    icon: KeyRound,
-    title: 'You own 100% of the code',
-    desc: 'Full source code, clean and documented, handed over to you. No lock-in, ever.',
+    name: 'Face Detection & Attendance System',
+    audience: 'For offices, schools & sites',
+    desc: 'AI face recognition from a camera marks attendance automatically and keeps records for security and access control.',
+    features: ['Face recognition', 'Automatic attendance', 'Access records'],
+    image: '/assets/face-attendance-logo.webp',
+    imageAlt: 'Face Detection & Attendance System logo — SaaS by Abnexa',
+    tint: '#e5ecff',
   },
   {
-    icon: CalendarCheck,
-    title: 'On-time, milestone-based',
-    desc: 'Clear milestones and staged delivery, so you always know what ships and when.',
+    name: 'Dairy Milk Collection System',
+    audience: 'For dairies & collection centres',
+    desc: 'Record daily milk collection from farmers and keep every entry and payment organised.',
+    features: ['Farmer entries', 'Daily collection', 'Farmer payments'],
+    image: '/assets/dairy-milk-logo.svg',
+    imageAlt: 'Dairy Milk Collection System logo — SaaS by Abnexa',
+    tint: '#e4f5ea',
+  },
+]
+
+// Client work — live websites and custom software. `href` is optional.
+export const WORK = [
+  {
+    name: 'Hotel Atithi, Karad',
+    kind: 'Restaurant website',
+    desc: 'Official website for Hotel Atithi in Karad — fast, mobile-friendly and SEO-ready, helping guests find and contact the hotel online.',
+    image: '/assets/atithilogo.png',
+    imageAlt: 'Hotel Atithi Karad logo — website by Abnexa',
+    href: 'https://hotelatithikarad.in',
+    linkLabel: 'hotelatithikarad.in',
   },
   {
-    icon: Wallet,
-    title: 'Transparent fixed pricing',
-    desc: 'Agreed scope and price up front — no surprise invoices half-way through.',
+    name: 'Hotel Mamacha Mala',
+    kind: 'Restaurant website',
+    desc: 'Responsive website for Hotel Mamacha Mala — a clean, modern online presence built to showcase the hotel and bring in more customers.',
+    image: '/assets/logo.png',
+    imageAlt: 'Hotel Mamacha Mala logo — website by Abnexa',
+    href: 'https://mamacha-mala.vercel.app/',
+    linkLabel: 'mamacha-mala.vercel.app',
   },
   {
-    icon: ShieldCheck,
-    title: 'Secure & SEO-ready',
-    desc: 'Security, performance and search best-practices built in from the first commit.',
-  },
-  {
-    icon: Headset,
-    title: '1 year of support',
-    desc: 'A full year of monitoring, fixes and small improvements after launch.',
+    name: 'Saanj Garva Bar Management System',
+    kind: 'Custom software',
+    desc: 'Bar & restaurant management application for Saanj Garva — table orders, KOT, fast billing, liquor stock tracking and daily sales reports in one place.',
+    image: '/assets/saanj-garva-logo.webp',
+    imageAlt: 'Saanj Garva beer shop logo — software by Abnexa',
   },
 ]
 
 export const PROCESS = [
-  { title: 'Discovery', desc: 'We learn your goals, users and constraints.' },
-  { title: 'Planning', desc: 'Scope, architecture and a clear roadmap.' },
-  { title: 'UI Design', desc: 'Elegant, on-brand interfaces & prototypes.' },
-  { title: 'Development', desc: 'Clean, tested code shipped in agile sprints.' },
-  { title: 'Testing', desc: 'Rigorous QA across devices and edge cases.' },
-  { title: 'Deployment', desc: 'Smooth, zero-downtime launch to the cloud.' },
-  { title: 'Support', desc: 'A full year of monitoring and improvements.' },
+  { title: 'Discover', desc: 'Understand the business, users and goals.' },
+  { title: 'Design', desc: 'Shape the experience and validate the direction.' },
+  { title: 'Build', desc: 'Develop the solution with attention to performance and quality.' },
+  { title: 'Launch', desc: 'Test, deploy and support the product as agreed.' },
 ]
 
-// NOTE: The Pricing section was replaced by the "Projects — Coming Soon"
-// section. These figures are kept here so pricing can be restored later
-// without re-entering them. Currently unused.
-export const PRICING = [
-  {
-    name: 'Starter',
-    price: '₹24,999',
-    cadence: 'per project',
-    tagline: 'For small businesses getting online.',
-    features: [
-      'Up to 5-page website',
-      'Responsive & mobile-first',
-      'Basic SEO setup',
-      'Contact form + WhatsApp',
-      '30 days support',
-    ],
-    popular: false,
-  },
-  {
-    name: 'Business',
-    price: '₹74,999',
-    cadence: 'per project',
-    tagline: 'For growing companies that need more.',
-    features: [
-      'Up to 15 pages / web app',
-      'CMS & admin dashboard',
-      'Payment gateway integration',
-      'Advanced SEO + analytics',
-      'AI chatbot integration',
-      '6 months priority support',
-    ],
-    popular: true,
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    cadence: "let's talk",
-    tagline: 'For custom platforms at scale.',
-    features: [
-      'Custom software / ERP / CRM',
-      'Dedicated engineering team',
-      'Cloud architecture & DevOps',
-      'Third-party integrations',
-      'SLA & security hardening',
-      '1 year premium support',
-    ],
-    popular: false,
-  },
+export const VALUES = [
+  { title: 'Business first', desc: 'We start from what your business needs, then pick the technology.' },
+  { title: 'Skilled development team', desc: 'A dedicated team of designers and developers who plan, build and test your product properly.' },
+  { title: 'SEO built in', desc: 'Every website is built to rank — fast, mobile-friendly and optimised for Google from day one.' },
+  { title: '24/7 support', desc: 'We are available round the clock, so problems get answered and fixed fast — even after launch.' },
+  { title: 'Direct communication', desc: 'You talk to the people building your product — no middlemen.' },
+  { title: 'Growth partner', desc: 'As your business grows, we add features, scale your systems and keep improving them.' },
+]
+
+// Short promise points shown in the About section.
+export const HIGHLIGHTS = [
+  { title: 'SEO & Google ranking', desc: 'Help your business rank higher and get found by local customers.' },
+  { title: '24/7 support', desc: 'Round-the-clock help whenever your business needs it.' },
+  { title: 'Expert development team', desc: 'Designers and developers focused on quality work.' },
+  { title: 'Built for growth', desc: 'Technology that supports your business as it grows.' },
+]
+
+export const PROJECT_TYPES = [
+  'Website',
+  'E-commerce store',
+  'Custom software / web app',
+  'Mobile app',
+  'Automation / integration',
+  'Maintenance & support',
+  'Something else',
+]
+
+export const BUDGETS = [
+  'Under ₹25,000',
+  '₹25,000 – ₹75,000',
+  '₹75,000 – ₹2,00,000',
+  'Above ₹2,00,000',
+  'Not sure yet',
 ]
 
 export const FAQS = [
@@ -258,9 +227,4 @@ export const FAQS = [
     q: 'How do payments and milestones work?',
     a: 'We usually split projects into clear milestones with staged payments, so you always know what is being delivered and when.',
   },
-]
-
-export const FOOTER_SERVICES = [
-  'Web Development', 'Mobile Apps', 'AI Solutions',
-  'Business Automation', 'CRM & ERP', 'Cloud Deployment',
 ]

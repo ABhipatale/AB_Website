@@ -1,22 +1,15 @@
-import { useState } from 'react'
 import { Head } from 'vite-react-ssg'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import {
-  MapPin, Phone, ArrowRight, Check, Plus, Star, ArrowUpRight,
-} from 'lucide-react'
-import { FaWhatsapp } from 'react-icons/fa6'
+import { ArrowRight, ArrowUpRight, Phone } from 'lucide-react'
 
-import Button from '../components/ui/Button'
-import { stagger, fadeUp, viewport, EASE } from '../lib/motion'
-import { grad } from '../lib/palette'
-import { SERVICES, REASONS, COMPANY } from '../lib/data'
+import FAQ from '../components/sections/FAQ'
+import WhatsAppIcon from '../components/ui/WhatsAppIcon'
+import { SERVICES, VALUES, COMPANY } from '../lib/data'
 import { getCity, cityFaqs, cityKeywords, CITIES } from '../lib/cities'
 
 export default function CityPage({ slug }) {
   const city = getCity(slug)
   const faqs = cityFaqs(city)
-  const [open, setOpen] = useState(0)
 
   const pageUrl = `${COMPANY.url}/${city.path}`
   const title = `Website Developer in ${city.name} | Web Development Company — ${COMPANY.name}`
@@ -122,304 +115,200 @@ export default function CityPage({ slug }) {
       </Head>
 
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-white pb-16 pt-32 sm:pt-36">
-        <div className="bg-grid pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_top,#000_5%,transparent_70%)]" />
-        <div className="pointer-events-none absolute -right-24 -top-24 size-[420px] rounded-full bg-brand/10 blur-[130px]" />
-
-        <div className="container-x relative">
-          {/* breadcrumb */}
-          <nav className="mb-6 flex items-center gap-1.5 text-sm text-muted" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-brand">Home</Link>
+      <section className="relative overflow-hidden pb-16 pt-28 sm:pt-36">
+        <div className="wrap">
+          <nav aria-label="Breadcrumb" className="tag reveal flex items-center gap-2 text-gray">
+            <Link to="/" className="hover:text-orange">Home</Link>
             <span>/</span>
-            <span className="font-semibold text-ink">{city.name}</span>
+            <span className="text-ink">{city.name}</span>
           </nav>
 
-          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-            <motion.div variants={stagger(0.1)} initial="hidden" animate="show">
-              <motion.span
-                variants={fadeUp}
-                className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-1.5 text-xs font-semibold text-brand shadow-soft"
-              >
-                <MapPin className="size-3.5" /> Serving {city.name}, {COMPANY.region}
-              </motion.span>
-
-              <motion.h1
-                variants={fadeUp}
-                className="mt-6 text-[2.3rem] font-extrabold leading-[1.06] tracking-tight text-ink sm:text-5xl"
-              >
-                Website Developer in <span className="text-gradient">{city.name}</span>
-              </motion.h1>
-
-              <motion.p variants={fadeUp} className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-                {city.intro}
-              </motion.p>
-
-              <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-3">
-                <Button href="#city-contact" size="lg" icon={ArrowRight}>
-                  Get Free Consultation
-                </Button>
-                <Button href={`tel:${COMPANY.phoneRaw}`} size="lg" variant="outline" icon={Phone}>
-                  {COMPANY.phone}
-                </Button>
-              </motion.div>
-
-              <motion.div variants={fadeUp} className="mt-6 flex items-center gap-2 text-sm text-muted">
-                <span className="flex text-amber-400">
-                  {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="size-4 fill-current" />)}
-                </span>
-                Premium quality for {city.name} businesses
-              </motion.div>
-            </motion.div>
-
-            {/* banner visual */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, ease: EASE }}
-              className="relative"
-            >
-              <div className="pointer-events-none absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-brand/15 to-sky/10 blur-2xl" />
-              <div className="overflow-hidden rounded-2xl border border-line shadow-lift">
-                <img
-                  src="/assets/banner1.png"
-                  alt={`Website development in ${city.name} — Abnexa`}
-                  width="1694"
-                  height="929"
-                  className="block aspect-[1694/929] w-full object-cover"
-                />
+          <div className="mt-8 grid items-end gap-12 lg:grid-cols-[1.3fr_0.7fr]">
+            <div>
+              <p className="tag reveal flex items-center gap-3 text-gray">
+                <span className="rule" /> Serving {city.name}, {COMPANY.region}
+              </p>
+              <h1 className="reveal mt-6 font-display text-[2.6rem] font-bold leading-[1.03] tracking-tight sm:text-6xl lg:text-7xl">
+                Website Developer in <span className="text-orange">{city.name}</span>
+              </h1>
+              <p className="reveal mt-8 max-w-2xl text-lg leading-relaxed text-gray">{city.intro}</p>
+              <div className="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+                <a href="#city-contact" className="btn btn-primary">
+                  Get Free Consultation <ArrowRight className="arrow size-4" />
+                </a>
+                <a href={`tel:${COMPANY.phoneRaw}`} className="link inline-flex items-center gap-2 font-semibold">
+                  <Phone className="size-4" /> {COMPANY.phone}
+                </a>
               </div>
-            </motion.div>
+            </div>
+            <div className="reveal hidden lg:block">
+              <img src="/brand/abnexa-mark.png" alt="" aria-hidden="true" width="512" height="512" className="ring-a ml-auto w-full max-w-xs" />
+              <p className="tag mt-6 text-right text-gray">
+                {city.geo.lat.toFixed(2)}°N · {city.geo.lng.toFixed(2)}°E
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── Local, city-specific content (unique per page) ── */}
-      <section className="relative py-14 lg:py-20">
-        <div className="container-x grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
-          <motion.div variants={stagger(0.1)} initial="hidden" whileInView="show" viewport={viewport}>
-            <motion.h2 variants={fadeUp} className="text-3xl font-extrabold text-ink sm:text-4xl">
-              Website design & development company in <span className="text-gradient">{city.name}</span>
-            </motion.h2>
+      <section className="bg-ink py-20 text-paper sm:py-24">
+        <div className="wrap grid gap-14 lg:grid-cols-[1.2fr_0.8fr]">
+          <div>
+            <h2 className="reveal font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+              Website design &amp; development company in <span className="text-orange">{city.name}</span>
+            </h2>
             {city.about.map((para) => (
-              <motion.p key={para.slice(0, 24)} variants={fadeUp} className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
+              <p key={para.slice(0, 24)} className="reveal mt-6 text-lg leading-relaxed text-paper/70">
                 {para}
-              </motion.p>
+              </p>
             ))}
+          </div>
 
-            <motion.h3 variants={fadeUp} className="mt-8 text-lg font-bold text-ink">
-              Businesses we build for in {city.name}
-            </motion.h3>
-            <motion.ul variants={fadeUp} className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-              {city.industries.map((ind) => (
-                <li key={ind} className="flex items-center gap-2.5 text-sm font-medium text-ink-soft">
-                  <Check className="size-4 shrink-0 text-brand" /> {ind}
-                </li>
-              ))}
-            </motion.ul>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewport}
-            className="self-start rounded-3xl border border-line bg-surface p-6 sm:p-7"
-          >
-            <h3 className="text-lg font-bold text-ink">Areas we cover in {city.name}</h3>
-            <p className="mt-1 text-sm text-muted">Website development across {city.district}, including:</p>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {city.localities.map((l) => (
-                <li
-                  key={l}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink-soft"
-                >
-                  <MapPin className="size-3.5 text-brand" /> {l}
-                </li>
-              ))}
-            </ul>
-            <Button href="#city-contact" size="md" icon={ArrowRight} className="mt-6">
-              Get a free quote in {city.name}
-            </Button>
-          </motion.div>
+          <div className="space-y-10">
+            <div className="reveal">
+              <h3 className="tag text-paper/50">Businesses we build for in {city.name}</h3>
+              <ul className="mt-4 border-t border-line-dark">
+                {city.industries.map((ind) => (
+                  <li key={ind} className="flex items-center gap-3 border-b border-line-dark py-3">
+                    <span className="size-1.5 rounded-full bg-orange" /> {ind}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="reveal">
+              <h3 className="tag text-paper/50">Areas we cover in {city.name}</h3>
+              <p className="mt-2 text-sm text-paper/50">Website development across {city.district}, including:</p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {city.localities.map((l) => (
+                  <li key={l} className="rounded-full border border-line-dark px-3 py-1.5 text-sm text-paper/80">
+                    {l}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── Services in {city} ── */}
-      <section className="relative py-14 lg:py-20">
-        <div className="container-x">
-          <motion.div variants={stagger(0.1)} initial="hidden" whileInView="show" viewport={viewport} className="mx-auto max-w-2xl text-center">
-            <motion.h2 variants={fadeUp} className="text-3xl font-extrabold text-ink sm:text-4xl">
-              Web development services in <span className="text-gradient">{city.name}</span>
-            </motion.h2>
-            <motion.p variants={fadeUp} className="mt-4 text-muted">
-              Everything a {city.name} business needs to launch, grow and stand out online — built to premium standards.
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            variants={stagger(0.05)}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewport}
-            className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-          >
+      <section className="py-20 sm:py-24">
+        <div className="wrap">
+          <h2 className="reveal max-w-3xl font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+            Web development services in <span className="text-orange">{city.name}</span>
+          </h2>
+          <p className="reveal mt-4 max-w-2xl text-gray">
+            Everything a {city.name} business needs to launch, grow and stand out online.
+          </p>
+          <ul className="mt-12 grid border-t border-line sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s, i) => (
-              <motion.div
-                key={s.title}
-                variants={fadeUp}
-                className="group relative overflow-hidden rounded-2xl border border-line bg-white p-5 shadow-soft"
-              >
-                <span className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${grad(i)}`} />
-                <div className="flex items-center gap-3">
-                  <span className={`grid size-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${grad(i)} text-white`}>
-                    <s.icon className="size-5" />
-                  </span>
-                  <h3 className="font-bold text-ink">{s.title}</h3>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{s.desc}</p>
-              </motion.div>
+              <li key={s.title} className="reveal flex gap-4 border-b border-line py-6 sm:pr-8">
+                <span className="tag pt-1 text-orange">{String(i + 1).padStart(2, '0')}</span>
+                <span>
+                  <h3 className="font-display text-lg font-semibold">{s.title}</h3>
+                  <p className="mt-1 text-sm text-gray">{s.desc}</p>
+                </span>
+              </li>
             ))}
-          </motion.div>
+          </ul>
         </div>
       </section>
 
       {/* ── Why choose us in {city} ── */}
-      <section className="relative overflow-hidden py-14 lg:py-20">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-brand-soft/40 to-white" />
-        <div className="container-x">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-extrabold text-ink sm:text-4xl">
-              Why {city.name} businesses choose us
-            </h2>
-          </div>
-          <motion.div
-            variants={stagger(0.06)}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewport}
-            className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {REASONS.map((r, i) => (
-              <motion.div key={r.title} variants={fadeUp} className="rounded-2xl border border-line bg-white p-5 shadow-soft">
-                <span className={`grid size-11 place-items-center rounded-xl bg-gradient-to-br ${grad(i)} text-white`}>
-                  <r.icon className="size-5" />
-                </span>
-                <p className="mt-3 font-bold text-ink">{r.title}</p>
-                <p className="mt-1 text-sm text-muted">{r.desc}</p>
-              </motion.div>
+      <section className="bg-paper-2 py-20 sm:py-24">
+        <div className="wrap">
+          <h2 className="reveal font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+            Why {city.name} businesses choose us
+          </h2>
+          <ul className="mt-12 grid gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+            {VALUES.map((v, i) => (
+              <li key={v.title} className="bg-paper p-6">
+                <span className="tag text-orange">0{i + 1}</span>
+                <h3 className="mt-3 font-display text-lg font-semibold">{v.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-gray">{v.desc}</p>
+              </li>
             ))}
-          </motion.div>
+          </ul>
         </div>
       </section>
 
-      {/* ── FAQ + Map ── */}
-      <section className="relative py-14 lg:py-20">
-        <div className="container-x grid gap-10 lg:grid-cols-2 lg:gap-14">
-          {/* FAQ */}
+      <FAQ items={faqs} id="city-faq" n="FAQ" title={`${city.name} — frequently asked questions`} />
+
+      {/* ── Nearby + map ── */}
+      <section className="py-20 sm:py-24">
+        <div className="wrap grid gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
-            <h2 className="text-3xl font-extrabold text-ink sm:text-4xl">
-              {city.name} — frequently asked questions
+            <h2 className="reveal font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+              Areas we serve near {city.name}
             </h2>
-            <div className="mt-8 space-y-3">
-              {faqs.map((f, i) => {
-                const isOpen = open === i
-                return (
-                  <div key={f.q} className={`overflow-hidden rounded-2xl border bg-white ${isOpen ? 'border-brand/30 shadow-soft' : 'border-line'}`}>
-                    <button
-                      onClick={() => setOpen(isOpen ? -1 : i)}
-                      aria-expanded={isOpen}
-                      className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+            <ul className="mt-8 flex flex-wrap gap-2">
+              {nearbyLinks.map((n) => (
+                <li key={n.name}>
+                  {n.to ? (
+                    <Link
+                      to={`/${n.to}`}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-ink px-4 py-2 text-sm font-semibold transition-colors hover:bg-ink hover:text-paper"
                     >
-                      <span className="font-semibold text-ink">{f.q}</span>
-                      <span className={`grid size-7 shrink-0 place-items-center rounded-full transition-all duration-300 ${isOpen ? 'rotate-45 bg-brand text-white' : 'bg-brand-soft text-brand'}`}>
-                        <Plus className="size-4" />
-                      </span>
-                    </button>
-                    {isOpen && <p className="px-5 pb-4 text-sm leading-relaxed text-muted">{f.a}</p>}
-                  </div>
-                )
-              })}
-            </div>
+                      {n.name} <ArrowUpRight className="size-3.5 text-orange" />
+                    </Link>
+                  ) : (
+                    <span className="inline-flex rounded-full border border-line px-4 py-2 text-sm text-gray">{n.name}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            <p className="tag mt-12 text-gray">We also build websites in</p>
+            <ul className="mt-4 border-t border-line">
+              {CITIES.filter((c) => c.slug !== city.slug).map((c) => (
+                <li key={c.slug} className="border-b border-line">
+                  <Link
+                    to={`/${c.path}`}
+                    className="group flex items-center justify-between py-4 font-display text-lg font-semibold hover:text-orange"
+                  >
+                    Website Developer in {c.name}
+                    <ArrowUpRight className="size-4 text-orange transition-transform group-hover:rotate-45" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Map + areas */}
-          <div>
-            <h2 className="text-3xl font-extrabold text-ink sm:text-4xl">Areas we serve near {city.name}</h2>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {nearbyLinks.map((n) =>
-                n.to ? (
-                  <Link key={n.name} to={`/${n.to}`} className="inline-flex items-center gap-1 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm font-semibold text-ink-soft shadow-soft hover:text-brand">
-                    <MapPin className="size-3.5 text-brand" /> {n.name}
-                  </Link>
-                ) : (
-                  <span key={n.name} className="inline-flex items-center gap-1 rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm font-medium text-muted">
-                    <MapPin className="size-3.5 text-brand" /> {n.name}
-                  </span>
-                ),
-              )}
-            </div>
-
-            <div className="mt-6 overflow-hidden rounded-3xl border border-line shadow-soft">
-              <iframe
-                title={`Abnexa — ${city.name}`}
-                src={`https://www.google.com/maps?q=${encodeURIComponent(`${city.name}, ${COMPANY.region}, India`)}&output=embed`}
-                className="h-[320px] w-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+          <div className="reveal overflow-hidden rounded-[1.5rem] border border-line">
+            <iframe
+              title={`Abnexa — ${city.name}`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(`${city.name}, ${COMPANY.region}, India`)}&output=embed`}
+              className="h-[360px] w-full grayscale lg:h-full lg:min-h-[420px]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>
 
       {/* ── Contact CTA ── */}
-      <section id="city-contact" className="relative py-14 lg:py-20">
-        <div className="container-x">
-          <div className="gradient-brand-animated relative overflow-hidden rounded-[2rem] px-8 py-14 text-center text-white shadow-glow sm:px-16">
-            <div className="bg-grid-light pointer-events-none absolute inset-0 opacity-20" />
-            <h2 className="relative text-3xl font-extrabold sm:text-4xl">
-              Ready to build your website in {city.name}?
-            </h2>
-            <p className="relative mx-auto mt-3 max-w-xl text-white/85">
-              Get a free consultation and a clear, fixed quote for your {city.name} business.
-            </p>
-            <div className="relative mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Button href={`tel:${COMPANY.phoneRaw}`} size="lg" variant="gold" icon={Phone}>
-                Call {COMPANY.phone}
-              </Button>
-              <Button
-                href={COMPANY.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-                variant="outline"
-                icon={FaWhatsapp}
-                className="!border-white/30 !bg-white/10 !text-white"
-              >
-                WhatsApp Us
-              </Button>
-            </div>
-            <p className="relative mt-6 flex items-center justify-center gap-2 text-sm text-white/80">
-              <MapPin className="size-4" /> {COMPANY.name} · {city.name}, {COMPANY.region}, {COMPANY.country}
-            </p>
+      <section id="city-contact" className="bg-ink py-20 text-paper sm:py-28">
+        <div className="wrap">
+          <h2 className="reveal max-w-4xl font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+            Ready to build your website in <span className="text-orange">{city.name}?</span>
+          </h2>
+          <p className="reveal mt-6 max-w-xl text-lg text-paper/65">
+            Get a free consultation and a clear, fixed quote for your {city.name} business.
+          </p>
+          <div className="reveal mt-10 flex flex-wrap gap-3">
+            <a href={`tel:${COMPANY.phoneRaw}`} className="btn btn-primary hover:!bg-paper hover:!text-ink">
+              <Phone className="size-4" /> Call {COMPANY.phone}
+            </a>
+            <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="btn border border-line-dark hover:border-orange">
+              <WhatsAppIcon /> WhatsApp Us
+            </a>
+            <a href="/#contact" className="btn border border-line-dark hover:border-orange">
+              Send project details <ArrowRight className="arrow size-4" />
+            </a>
           </div>
-
-          {/* internal links to other city pages */}
-          <div className="mt-10 rounded-3xl border border-line bg-surface p-6">
-            <p className="text-sm font-bold uppercase tracking-wide text-muted">We also build websites in</p>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {CITIES.filter((c) => c.slug !== city.slug).map((c) => (
-                <Link
-                  key={c.slug}
-                  to={`/${c.path}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-4 py-2 text-sm font-semibold text-ink-soft shadow-soft hover:text-brand"
-                >
-                  Website Developer in {c.name}
-                  <ArrowUpRight className="size-3.5 text-brand" />
-                </Link>
-              ))}
-            </div>
-          </div>
+          <p className="tag mt-10 text-paper/45">
+            {COMPANY.name} · {city.name}, {COMPANY.region}, {COMPANY.country}
+          </p>
         </div>
       </section>
     </>

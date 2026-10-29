@@ -1,49 +1,36 @@
-import { useState } from 'react'
-import { COMPANY } from '../../lib/data'
+import { Link } from 'react-router-dom'
 
-/**
- * Company logo. Renders the temporary /assets/Ab.png and falls back to an
- * inline "AB" monogram if the image is ever missing, so layout never breaks.
- */
-export default function Logo({ withWordmark = true, light = false, className = '', imgClass = '' }) {
-  const [failed, setFailed] = useState(false)
-
+/** Full horizontal ABnexa Software lockup. `light` for dark backgrounds. */
+export function Logo({ light = false, className = 'h-9 w-auto' }) {
   return (
-    <span className={['inline-flex items-center gap-2.5', className].join(' ')}>
-      {failed ? (
-        <span
-          className="grid size-9 place-items-center rounded-xl bg-gradient-to-br from-brand to-sky text-sm font-extrabold text-white shadow-[0_6px_16px_-4px_rgba(37,99,235,0.6)]"
-          aria-hidden="true"
-        >
-          AB
-        </span>
-      ) : (
-        <img
-          src={COMPANY.logo}
-          alt={`${COMPANY.name} logo`}
-          width="36"
-          height="36"
-          onError={() => setFailed(true)}
-          className={['size-9 rounded-xl object-contain', imgClass].join(' ')}
-        />
-      )}
+    <img
+      src={light ? '/brand/abnexa-logo-light.png' : '/brand/abnexa-logo.png'}
+      alt="ABnexa Software"
+      width="900"
+      height="258"
+      className={className}
+    />
+  )
+}
 
-      {withWordmark && (
-        <span className="flex flex-col leading-none">
-          <span className={[
-            'font-display text-[0.95rem] font-extrabold tracking-tight',
-            light ? 'text-white' : 'text-ink',
-          ].join(' ')}>
-            {COMPANY.name}
-          </span>
-          <span className={[
-            'mt-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.12em]',
-            light ? 'text-cyan-300' : 'text-accent',
-          ].join(' ')}>
-            {COMPANY.tagline}
-          </span>
-        </span>
-      )}
-    </span>
+/** The AB monogram on its own. */
+export function Mark({ light = false, className = 'size-10' }) {
+  return (
+    <img
+      src={light ? '/brand/abnexa-mark-light.png' : '/brand/abnexa-mark.png'}
+      alt=""
+      aria-hidden="true"
+      width="512"
+      height="512"
+      className={className}
+    />
+  )
+}
+
+export function HomeLink({ className, children }) {
+  return (
+    <Link to="/" aria-label="ABnexa Software — home" className={className}>
+      {children}
+    </Link>
   )
 }

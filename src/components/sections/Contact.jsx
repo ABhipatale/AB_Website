@@ -1,193 +1,221 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import {
-  Phone, Mail, MapPin, Send, CheckCircle2, Loader2, ArrowRight,
-} from 'lucide-react'
-import { FaWhatsapp } from 'react-icons/fa'
-import SectionHeading from '../ui/SectionHeading'
-import { stagger, fadeUp, slideRight, slideLeft, viewport } from '../../lib/motion'
-import { COMPANY } from '../../lib/data'
+import { ArrowRight, Check, Mail, Phone } from 'lucide-react'
 
-const CHANNELS = [
-  { icon: Phone, label: 'Call us', value: COMPANY.phone, href: `tel:${COMPANY.phoneRaw}`, tint: 'text-brand bg-brand-soft' },
-  { icon: FaWhatsapp, label: 'WhatsApp', value: 'Chat with us', href: COMPANY.whatsapp, tint: 'text-emerald-600 bg-emerald-50' },
-  { icon: Mail, label: 'Email us', value: COMPANY.email, href: `mailto:${COMPANY.email}`, tint: 'text-sky bg-sky/10' },
-  { icon: MapPin, label: 'Based in', value: 'India · Serving worldwide', href: '#', tint: 'text-gold bg-gold/15' },
-]
+import WhatsAppIcon from '../ui/WhatsAppIcon'
+import { COMPANY, PROJECT_TYPES, BUDGETS, whatsappLink } from '../../lib/data'
 
-const SERVICE_OPTIONS = [
-  'Web Development', 'Mobile App', 'AI Solution',
-  'Business Automation', 'CRM / ERP', 'Other',
-]
+const EMPTY = { name: '', email: '', phone: '', type: '', budget: '', message: '' }
 
-function Field({ label, children }) {
+function validate(v) {
+  const e = {}
+  if (v.name.trim().length < 2) e.name = 'Please enter your name.'
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email.trim())) e.email = 'Please enter a valid email address.'
+  if (v.phone && !/^[+\d][\d\s-]{7,15}$/.test(v.phone.trim())) e.phone = 'Please enter a valid phone number.'
+  if (!v.type) e.type = 'Please choose a project type.'
+  if (v.message.trim().length < 10) e.message = 'Tell us a little about the project (10+ characters).'
+  return e
+}
+
+function compose(v) {
+  return [
+    `Hi Abnexa! I'd like to start a project.`,
+    ``,
+    `Name: ${v.name.trim()}`,
+    `Email: ${v.email.trim()}`,
+    v.phone && `Phone: ${v.phone.trim()}`,
+    `Project type: ${v.type}`,
+    v.budget && `Budget: ${v.budget}`,
+    ``,
+    v.message.trim(),
+  ]
+    .filter((l) => l !== false && l !== '')
+    .join('\n')
+}
+
+function Field({ id, label, optional, error, children }) {
   return (
-    <label className="block">
-      <span className="mb-1.5 block text-sm font-semibold text-ink-soft">{label}</span>
+    <div>
+      <label htmlFor={id} className="flex justify-between text-sm font-medium text-paper/80">
+        {label}
+        {optional && <span className="text-paper/40">Optional</span>}
+      </label>
       {children}
-    </label>
+      {error && (
+        <p id={`${id}-err`} className="mt-1.5 text-sm text-orange">
+          {error}
+        </p>
+      )}
+    </div>
   )
 }
 
-const inputCls =
-  'w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink shadow-sm transition-colors placeholder:text-muted/70 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/10'
+const input =
+  'mt-2 block w-full rounded-xl border bg-ink-2 px-4 py-3 text-paper placeholder:text-paper/30 transition-colors focus:border-orange focus:outline-none'
 
+/**
+ * There is no backend, so a valid enquiry opens WhatsApp with every field
+ * pre-filled. If the window is blocked we offer an email fallback instead.
+ */
 export default function Contact() {
-  const [status, setStatus] = useState('idle') // idle | sending | sent
-  const [form, setForm] = useState({ name: '', email: '', phone: '', service: SERVICE_OPTIONS[0], message: '' })
+  const [v, setV] = useState(EMPTY)
+  const [errors, setErrors] = useState({})
+  const [status, setStatus] = useState('idle') // idle | sent | blocked
 
-  const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
+  const set = (k) => (e) => {
+    setV((s) => ({ ...s, [k]: e.target.value }))
+    if (errors[k]) setErrors((er) => ({ ...er, [k]: undefined }))
+  }
 
   const submit = (e) => {
     e.preventDefault()
-    setStatus('sending')
-    // No backend wired up yet — simulate, then hand off to WhatsApp so the
-    // enquiry actually reaches the team.
-    setTimeout(() => {
-      setStatus('sent')
-      const text = encodeURIComponent(
-        `Hi Abnexa!%0A%0AName: ${form.name}%0AEmail: ${form.email}%0APhone: ${form.phone}%0AService: ${form.service}%0A%0A${form.message}`,
-      )
-      window.open(`${COMPANY.whatsapp}?text=${text}`, '_blank', 'noopener')
-      setTimeout(() => setStatus('idle'), 4000)
-    }, 1200)
+    const found = validate(v)
+    setErrors(found)
+    const first = Object.keys(found)[0]
+    if (first) {
+      document.getElementById(`c-${first}`)?.focus()
+      return
+    }
+    // no "noopener" feature here: with it, window.open always returns null
+    // and a blocked popup could not be detected
+    const win = window.open(whatsappLink(compose(v)), '_blank')
+    if (win) win.opener = null
+    setStatus(win ? 'sent' : 'blocked')
   }
 
+  const mailto = `mailto:${COMPANY.email}?subject=${encodeURIComponent(`New project enquiry — ${v.name}`)}&body=${encodeURIComponent(compose(v))}`
+
+  const a11y = (k) => ({
+    id: `c-${k}`,
+    'aria-invalid': !!errors[k],
+    'aria-describedby': errors[k] ? `c-${k}-err` : undefined,
+    className: `${input} ${errors[k] ? 'border-orange' : 'border-line-dark'}`,
+  })
+
   return (
-    <section id="contact" className="relative overflow-hidden py-14 lg:py-20">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white to-surface" />
-      <div className="pointer-events-none absolute -left-20 top-1/3 size-72 rounded-full bg-brand/10 blur-[110px]" />
+    <section id="contact" className="bg-ink py-20 text-paper sm:py-28">
+      <div className="wrap grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div>
+          <p className="tag reveal flex items-center gap-3 text-paper/60">
+            <span className="text-orange">08</span>
+            <span className="rule" /> Contact
+          </p>
+          <h2 className="reveal mt-6 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
+            Have an idea?
+            <span className="block text-orange">Let&apos;s make it real.</span>
+          </h2>
+          <p className="reveal mt-8 max-w-md text-lg leading-relaxed text-paper/65">
+            Tell us what you have in mind. We&apos;ll reply with honest advice, a clear plan and a fixed quote.
+          </p>
 
-      <div className="container-x">
-        <SectionHeading
-          eyebrow="Contact"
-          title="Let's build something"
-          highlight="great together"
-          subtitle="Tell us about your project and we'll get back within one business day with a clear plan and quote."
-        />
+          <ul className="reveal mt-10 space-y-4">
+            <li>
+              <a href={`tel:${COMPANY.phoneRaw}`} className="group inline-flex items-center gap-4">
+                <span className="grid size-11 place-items-center rounded-full border border-line-dark transition-colors group-hover:border-orange group-hover:text-orange">
+                  <Phone className="size-4" />
+                </span>
+                <span className="font-display text-lg">{COMPANY.phone}</span>
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${COMPANY.email}`} className="group inline-flex items-center gap-4">
+                <span className="grid size-11 place-items-center rounded-full border border-line-dark transition-colors group-hover:border-orange group-hover:text-orange">
+                  <Mail className="size-4" />
+                </span>
+                <span className="font-display text-lg">{COMPANY.email}</span>
+              </a>
+            </li>
+            <li>
+              <a href={COMPANY.whatsapp} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-4">
+                <span className="grid size-11 place-items-center rounded-full border border-line-dark transition-colors group-hover:border-orange group-hover:text-orange">
+                  <WhatsAppIcon />
+                </span>
+                <span className="font-display text-lg">Chat on WhatsApp</span>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-        <div className="mt-9 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          {/* Left — channels + map */}
-          <motion.div
-            variants={slideRight}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewport}
-            className="flex flex-col gap-5"
-          >
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {CHANNELS.map((c) => (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  target={c.href.startsWith('http') ? '_blank' : undefined}
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 rounded-2xl border border-line bg-white p-4 shadow-soft"
-                >
-                  <span className={`grid size-11 shrink-0 place-items-center rounded-xl ${c.tint}`}>
-                    <c.icon className="size-5" />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-xs font-semibold text-muted">{c.label}</span>
-                    <span className="block truncate text-sm font-bold text-ink">{c.value}</span>
-                  </span>
-                </a>
-              ))}
-            </div>
-
-            {/* Map */}
-            <div className="relative flex-1 overflow-hidden rounded-3xl border border-line shadow-soft">
-              <iframe
-                title="Abnexa location"
-                src="https://www.google.com/maps?q=India&output=embed"
-                className="h-full min-h-[260px] w-full grayscale-[0.2]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
-            </div>
-          </motion.div>
-
-          {/* Right — form */}
-          <motion.div
-            variants={slideLeft}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewport}
-          >
-            <form
-              onSubmit={submit}
-              className="relative overflow-hidden rounded-3xl border border-line bg-white p-6 shadow-lift sm:p-8"
-            >
-              <div className="bg-dots pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(circle_at_top_right,#000,transparent_60%)]" />
-
-              <motion.div
-                variants={stagger(0.08)}
-                initial="hidden"
-                whileInView="show"
-                viewport={viewport}
-                className="relative grid gap-4 sm:grid-cols-2"
-              >
-                <motion.div variants={fadeUp}>
-                  <Field label="Full name">
-                    <input required value={form.name} onChange={update('name')} className={inputCls} placeholder="Your name" />
-                  </Field>
-                </motion.div>
-                <motion.div variants={fadeUp}>
-                  <Field label="Email">
-                    <input required type="email" value={form.email} onChange={update('email')} className={inputCls} placeholder="you@company.com" />
-                  </Field>
-                </motion.div>
-                <motion.div variants={fadeUp}>
-                  <Field label="Phone">
-                    <input value={form.phone} onChange={update('phone')} className={inputCls} placeholder="+91 00000 00000" />
-                  </Field>
-                </motion.div>
-                <motion.div variants={fadeUp}>
-                  <Field label="Service">
-                    <select value={form.service} onChange={update('service')} className={inputCls}>
-                      {SERVICE_OPTIONS.map((o) => (
-                        <option key={o}>{o}</option>
-                      ))}
-                    </select>
-                  </Field>
-                </motion.div>
-                <motion.div variants={fadeUp} className="sm:col-span-2">
-                  <Field label="Project details">
-                    <textarea required rows={4} value={form.message} onChange={update('message')} className={`${inputCls} resize-none`} placeholder="Tell us about your project, goals and timeline…" />
-                  </Field>
-                </motion.div>
-
-                <motion.div variants={fadeUp} className="sm:col-span-2">
-                  <button
-                    type="submit"
-                    disabled={status !== 'idle'}
-                    className="gradient-brand-animated group relative flex h-13 w-full items-center justify-center gap-2 overflow-hidden rounded-full px-7 font-grotesk font-semibold text-white shadow-[0_12px_32px_-8px_rgba(37,99,235,0.6)] disabled:opacity-90"
-                  >
-                    {status === 'idle' && (
-                      <>
-                        Send Message
-                        <Send className="size-4" />
-                      </>
-                    )}
-                    {status === 'sending' && (
-                      <>
-                        <Loader2 className="size-5 animate-spin" /> Sending…
-                      </>
-                    )}
-                    {status === 'sent' && (
-                      <>
-                        <CheckCircle2 className="size-5" /> Opening WhatsApp…
-                      </>
-                    )}
-                  </button>
-                  <p className="mt-3 text-center text-xs text-muted">
-                    Prefer chat? Submitting opens WhatsApp with your details pre-filled.
-                  </p>
-                </motion.div>
-              </motion.div>
+        <div className="reveal rounded-[1.75rem] border border-line-dark bg-[#1b1b1b] p-6 sm:p-9">
+          {status === 'idle' ? (
+            <form noValidate onSubmit={submit} className="grid gap-5 sm:grid-cols-2">
+              <Field id="c-name" label="Name" error={errors.name}>
+                <input {...a11y('name')} value={v.name} onChange={set('name')} autoComplete="name" placeholder="Your name" />
+              </Field>
+              <Field id="c-email" label="Email" error={errors.email}>
+                <input {...a11y('email')} type="email" value={v.email} onChange={set('email')} autoComplete="email" placeholder="you@company.com" />
+              </Field>
+              <Field id="c-phone" label="Phone" optional error={errors.phone}>
+                <input {...a11y('phone')} type="tel" value={v.phone} onChange={set('phone')} autoComplete="tel" placeholder="+91" />
+              </Field>
+              <Field id="c-type" label="Project type" error={errors.type}>
+                <select {...a11y('type')} value={v.type} onChange={set('type')}>
+                  <option value="">Choose one</option>
+                  {PROJECT_TYPES.map((t) => (
+                    <option key={t}>{t}</option>
+                  ))}
+                </select>
+              </Field>
+              <div className="sm:col-span-2">
+                <Field id="c-budget" label="Estimated budget" optional>
+                  <select {...a11y('budget')} value={v.budget} onChange={set('budget')}>
+                    <option value="">Prefer not to say</option>
+                    {BUDGETS.map((b) => (
+                      <option key={b}>{b}</option>
+                    ))}
+                  </select>
+                </Field>
+              </div>
+              <div className="sm:col-span-2">
+                <Field id="c-message" label="Project description" error={errors.message}>
+                  <textarea
+                    {...a11y('message')}
+                    rows={5}
+                    value={v.message}
+                    onChange={set('message')}
+                    placeholder="What are you building, and what should it achieve?"
+                  />
+                </Field>
+              </div>
+              <div className="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+                <button type="submit" className="btn btn-primary justify-center hover:!bg-paper hover:!text-ink">
+                  Start a Conversation <ArrowRight className="arrow size-4" />
+                </button>
+                <p className="text-xs text-paper/45">Opens WhatsApp with your details filled in.</p>
+              </div>
             </form>
-          </motion.div>
+          ) : (
+            <div role="status" className="flex min-h-[26rem] flex-col justify-center">
+              <span className="grid size-14 place-items-center rounded-full bg-orange text-white">
+                <Check className="size-6" />
+              </span>
+              <h3 className="mt-6 font-display text-3xl font-semibold">
+                {status === 'sent' ? 'Almost there!' : 'One more step'}
+              </h3>
+              <p className="mt-3 max-w-md leading-relaxed text-paper/65">
+                {status === 'sent'
+                  ? 'WhatsApp opened in a new tab with your message ready — just press send. We usually reply the same working day.'
+                  : 'Your browser blocked the WhatsApp window. Use one of the options below to send your enquiry.'}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href={whatsappLink(compose(v))} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  <WhatsAppIcon /> Open WhatsApp
+                </a>
+                <a href={mailto} className="btn border border-line-dark hover:border-orange">
+                  <Mail className="size-4" /> Send by email instead
+                </a>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setV(EMPTY)
+                  setStatus('idle')
+                }}
+                className="link mt-8 self-start text-sm text-paper/60"
+              >
+                Start a new enquiry
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>
