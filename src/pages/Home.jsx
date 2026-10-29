@@ -21,7 +21,7 @@ const localBusiness = {
   name: COMPANY.name,
   alternateName: COMPANY.alternateNames,
   image: `${COMPANY.url}/assets/Ab.png`,
-  logo: `${COMPANY.url}/assets/Ab.png`,
+  logo: `${COMPANY.url}/brand/abnexa-logo-square.png`,
   url: COMPANY.url,
   telephone: COMPANY.phoneRaw,
   email: COMPANY.email,
@@ -65,26 +65,24 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>
-          Abnexa | Website Development Company in Karad, Satara, Pune & Kolhapur
-        </title>
+        <title>Website & Software Development Company in Karad | ABnexa</title>
         <meta
           name="description"
-          content="Abnexa (AB Technology Solution) is a website & app development company in Maharashtra serving Karad, Satara, Sangli, Pune & Kolhapur. Modern websites, mobile apps, e-commerce & AI software. Call 96 89 03 03 01."
+          content="ABnexa builds websites, apps, custom software and SEO for businesses in Karad, Satara, Pune, Kolhapur & Sangli. Call 96 89 03 03 01 for a free quote."
         />
         <meta
           name="keywords"
           content="Abnexa, abnexa.in, AB Technology Solution, website development company Karad, website developer Satara, web design Pune, website developer Kolhapur, website developer Sangli, mobile app development Maharashtra, e-commerce website development, AI software company"
         />
         <link rel="canonical" href={`${COMPANY.url}/`} />
-        <meta property="og:title" content="Abnexa — AB Technology Solution | Website Development Company in Maharashtra" />
-        <meta property="og:description" content="Professional websites, mobile apps, e-commerce and AI software for businesses across Maharashtra — Karad, Satara, Sangli, Pune & Kolhapur." />
+        <meta property="og:title" content="Website & Software Development Company in Karad | ABnexa" />
+        <meta property="og:description" content="ABnexa builds websites, apps, custom software and SEO for businesses in Karad, Satara, Pune, Kolhapur & Sangli. Call 96 89 03 03 01 for a free quote." />
         <meta property="og:url" content={`${COMPANY.url}/`} />
         <meta property="og:image" content={`${COMPANY.url}/assets/Ab.png`} />
-        <meta name="twitter:title" content="Website Development Company in Maharashtra | Abnexa" />
-        <meta name="twitter:description" content="Websites, mobile apps, AI software and automation for Karad, Satara, Sangli, Pune & Kolhapur." />
+        <meta name="twitter:title" content="Website & Software Development Company in Karad | ABnexa" />
+        <meta name="twitter:description" content="ABnexa builds websites, apps, custom software and SEO for businesses in Karad, Satara, Pune, Kolhapur & Sangli. Call 96 89 03 03 01 for a free quote." />
         <meta name="twitter:image" content={`${COMPANY.url}/assets/Ab.png`} />
-        <meta property="og:image:alt" content="Abnexa — website development company in Maharashtra" />
+        <meta property="og:image:alt" content="ABnexa — website & software development company in Karad, Maharashtra" />
         <script type="application/ld+json">{JSON.stringify(localBusiness)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Head>

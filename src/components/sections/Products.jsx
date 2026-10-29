@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight, Check } from 'lucide-react'
 
 import SectionLabel from '../ui/SectionLabel'
@@ -7,12 +8,12 @@ import { PRODUCTS, whatsappLink } from '../../lib/data'
 import { enquire } from '../../lib/enquire'
 
 // a faint glow in the product's own colour on charcoal
-const tintBg = (tint, a = '2e') => ({
+export const tintBg = (tint, a = '2e') => ({
   background: `radial-gradient(circle at 50% 45%, ${tint}${a} 0%, transparent 62%), var(--color-panel)`,
 })
 
 /** Thin concentric rings behind the product logo — echoes the hero orbit. */
-function Orbit() {
+export function Orbit() {
   return (
     <svg viewBox="0 0 200 200" aria-hidden="true" className="absolute inset-0 m-auto size-[125%] text-fg/[0.09]">
       <circle cx="100" cy="100" r="62" fill="none" stroke="currentColor" />
@@ -172,6 +173,9 @@ export default function Products() {
                   >
                     Ask about customization
                   </a>
+                  <Link to={p.page} className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted transition-colors hover:text-orange">
+                    View product <ArrowUpRight className="size-3.5" />
+                  </Link>
                 </div>
               </div>
             </article>

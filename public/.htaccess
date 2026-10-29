@@ -14,6 +14,12 @@ DirectoryIndex index.html
   RewriteCond %{HTTP_HOST} ^(www\.)?abtechservices\.store$ [NC]
   RewriteRule ^ https://abnexa.in%{REQUEST_URI} [L,R=301]
 
+  # /index.html and /folder/index.html → the clean URL
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^ / [L,R=301]
+  RewriteCond %{THE_REQUEST} \s/+(.+)/index\.html[\s?] [NC]
+  RewriteRule ^ /%1 [L,R=301]
+
   # canonical URLs have no trailing slash: /website-developer-in-pune/ → /website-developer-in-pune
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^(.+)/$ /$1 [L,R=301]

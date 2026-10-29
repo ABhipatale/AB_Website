@@ -11,7 +11,7 @@ export default function Statement() {
         </SectionLabel>
 
         <h2 className="reveal mt-8 max-w-5xl font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl">
-          Not just another website.
+          Not just another website.{' '}
           <span className="block text-muted">
             A better way to do <span className="text-gloss">business.</span>
           </span>

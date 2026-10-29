@@ -4,6 +4,7 @@ import { ArrowRight, Check, Mail, Phone } from 'lucide-react'
 import WhatsAppIcon from '../ui/WhatsAppIcon'
 import { COMPANY, PROJECT_TYPES, BUDGETS, whatsappLink } from '../../lib/data'
 import { ENQUIRE_EVENT } from '../../lib/enquire'
+import { track } from '../../lib/analytics'
 
 const EMPTY = { name: '', email: '', phone: '', type: '', budget: '', message: '' }
 
@@ -57,8 +58,8 @@ const input =
  * There is no backend, so a valid enquiry opens WhatsApp with every field
  * pre-filled. If the window is blocked we offer an email fallback instead.
  */
-export default function Contact() {
-  const [v, setV] = useState(EMPTY)
+export default function Contact({ n = '08', defaultType = '', defaultMessage = '' }) {
+  const [v, setV] = useState({ ...EMPTY, type: defaultType, message: defaultMessage })
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle') // idle | sent | blocked
 
@@ -97,6 +98,7 @@ export default function Contact() {
     const win = window.open(whatsappLink(compose(v)), '_blank')
     if (win) win.opener = null
     setStatus(win ? 'sent' : 'blocked')
+    track('generate_lead', { method: win ? 'whatsapp' : 'blocked_popup', project_type: v.type, page_path: location.pathname })
   }
 
   const mailto = `mailto:${COMPANY.email}?subject=${encodeURIComponent(`New project enquiry — ${v.name}`)}&body=${encodeURIComponent(compose(v))}`
@@ -113,11 +115,11 @@ export default function Contact() {
       <div className="wrap grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
         <div>
           <p className="tag reveal flex items-center gap-3 text-muted">
-            <span className="text-orange">08</span>
+            <span className="text-orange">{n}</span>
             <span className="rule" /> Contact
           </p>
           <h2 className="reveal mt-6 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl">
-            Have an idea?
+            Have an idea?{' '}
             <span className="text-gloss block">Let&apos;s make it real.</span>
           </h2>
           <p className="reveal mt-8 max-w-md text-lg leading-relaxed text-fg/65">

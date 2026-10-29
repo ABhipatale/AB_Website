@@ -97,12 +97,13 @@ export default function Hero() {
     <section id="home" className="relative overflow-hidden pb-20 pt-28 sm:pt-36 lg:pb-28">
       <div className="wrap grid items-center gap-14 lg:grid-cols-[1.25fr_0.75fr]">
         <div>
-          <p className="tag reveal flex flex-wrap items-center gap-3 text-muted">
+          {/* the H1 carries the keywords; the slogan below keeps the visual lead */}
+          <h1 className="tag reveal flex flex-wrap items-center gap-3 text-muted">
             <span className="rule" />
-            Website &amp; software development · {COMPANY.baseCity}, {COMPANY.region}
-          </p>
+            Website &amp; software development company in {COMPANY.baseCity}, {COMPANY.region}
+          </h1>
 
-          <h1 className="reveal lines mt-7 font-display text-[2.7rem] font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-[5.4rem]">
+          <p className="reveal lines mt-7 font-display text-[2.7rem] font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-[5.4rem]">
             <span className="ln">
               <span style={{ '--d': '60ms' }}>Good ideas</span>
             </span>{' '}
@@ -114,7 +115,7 @@ export default function Hero() {
             <span className="ln">
               <span style={{ '--d': '280ms' }}>technology.</span>
             </span>
-          </h1>
+          </p>
 
           <p
             className="reveal mt-8 max-w-lg text-lg leading-relaxed text-muted sm:text-xl"

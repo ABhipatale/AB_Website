@@ -3,7 +3,8 @@ import { ArrowUp } from 'lucide-react'
 
 import { Logo, HomeLink } from './ui/Logo'
 import WhatsAppIcon from './ui/WhatsAppIcon'
-import { COMPANY, NAV_LINKS } from '../lib/data'
+import { COMPANY, NAV_LINKS, PRODUCTS } from '../lib/data'
+import { SERVICE_PAGES } from '../lib/pages'
 import { CITIES } from '../lib/cities'
 
 export default function Footer() {
@@ -12,7 +13,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-line bg-night text-fg">
       <div className="wrap pb-8 pt-16 sm:pt-20">
-        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr]">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1fr_0.9fr]">
           <div>
             <HomeLink className="inline-block">
               <Logo className="h-11 w-auto" />
@@ -22,9 +23,32 @@ export default function Footer() {
             </p>
           </div>
 
-          <nav aria-label="Footer">
-            <p className="tag text-muted">Explore</p>
-            <ul className="mt-4 grid grid-cols-2 gap-y-2.5 text-sm">
+          <nav aria-label="Services">
+            <p className="tag text-muted">Services</p>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {SERVICE_PAGES.map((p) => (
+                <li key={p.path}>
+                  <Link to={`/${p.path}`} className="text-fg/75 transition-colors hover:text-orange">
+                    {p.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav aria-label="Products and pages">
+            <p className="tag text-muted">SaaS products</p>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {PRODUCTS.map((p) => (
+                <li key={p.name}>
+                  <Link to={p.page} className="text-fg/75 transition-colors hover:text-orange">
+                    {p.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="tag mt-8 text-muted">Explore</p>
+            <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2.5 text-sm">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="text-fg/75 transition-colors hover:text-orange">

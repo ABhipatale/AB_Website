@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ArrowRight, Plus } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ArrowRight, ArrowUpRight, Plus } from 'lucide-react'
 
 import SectionLabel from '../ui/SectionLabel'
 import Preview from '../ui/Preview'
@@ -27,6 +28,11 @@ function Detail({ s, compact = false }) {
       >
         {s.cta} <ArrowRight className="size-4" />
       </a>
+      {s.page && (
+        <Link to={s.page} className="mt-6 ml-6 inline-flex items-center gap-1.5 text-sm font-semibold text-muted transition-colors hover:text-orange">
+          Learn more <ArrowUpRight className="size-3.5" />
+        </Link>
+      )}
     </div>
   )
 }

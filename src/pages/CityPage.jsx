@@ -4,7 +4,8 @@ import { ArrowRight, ArrowUpRight, Phone } from 'lucide-react'
 
 import FAQ from '../components/sections/FAQ'
 import WhatsAppIcon from '../components/ui/WhatsAppIcon'
-import { SERVICES, VALUES, COMPANY } from '../lib/data'
+import { COMPANY } from '../lib/data'
+import { SERVICE_PAGES, pageByPath } from '../lib/pages'
 import { getCity, cityFaqs, cityKeywords, CITIES } from '../lib/cities'
 
 export default function CityPage({ slug }) {
@@ -12,8 +13,8 @@ export default function CityPage({ slug }) {
   const faqs = cityFaqs(city)
 
   const pageUrl = `${COMPANY.url}/${city.path}`
-  const title = `Website Developer in ${city.name} | Web Development Company — ${COMPANY.name}`
-  const description = `Looking for a website developer in ${city.name}? ${COMPANY.name} builds modern, responsive, SEO-friendly websites, e-commerce stores, mobile apps & custom software for ${city.name} businesses. Call ${COMPANY.phone}.`
+  const title = `Website Developer in ${city.name} — Web Development | ${COMPANY.name}`
+  const description = `Website developer in ${city.name}: ${COMPANY.name} builds fast, SEO-ready websites, online stores, apps and custom software for ${city.name} businesses. Call ${COMPANY.phone}.`
 
   // Honest LocalBusiness: the real base address is Karad; each city page
   // declares the city (and nearby towns) as the area served — no fake offices.
@@ -24,7 +25,7 @@ export default function CityPage({ slug }) {
     name: COMPANY.name,
     alternateName: COMPANY.alternateNames,
     image: `${COMPANY.url}/assets/Ab.png`,
-    logo: `${COMPANY.url}/assets/Ab.png`,
+    logo: `${COMPANY.url}/brand/abnexa-logo-square.png`,
     url: COMPANY.url,
     telephone: COMPANY.phoneRaw,
     email: COMPANY.email,
@@ -55,14 +56,6 @@ export default function CityPage({ slug }) {
       name: city.name,
       containedInPlace: { '@type': 'State', name: COMPANY.region },
       geo: { '@type': 'GeoCoordinates', latitude: city.geo.lat, longitude: city.geo.lng },
-    },
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: `Web development services in ${city.name}`,
-      itemListElement: SERVICES.map((sv) => ({
-        '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: `${sv.title} in ${city.name}`, description: sv.desc },
-      })),
     },
   }
 
@@ -191,48 +184,61 @@ export default function CityPage({ slug }) {
         </div>
       </section>
 
-      {/* ── Services in {city} ── */}
+      {/* ── What we build for {city} businesses (unique per city) ── */}
       <section className="py-20 sm:py-24">
         <div className="wrap">
           <h2 className="reveal max-w-3xl font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-            Web development services in <span className="text-gloss">{city.name}</span>
+            What we build for <span className="text-gloss">{city.name}</span> businesses
           </h2>
-          <p className="reveal mt-4 max-w-2xl text-muted">
-            Everything a {city.name} business needs to launch, grow and stand out online.
-          </p>
-          <ul className="mt-12 grid border-t border-line sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((s, i) => (
-              <li key={s.title} className="reveal flex gap-4 border-b border-line py-6 sm:pr-8">
-                <span className="tag pt-1 text-orange">{String(i + 1).padStart(2, '0')}</span>
-                <span>
-                  <h3 className="font-display text-lg font-semibold">{s.title}</h3>
-                  <p className="mt-1 text-sm text-muted">{s.desc}</p>
-                </span>
+          <ul className="mt-12 grid gap-4 lg:grid-cols-3">
+            {city.projects.map((pr, i) => (
+              <li key={pr.title} className="reveal" style={{ '--d': `${i * 70}ms` }}>
+                <Link
+                  to={`/${pr.to}`}
+                  className="gloss group flex h-full flex-col rounded-[1.5rem] border border-line bg-panel p-7 transition-colors hover:border-orange/60"
+                >
+                  <span className="tag text-orange">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className="mt-4 font-display text-xl font-semibold leading-snug">{pr.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{pr.text}</p>
+                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-fg/85 transition-colors group-hover:text-orange">
+                    {pageByPath(pr.to).name ?? pageByPath(pr.to).product.name} <ArrowUpRight className="size-3.5" />
+                  </span>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* ── Why choose us in {city} ── */}
+      {/* ── How we work with {city} clients ── */}
       <section className="bg-night-2 py-20 sm:py-24">
-        <div className="wrap">
-          <h2 className="reveal font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            Why {city.name} businesses choose us
-          </h2>
-          <ul className="mt-12 grid gap-px overflow-hidden rounded-[1.5rem] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-            {VALUES.map((v, i) => (
-              <li key={v.title} className="gloss bg-panel p-6">
-                <span className="tag text-orange">0{i + 1}</span>
-                <h3 className="mt-3 font-display text-lg font-semibold">{v.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{v.desc}</p>
-              </li>
-            ))}
-          </ul>
+        <div className="wrap grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <h2 className="reveal font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+              How we work with {city.name} clients
+            </h2>
+            <p className="reveal mt-6 max-w-xl text-lg leading-relaxed text-fg/70">{city.working}</p>
+          </div>
+          <div className="reveal">
+            <h3 className="tag text-muted">All services</h3>
+            <ul className="mt-4 border-t border-line">
+              {SERVICE_PAGES.map((sp) => (
+                <li key={sp.path} className="border-b border-line">
+                  <Link
+                    to={`/${sp.path}`}
+                    className="group flex items-center justify-between py-3.5 font-medium transition-colors hover:text-orange"
+                  >
+                    {sp.name}
+                    <ArrowUpRight className="size-4 text-orange transition-transform group-hover:rotate-45" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      <FAQ items={faqs} id="city-faq" n="FAQ" title={`${city.name} — frequently asked questions`} />
+      <FAQ items={faqs} id="city-faq" n={null} title={`${city.name} — frequently asked questions`} />
 
       {/* ── Nearby + map ── */}
       <section className="py-20 sm:py-24">
@@ -258,25 +264,22 @@ export default function CityPage({ slug }) {
               ))}
             </ul>
 
-            <p className="tag mt-12 text-muted">We also build websites in</p>
-            <ul className="mt-4 border-t border-line">
-              {CITIES.filter((c) => c.slug !== city.slug).map((c) => (
-                <li key={c.slug} className="border-b border-line">
-                  <Link
-                    to={`/${c.path}`}
-                    className="group flex items-center justify-between py-4 font-display text-lg font-semibold hover:text-orange"
-                  >
-                    Website Developer in {c.name}
-                    <ArrowUpRight className="size-4 text-orange transition-transform group-hover:rotate-45" />
+            <p className="mt-12 leading-relaxed text-muted">
+              We also work with businesses in{' '}
+              {CITIES.filter((c) => c.slug !== city.slug).map((c, i, all) => (
+                <span key={c.slug}>
+                  <Link to={`/${c.path}`} className="font-semibold text-fg/90 underline decoration-line underline-offset-4 transition-colors hover:text-orange">
+                    {c.name}
                   </Link>
-                </li>
+                  {i < all.length - 2 ? ', ' : i === all.length - 2 ? ' and ' : '.'}
+                </span>
               ))}
-            </ul>
+            </p>
           </div>
 
           <div className="reveal overflow-hidden rounded-[1.5rem] border border-line">
             <iframe
-              title={`Abnexa — ${city.name}`}
+              title={`${COMPANY.name} — ${city.name}`}
               src={`https://www.google.com/maps?q=${encodeURIComponent(`${city.name}, ${COMPANY.region}, India`)}&output=embed`}
               className="h-[360px] w-full grayscale lg:h-full lg:min-h-[420px]"
               loading="lazy"

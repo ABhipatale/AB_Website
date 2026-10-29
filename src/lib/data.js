@@ -1,5 +1,5 @@
 export const COMPANY = {
-  name: 'Abnexa',
+  name: 'ABnexa',
   tagline: 'AB Technology Solution',
   // Earlier brand names — kept in structured data so Google links the old
   // name and domain to the new Abnexa brand.
@@ -55,6 +55,7 @@ export const SERVICE_GROUPS = [
     desc: 'Fast, mobile-first business websites that explain what you do and turn visitors into calls and enquiries.',
     includes: ['Website Development', 'Landing pages', 'SEO-ready structure'],
     cta: 'Plan my website',
+    page: '/services/website-development',
     type: 'Website',
   },
   {
@@ -63,6 +64,7 @@ export const SERVICE_GROUPS = [
     desc: 'We optimise your website so customers find you on Google — local SEO, Google Business Profile, fast pages and content built around what people actually search for.',
     includes: ['Local SEO', 'Google Business Profile', 'On-page SEO', 'Speed & Core Web Vitals'],
     cta: 'Grow my Google ranking',
+    page: '/services/seo-services',
     type: 'SEO & Google ranking',
   },
   {
@@ -71,6 +73,7 @@ export const SERVICE_GROUPS = [
     desc: 'Online stores with a clean catalogue, simple checkout and payments that work from day one.',
     includes: ['E-Commerce Website', 'Razorpay Integration', 'Order management'],
     cta: 'Start my store',
+    page: '/services/ecommerce-website-development',
     type: 'E-commerce store',
   },
   {
@@ -79,6 +82,7 @@ export const SERVICE_GROUPS = [
     desc: 'Billing, inventory, CRM and management systems shaped around the way your business already works.',
     includes: ['Custom Software', 'CRM Development', 'ERP Development', 'API Development'],
     cta: 'Discuss my software',
+    page: '/services/custom-software-development',
     type: 'Custom software / web app',
   },
   {
@@ -87,6 +91,7 @@ export const SERVICE_GROUPS = [
     desc: 'Android and iOS apps for your customers or your team — built from a single codebase.',
     includes: ['Mobile Apps', 'Android & iOS', 'Admin dashboards'],
     cta: 'Talk about my app',
+    page: '/services/mobile-app-development',
     type: 'Mobile app',
   },
   {
@@ -95,6 +100,7 @@ export const SERVICE_GROUPS = [
     desc: 'Remove repetitive work: WhatsApp messages, reminders, reports and AI features connected to your tools.',
     includes: ['Business Automation', 'WhatsApp Integration', 'AI Integration'],
     cta: 'Automate my work',
+    page: '/services/ai-automation-whatsapp-integration',
     type: 'Automation / integration',
   },
   {
@@ -111,29 +117,32 @@ export const SERVICE_GROUPS = [
 export const PRODUCTS = [
   {
     name: 'Jar Management System',
+    page: '/products/water-jar-management-software',
     audience: 'For water suppliers',
     desc: 'Manage water-jar customers, daily deliveries and payments in one place.',
     features: ['Customer records', 'Daily jar deliveries', 'Payment tracking'],
     image: '/assets/jar-management-logo.webp',
-    imageAlt: 'Jar Management System logo — SaaS by Abnexa',
+    imageAlt: 'Jar Management System logo — SaaS by ABnexa',
     tint: '#2f8cff',
   },
   {
     name: 'Face Detection & Attendance System',
+    page: '/products/face-recognition-attendance-system',
     audience: 'For offices, schools & sites',
     desc: 'AI face recognition from a camera marks attendance automatically and keeps records for security and access control.',
     features: ['Face recognition', 'Automatic attendance', 'Access records'],
     image: '/assets/face-attendance-logo.webp',
-    imageAlt: 'Face Detection & Attendance System logo — SaaS by Abnexa',
+    imageAlt: 'Face Detection & Attendance System logo — SaaS by ABnexa',
     tint: '#4f6bff',
   },
   {
     name: 'Dairy Milk Collection System',
+    page: '/products/milk-collection-software',
     audience: 'For dairies & collection centres',
     desc: 'Record daily milk collection from farmers and keep every entry and payment organised.',
     features: ['Farmer entries', 'Daily collection', 'Farmer payments'],
     image: '/assets/dairy-milk-logo.svg',
-    imageAlt: 'Dairy Milk Collection System logo — SaaS by Abnexa',
+    imageAlt: 'Dairy Milk Collection System logo — SaaS by ABnexa',
     tint: '#22c55e',
   },
 ]
@@ -199,6 +208,7 @@ export const PROJECT_TYPES = [
   'Mobile app',
   'Automation / integration',
   'Maintenance & support',
+  'SaaS product demo',
   'Something else',
 ]
 

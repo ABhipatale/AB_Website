@@ -5,6 +5,16 @@
 export const CITIES = [
   {
     slug: 'karad',
+    projects: [
+      { title: 'Websites for Karad shops, hotels and clinics', to: 'services/website-development', text: 'Customers in Karad usually look you up on their phone before they visit. A clear website with your location, timings, photos and a call button turns that search into a visit — the approach we used for Hotel Atithi, Karad.' },
+      { title: 'Local SEO for “near me” searches', to: 'services/seo-services', text: 'Showing up when someone in Malkapur or Vidyanagar searches for your service depends on your Google Business Profile, your website and contact details that match everywhere. We set these up properly.' },
+      { title: 'Billing and management software', to: 'services/custom-software-development', text: 'For Karad businesses that have outgrown notebooks and spreadsheets — billing, stock and customer records in one system, like the bar management software we built for Saanj Garva.' },
+    ],
+    working: 'Karad is our base, so Karad clients can meet us in person — for the first discussion, design reviews and handover. Day-to-day updates happen on WhatsApp and phone, so you always know where your project stands.',
+    faqs: [
+      { q: 'Can we meet in person in Karad?', a: 'Yes. Karad is our base, so we can meet in person to plan your project, review designs and hand over the finished work.' },
+      { q: 'Can you help my Karad business show up on Google Maps?', a: 'Yes. We set up and optimise your Google Business Profile and make sure your website and contact details match it — the foundation for appearing in local map results. No one can guarantee a position, but these steps matter most.' },
+    ],
     name: 'Karad',
     path: 'website-developer-in-karad',
     district: 'Satara District',
@@ -12,7 +22,7 @@ export const CITIES = [
     pin: '415110',
     nearby: ['Satara', 'Sangli', 'Islampur', 'Wai', 'Kolhapur'],
     intro:
-      'Abnexa is a professional website development company serving Karad and the surrounding Satara district. We build modern, responsive, SEO-friendly websites, mobile apps and custom software for local businesses that want to grow online.',
+      'ABnexa is a professional website development company serving Karad and the surrounding Satara district. We build modern, responsive, SEO-friendly websites, mobile apps and custom software for local businesses that want to grow online.',
     localities: [
       'Shaniwar Peth', 'Mangalwar Peth', 'Somwar Peth', 'Malkapur', 'Vidyanagar',
       'Saidapur', 'Ogalewadi', 'Koyna Vasahat', 'Karad MIDC', 'Umbraj',
@@ -28,6 +38,16 @@ export const CITIES = [
   },
   {
     slug: 'satara',
+    projects: [
+      { title: 'Websites for hotels, resorts and homestays', to: 'services/website-development', text: 'Visitors heading to Kaas Plateau, Mahabaleshwar and Panchgani compare stays online. A fast website with rooms, photos, a map and a WhatsApp button helps you get the enquiry directly.' },
+      { title: 'Online stores for Satara traders', to: 'services/ecommerce-website-development', text: 'Sell beyond your shop counter with a clean product catalogue, a simple checkout and Razorpay payments.' },
+      { title: 'Local SEO for Satara businesses', to: 'services/seo-services', text: 'Appear when people in Shahupuri, Godoli or Sadar Bazar search for what you offer, with a properly set-up Google Business Profile and local pages.' },
+    ],
+    working: 'Satara is close to our Karad base, so we can meet in person when your project needs it and handle day-to-day updates over WhatsApp and phone.',
+    faqs: [
+      { q: 'Can you build a website for my Satara hotel or homestay?', a: 'Yes. We build hotel and stay websites with room details, photos, location maps and call or WhatsApp buttons for direct enquiries — like the website we built for Hotel Atithi in Karad.' },
+      { q: 'Do you meet clients in Satara?', a: 'Yes, when the project needs it. Satara is close to our Karad base; most updates happen on WhatsApp and phone.' },
+    ],
     name: 'Satara',
     path: 'website-developer-in-satara',
     district: 'Satara District',
@@ -35,7 +55,7 @@ export const CITIES = [
     pin: '415001',
     nearby: ['Karad', 'Wai', 'Phaltan', 'Shirwal', 'Pune'],
     intro:
-      'Looking for a reliable website developer in Satara? Abnexa designs and builds high-performance websites, e-commerce stores and mobile apps for businesses across Satara and nearby towns.',
+      'Looking for a reliable website developer in Satara? ABnexa designs and builds high-performance websites, e-commerce stores and mobile apps for businesses across Satara and nearby towns.',
     localities: [
       'Sadar Bazar', 'Powai Naka', 'Shahupuri', 'Godoli', 'Karanje',
       'Rajwada', 'Satara MIDC', 'Koregaon', 'Yadogopal Peth', 'Pratapganj Peth',
@@ -51,6 +71,16 @@ export const CITIES = [
   },
   {
     slug: 'pune',
+    projects: [
+      { title: 'Web apps and SaaS platforms for startups', to: 'services/custom-software-development', text: 'From a first version to a full platform — clean React front-ends, solid back-ends and the integrations your product needs. We run our own SaaS products too.' },
+      { title: 'Apps for customers and field teams', to: 'services/mobile-app-development', text: 'Android and iOS apps from a single codebase, with an admin dashboard to manage everything behind them.' },
+      { title: 'Company websites for manufacturers and SMEs', to: 'services/website-development', text: 'Clear product and capability pages for units in Chakan, Bhosari and Pimpri-Chinchwad, built to bring in B2B enquiries.' },
+    ],
+    working: 'We work with Pune clients remotely — calls, video meetings and WhatsApp — which keeps costs below big-city agency pricing while you still talk directly to the people building your product.',
+    faqs: [
+      { q: 'Do you work with Pune clients remotely?', a: 'Yes. We plan, review and deliver over video calls and WhatsApp, with clear milestones so you always know what is being built.' },
+      { q: 'Can you build a SaaS product or MVP for my Pune startup?', a: 'Yes. We build web applications and SaaS platforms, and we run our own SaaS products such as the Jar Management and Dairy Milk Collection systems.' },
+    ],
     name: 'Pune',
     path: 'website-developer-in-pune',
     district: 'Pune District',
@@ -58,7 +88,7 @@ export const CITIES = [
     pin: '411001',
     nearby: ['Baramati', 'Shirwal', 'Satara', 'Ahmednagar', 'Mumbai'],
     intro:
-      'Abnexa is a modern web development company serving Pune. From startups to established enterprises, we deliver websites, SaaS platforms, mobile apps and AI-powered software engineered to premium standards.',
+      'ABnexa is a modern web development company serving Pune. From startups to established enterprises, we deliver websites, SaaS platforms, mobile apps and AI-powered software engineered to premium standards.',
     localities: [
       'Hinjewadi', 'Kothrud', 'Baner', 'Wakad', 'Viman Nagar', 'Hadapsar',
       'Kharadi', 'Shivajinagar', 'Pimpri-Chinchwad', 'Magarpatta',
@@ -74,6 +104,16 @@ export const CITIES = [
   },
   {
     slug: 'kolhapur',
+    projects: [
+      { title: 'Catalogue websites for foundries and engineering units', to: 'services/website-development', text: 'Buyers want to see your products and capabilities before they call. A clear catalogue website with an enquiry form helps units in Shiroli and Gokul Shirgaon win B2B orders.' },
+      { title: 'Online stores for Kolhapur retail', to: 'services/ecommerce-website-development', text: 'Show jewellery, Kolhapuri chappals and local products to customers outside Kolhapur with a mobile-friendly store and online payments.' },
+      { title: 'ERP and billing software for traders', to: 'services/custom-software-development', text: 'Stock, billing and customer accounts in one system for jaggery traders, textile businesses and wholesalers.' },
+    ],
+    working: 'Kolhapur is within easy reach of our Karad base, so we can meet for important discussions and handle everything else on WhatsApp and phone.',
+    faqs: [
+      { q: 'Do you build product catalogue websites for Kolhapur manufacturers?', a: 'Yes. We build catalogue and enquiry websites that present your products and capabilities clearly, with enquiry forms and WhatsApp so buyers can contact you directly.' },
+      { q: 'Can you build billing or ERP software for my Kolhapur business?', a: 'Yes. We build custom billing, inventory and ERP software around the way your business already works.' },
+    ],
     name: 'Kolhapur',
     path: 'website-developer-in-kolhapur',
     district: 'Kolhapur District',
@@ -81,7 +121,7 @@ export const CITIES = [
     pin: '416001',
     nearby: ['Ichalkaranji', 'Kagal', 'Jaysingpur', 'Sangli', 'Miraj'],
     intro:
-      'Abnexa provides professional website design and development services in Kolhapur. We help local shops, manufacturers, hospitals and startups get fast, secure, SEO-ready websites and apps.',
+      'ABnexa provides professional website design and development services in Kolhapur. We help local shops, manufacturers, hospitals and startups get fast, secure, SEO-ready websites and apps.',
     localities: [
       'Rajarampuri', 'Shahupuri', 'Tarabai Park', 'Laxmipuri', 'Kasaba Bawada',
       'Shiroli MIDC', 'Gokul Shirgaon MIDC', 'Mahadwar Road', 'Nagala Park', 'Ujalaiwadi',
@@ -97,6 +137,16 @@ export const CITIES = [
   },
   {
     slug: 'sangli',
+    projects: [
+      { title: 'Websites for turmeric, grape and raisin traders', to: 'services/website-development', text: 'Buyers from other states look traders up before they call. A professional website with your products and contact details builds trust before the first conversation.' },
+      { title: 'Software for dairy collection centres', to: 'products/milk-collection-software', text: 'Our Dairy Milk Collection System records daily milk collection from farmers and keeps every entry and payment organised.' },
+      { title: 'Systems for Miraj hospitals and clinics', to: 'services/custom-software-development', text: 'Appointment requests, patient enquiries and records handled in one system, so the front desk spends less time on the phone.' },
+    ],
+    working: 'Sangli and Miraj are within easy reach of our Karad base, so we can meet in person when needed and keep day-to-day communication on WhatsApp and phone.',
+    faqs: [
+      { q: 'Do you have software for milk collection centres in Sangli?', a: 'Yes. Our Dairy Milk Collection System records daily milk collection from farmers and keeps every entry and payment organised. Ask us for a demo.' },
+      { q: 'Can you build a website for my hospital or clinic in Miraj?', a: 'Yes. We build clinic and hospital websites with doctors, services, timings, location maps and easy call and WhatsApp buttons.' },
+    ],
     name: 'Sangli',
     path: 'website-developer-in-sangli',
     district: 'Sangli District',
@@ -104,7 +154,7 @@ export const CITIES = [
     pin: '416416',
     nearby: ['Miraj', 'Kolhapur', 'Islampur', 'Karad', 'Tasgaon'],
     intro:
-      'Abnexa is a professional website development company serving Sangli and Miraj. We design and build modern, mobile-friendly, SEO-ready websites, e-commerce stores, mobile apps and custom business software for Sangli businesses that want more customers online.',
+      'ABnexa is a professional website development company serving Sangli and Miraj. We design and build modern, mobile-friendly, SEO-ready websites, e-commerce stores, mobile apps and custom business software for Sangli businesses that want more customers online.',
     localities: [
       'Vishrambag', 'Vijaynagar', 'Market Yard', 'Kupwad MIDC', 'Madhavnagar',
       'Gaonbhag', 'Sangli–Miraj Road', 'Ganpati Peth', 'Khanbhag', 'Sangliwadi',
@@ -138,25 +188,14 @@ export const cityFaqs = (city) => [
     q: `Which areas of ${city.name} do you serve?`,
     a: `We work with businesses across ${city.name} and ${city.district}, including ${city.localities.slice(0, -1).join(', ')} and ${city.localities[city.localities.length - 1]}. We also serve nearby towns such as ${city.nearby.join(', ')}.`,
   },
-  {
-    q: `Do you provide website development services in ${city.name}?`,
-    a: `Yes. Abnexa actively works with businesses in ${city.name} and across ${city.district}, building websites, e-commerce stores, mobile apps and custom software. We work remotely and can meet online or on a call to plan your project.`,
-  },
+  ...city.faqs,
   {
     q: `How much does a website cost in ${city.name}?`,
-    a: `Pricing depends on the pages, features and integrations you need. Simple business websites start affordably, while web apps, CRMs and e-commerce stores are quoted after a short discovery call. Contact us for a clear, fixed quote for your ${city.name} business.`,
+    a: `It depends on the pages, features and integrations you need. We give every ${city.name} business a clear, fixed quote after a short discussion.`,
   },
   {
-    q: `Which businesses in ${city.name} do you work with?`,
-    a: `We build for shops, restaurants, hospitals, clinics, schools, manufacturers, traders, real estate agencies, CA and finance firms, advocates and startups in and around ${city.name}.`,
-  },
-  {
-    q: `Will my ${city.name} website rank on Google?`,
-    a: `Every site we build is optimised for speed, mobile and local SEO — including local keywords, Google Business Profile-ready content and LocalBusiness schema — so customers in ${city.name} can find you in "near me" searches.`,
-  },
-  {
-    q: `Do you offer support after launch for ${city.name} clients?`,
-    a: `Yes. Every project includes a support window (up to a full year on larger plans) covering fixes, monitoring and small improvements, so your ${city.name} website keeps running smoothly.`,
+    q: 'Do you provide support after launch?',
+    a: 'Yes. Every project includes a support window covering fixes, monitoring and small improvements.',
   },
 ]
 
