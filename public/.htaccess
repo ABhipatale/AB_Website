@@ -1,0 +1,45 @@
+# ABnexa — Apache / LiteSpeed config for Hostinger (replaces vercel.json there)
+
+Options -MultiViews -Indexes
+DirectorySlash Off
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # https + bare domain; also catches www.abnexa.in and the old
+  # abtechservices.store domains (same as the Vercel redirects)
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.abnexa\.in$ [NC,OR]
+  RewriteCond %{HTTP_HOST} ^(www\.)?abtechservices\.store$ [NC]
+  RewriteRule ^ https://abnexa.in%{REQUEST_URI} [L,R=301]
+
+  # canonical URLs have no trailing slash: /website-developer-in-pune/ → /website-developer-in-pune
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+  # serve each pre-rendered page from its folder: /website-developer-in-pune → …/index.html
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.+)$ /$1/index.html [L]
+</IfModule>
+
+# compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# caching: hashed JS/CSS forever, images a month, pages always revalidated
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpe?g|webp|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(html|xml|txt|json)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
