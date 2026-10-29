@@ -71,7 +71,7 @@ export default function Work() {
           ))}
         </ul>
 
-        {/* invitation */}
+        {/* invitation  */}
         <a
           href="#contact"
           className="reveal group relative mt-10 flex flex-col justify-between gap-6 overflow-hidden rounded-[1.75rem] bg-ink p-8 text-paper sm:flex-row sm:items-center sm:p-10"
