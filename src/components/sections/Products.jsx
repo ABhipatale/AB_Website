@@ -139,7 +139,10 @@ export default function Products() {
 
               <div className="p-6 sm:p-9">
                 <p className="tag text-orange">{p.audience}</p>
-                <h3 className="mt-2 font-display text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">{p.name}</h3>
+                <h3 className="mt-2 font-display text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
+                  {p.brand && <span className="text-gloss">{p.brand} </span>}
+                  {p.brand ? <span className="text-muted">— {p.name}</span> : p.name}
+                </h3>
                 <p className="mt-3 max-w-xl leading-relaxed text-muted sm:text-lg">{p.desc}</p>
 
                 <ul className="mt-6 grid gap-3 border-t border-line pt-6 sm:grid-cols-3">
@@ -155,7 +158,7 @@ export default function Products() {
 
                 <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
                   <a
-                    href={whatsappLink(`Hi Abnexa! I'm interested in the ${p.name}. Please share more details.`)}
+                    href={whatsappLink(`Hi ABnexa! I'd like a free demo of ${p.brand ?? `the ${p.name}`}.`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary"

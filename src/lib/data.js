@@ -118,11 +118,13 @@ export const PRODUCTS = [
   {
     name: 'Jar Management System',
     page: '/products/water-jar-management-software',
-    audience: 'For water suppliers',
-    desc: 'Manage water-jar customers, daily deliveries and payments in one place.',
-    features: ['Customer records', 'Daily jar deliveries', 'Payment tracking'],
+    brand: 'EasyJar',
+    appUrl: 'https://easyjar.abnexa.in/',
+    audience: 'For RO & aqua water suppliers',
+    desc: 'EasyJar records every jar given and returned, udhari, deposits and payments for RO and aqua water suppliers — on your phone, in Marathi, Hindi or English.',
+    features: ['Jar give & return entries', 'Udhari & payments', 'WhatsApp reminders'],
     image: '/assets/jar-management-logo.webp',
-    imageAlt: 'Jar Management System logo — SaaS by ABnexa',
+    imageAlt: 'EasyJar water jar management app logo — by ABnexa',
     tint: '#2f8cff',
   },
   {

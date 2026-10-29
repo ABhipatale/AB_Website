@@ -168,6 +168,39 @@ export const CITIES = [
       'From a simple business website to an online store, a hospital appointment system or a custom billing and inventory app, we build everything mobile-first and SEO-ready, with WhatsApp and Razorpay integration. Sangli is close to our Karad base, so we can meet in person when your project needs it.',
     ],
   },
+  {
+    slug: 'mumbai',
+    name: 'Mumbai',
+    path: 'website-developer-in-mumbai',
+    projects: [
+      { title: 'Websites for Mumbai brands and service firms', to: 'services/website-development', text: 'In a market as crowded as Mumbai, a fast, clear website that explains what makes you different is often what decides who gets the call. We build them mobile-first and SEO-ready.' },
+      { title: 'Online stores for D2C brands', to: 'services/ecommerce-website-development', text: 'Your own store with a clean catalogue, simple checkout and Razorpay payments — so you own the customer relationship instead of relying only on marketplaces.' },
+      { title: 'Web apps and automation for growing teams', to: 'services/custom-software-development', text: 'CRMs, dashboards and internal tools for startups and SMEs in Andheri, Lower Parel, BKC or Powai — built around how your team already works.' },
+    ],
+    working: 'We work with Mumbai clients remotely — video calls, shared progress updates and WhatsApp — so you get direct access to the people building your product without big-city agency overheads.',
+    faqs: [
+      { q: 'Do you work with Mumbai clients remotely?', a: 'Yes. We plan, review and deliver over video calls and WhatsApp, with clear milestones, so working with us from Mumbai is straightforward.' },
+      { q: 'Can you build an online store for my Mumbai brand?', a: 'Yes. We build e-commerce stores with product catalogues, simple checkout, Razorpay payments and order management.' },
+    ],
+    district: 'the Mumbai Metropolitan Region',
+    geo: { lat: 19.076, lng: 72.8777 },
+    pin: '400001',
+    nearby: ['Pune', 'Thane', 'Navi Mumbai', 'Kolad', 'Nashik'],
+    intro:
+      'ABnexa builds websites, online stores, mobile apps and custom software for Mumbai businesses — from startups and D2C brands to clinics, restaurants and professional firms — working remotely with clear milestones.',
+    localities: [
+      'Andheri', 'Bandra', 'Lower Parel', 'BKC', 'Powai', 'Goregaon',
+      'Malad', 'Dadar', 'Thane', 'Navi Mumbai',
+    ],
+    industries: [
+      'Startups & SaaS companies', 'D2C & retail brands', 'Real estate & builders',
+      'Clinics & healthcare', 'Restaurants & cafés', 'CA, legal & consulting firms',
+    ],
+    about: [
+      'Mumbai businesses compete for attention online every day, and customers compare several options on their phone before they call. We build fast, clear websites and online stores that make your offer easy to understand and easy to act on.',
+      'Because we work remotely from Maharashtra, Mumbai clients get senior attention and direct communication without big-agency pricing — and the same SEO-ready, mobile-first build we use for every project.',
+    ],
+  },
 ]
 
 export const getCity = (slug) => CITIES.find((c) => c.slug === slug)
@@ -176,7 +209,7 @@ export const getCity = (slug) => CITIES.find((c) => c.slug === slug)
 // and the "Areas We Serve" section. These are honest service areas.
 export const SERVED_AREAS = [
   'Karad', 'Satara', 'Pune', 'Kolhapur', 'Sangli', 'Miraj', 'Ichalkaranji',
-  'Kagal', 'Jaysingpur', 'Islampur', 'Wai', 'Phaltan', 'Shirwal', 'Baramati',
+  'Kagal', 'Jaysingpur', 'Islampur', 'Wai', 'Phaltan', 'Shirwal', 'Baramati', 'Thane', 'Navi Mumbai',
   'Chiplun', 'Ratnagiri', 'Solapur', 'Mumbai', 'Nashik', 'Nagpur',
   'Chhatrapati Sambhajinagar', 'Ahmednagar', 'Kolad', 'Goa',
 ]

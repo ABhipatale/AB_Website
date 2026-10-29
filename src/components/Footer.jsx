@@ -11,7 +11,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-night text-fg">
+    <footer data-nosnippet="" className="relative overflow-hidden border-t border-line bg-night text-fg">
       <div className="wrap pb-8 pt-16 sm:pt-20">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1fr_0.9fr]">
           <div>
@@ -19,7 +19,7 @@ export default function Footer() {
               <Logo className="h-11 w-auto" />
             </HomeLink>
             <p className="mt-6 max-w-sm text-muted">
-              Websites, apps and custom software for businesses across Maharashtra — designed and built in Karad.
+              Websites, apps and custom software for businesses across Maharashtra — Pune, Mumbai, Kolhapur, Satara, Sangli and Karad.
             </p>
           </div>
 

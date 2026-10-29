@@ -17,7 +17,7 @@ export default function Areas() {
           Website developer near you
         </h2>
 
-        <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <ul className="mt-10 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
           {CITIES.map((c) => (
             <li key={c.slug} className="reveal">
               <Link

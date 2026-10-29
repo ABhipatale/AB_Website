@@ -127,6 +127,8 @@ export default function Header() {
       {/* full-screen menu — opens as a circle growing from the Menu button */}
       <nav
         id="site-menu"
+        // menu text (phone, email, links) should never end up in a Google snippet
+        data-nosnippet=""
         ref={panelRef}
         aria-label="Main"
         aria-hidden={!open}

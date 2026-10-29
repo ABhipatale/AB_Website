@@ -19,7 +19,7 @@ export default function Statement() {
 
         <div className="mt-14 grid gap-10 border-t border-line pt-10 sm:grid-cols-2 lg:ml-auto lg:max-w-3xl">
           <p className="reveal text-lg leading-relaxed text-fg/75">
-            ABnexa is a software studio based in Karad. We build websites, apps and custom software around how
+            ABnexa is a software studio based in Karad, working with businesses across Maharashtra — Pune, Mumbai, Kolhapur, Satara and Sangli. We build websites, apps and custom software around how
             your business actually works — not around a template.
           </p>
           <p className="reveal text-lg leading-relaxed text-fg/75" style={{ '--d': '100ms' }}>

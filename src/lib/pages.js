@@ -11,13 +11,13 @@ export const SERVICE_PAGES = [
   {
     path: 'services/website-development',
     name: 'Website Development',
-    metaTitle: 'Website Development Company in Karad & Maharashtra | ABnexa',
+    metaTitle: 'Website Development Company in Maharashtra | ABnexa',
     metaDescription:
-      'Fast, mobile-first business websites designed and built by ABnexa in Karad — SEO-ready, with WhatsApp, call buttons and maps built in. Get a fixed quote.',
+      'Fast, mobile-first, SEO-ready business websites by ABnexa for Pune, Mumbai, Kolhapur, Satara, Sangli & Karad — with WhatsApp and call buttons built in.',
     eyebrow: 'Website design & development',
     h1: ['Website Design & Development', 'That Brings In Enquiries'],
     intro:
-      'We design and build fast, mobile-first websites for businesses across Karad, Satara, Pune, Kolhapur and Sangli — websites that explain what you do in seconds and make it easy for customers to call, WhatsApp or visit.',
+      'We design and build fast, mobile-first websites for businesses across Pune, Mumbai, Kolhapur, Satara, Sangli and Karad — websites that explain what you do in seconds and make it easy for customers to call, WhatsApp or visit.',
     includes: [
       { title: 'Design made for your business', desc: 'A layout built around your services, customers and brand — not a recycled template.' },
       { title: 'Mobile-first build', desc: 'Most local customers find you on their phone, so every page is designed for small screens first.' },
@@ -44,7 +44,7 @@ export const SERVICE_PAGES = [
   {
     path: 'services/seo-services',
     name: 'SEO Services',
-    metaTitle: 'SEO Services in Karad, Satara & Maharashtra | ABnexa',
+    metaTitle: 'SEO Services in Pune, Mumbai, Kolhapur & Satara | ABnexa',
     metaDescription:
       'Local SEO, Google Business Profile optimisation, on-page SEO and speed fixes that help your business get found by local customers on Google. Talk to ABnexa.',
     eyebrow: 'SEO & Google ranking',
@@ -113,7 +113,7 @@ export const SERVICE_PAGES = [
     name: 'Custom Software Development',
     metaTitle: 'Custom Software, CRM & ERP Development in Maharashtra | ABnexa',
     metaDescription:
-      'Billing, inventory, CRM, ERP and management systems built around how your business works. Custom software and web apps by ABnexa, Karad. Get a quote.',
+      'Billing, inventory, CRM, ERP and management systems built around how your business works. Custom software by ABnexa for businesses across Maharashtra.',
     eyebrow: 'Custom software & web apps',
     h1: ['Custom Software, CRM & ERP', 'Built Around How You Work'],
     intro:
@@ -146,7 +146,7 @@ export const SERVICE_PAGES = [
     name: 'Mobile App Development',
     metaTitle: 'Mobile App Development Company in Maharashtra | ABnexa',
     metaDescription:
-      'Android and iOS apps for your customers or your team, built from a single codebase with an admin dashboard. Mobile app development by ABnexa, Karad.',
+      'Android and iOS apps for your customers or your team, built from a single codebase with an admin dashboard. App development by ABnexa across Maharashtra.',
     eyebrow: 'Mobile application development',
     h1: ['Android & iOS Apps', 'For Your Customers and Team'],
     intro:
@@ -213,21 +213,64 @@ export const SERVICE_PAGES = [
 export const PRODUCT_PAGES = [
   {
     path: 'products/water-jar-management-software',
-    metaTitle: 'Water Jar Management Software for Water Suppliers | ABnexa',
+    metaTitle: 'EasyJar: Water Jar Delivery & Billing App for RO Suppliers',
     metaDescription:
-      'Manage water-jar customers, daily deliveries and payments in one place with the Jar Management System by ABnexa. Request a free demo on WhatsApp.',
-    h1: 'Water Jar Management Software',
+      'Track jars given and returned, udhari, deposits and payments for your RO or aqua water business. Marathi, Hindi & English. From ₹250/month. Free demo.',
+    h1: 'Water Jar Delivery & Billing App for RO and Aqua Water Suppliers',
     problems: [
-      'Customer details spread across phones, diaries and notebooks',
-      'Daily deliveries that are hard to check at the end of the day',
-      'Not knowing quickly which customers have paid and which have not',
+      'Jar entries written in a diary that never matches the jars actually out with customers',
+      'Udhari spread across notebooks, so nobody knows quickly who owes how much',
+      'Jars lost or damaged without anyone noticing until stock runs short',
+      'Wedding and event orders (advance bookings) remembered only on the phone',
     ],
     featureDetail: [
-      'Keep every customer’s details in one place instead of across phones and diaries.',
-      'Record the jars delivered each day, so the day’s deliveries are easy to check.',
-      'See what each customer has paid, so collections are easier to follow up.',
+      'Record every jar and bottle given or returned in a few taps — with rate, cash or udhari and notes.',
+      'Udhari, advance money and payments by cash, UPI or bank are kept for every customer automatically.',
+      'Send udhari reminders, jar statements and payment receipts to customers on WhatsApp in Marathi.',
     ],
-    faq: { q: 'Who is the Jar Management System for?', a: 'Water suppliers and jar delivery businesses that want customer records, daily deliveries and payments in one place.' },
+    faq: { q: 'Who is EasyJar for?', a: 'RO water plants, aqua and mineral water suppliers, packaged drinking water distributors and any business that delivers water jars and wants deliveries, returns, udhari and payments in one app.' },
+
+    // ── EasyJar: verified from the live app (easyjar.abnexa.in) ──
+    audienceList: [
+      'RO water plants', 'Aqua & mineral water suppliers', '20 L jar delivery businesses',
+      'Packaged drinking water distributors', 'Water suppliers for weddings & events', 'Shops supplying jars to offices & cafés',
+    ],
+    screens: [
+      { src: 'dashboard', title: 'Dashboard', desc: "Today's jars, cash, udhari and who owes the most — at a glance." },
+      { src: 'daily-entry', title: 'Daily jar entry', desc: 'Give or return jars and bottles with rate, cash or udhari.' },
+      { src: 'customers', title: 'Customers', desc: 'Every customer with jars held, udhari and advance.' },
+      { src: 'customer-ledger', title: 'Customer ledger', desc: 'Full history, deposit held and a one-tap WhatsApp reminder.' },
+      { src: 'jar-stock', title: 'Jar stock', desc: 'Available, with customers, damaged and lost jars.' },
+      { src: 'advance-bookings', title: 'Advance bookings', desc: 'Event and bulk orders with deliver / cancel.' },
+      { src: 'pending-payments', title: 'Pending payments', desc: 'Who owes money, with Remind and Receive buttons.' },
+      { src: 'cash-report', title: 'Cash report', desc: 'Day-wise cash, UPI, expenses and net cash.' },
+      { src: 'payments', title: 'Payments', desc: 'Cash, UPI and bank payments with WhatsApp receipts.' },
+      { src: 'reports', title: 'Reports', desc: 'Daily, weekly, monthly, udhari and jar status reports.' },
+    ],
+    featureGroups: [
+      { title: 'Daily jar entries', items: ['Give and return jars and bottles in a few taps', 'Separate rate per jar and per bottle', 'Cash or udhari — udhari is worked out automatically', 'Advance money adjusts old udhari and future bills', 'Optional reminder after 1 day, 1 week or 15 days'] },
+      { title: 'Customers & udhari', items: ['Customer list filtered by active, udhari, has jars or inactive', 'Each customer’s current jars, bottles, pending amount and deposit held', 'Full ledger of every entry and payment', 'Call or WhatsApp a customer straight from their profile'] },
+      { title: 'Jar stock tracking', items: ['Total, available, with customers, damaged and lost jars', 'Add new jars, mark damaged or lost, record repaired or found', 'See which customer has how many jars', 'Optional individual jar numbers (JAR-001, JAR-002…)'] },
+      { title: 'Payments & expenses', items: ['Receive payments by cash, UPI or bank', 'Payment receipts on WhatsApp', 'Record expenses such as diesel and labour by type', 'Net cash after expenses, every day'] },
+      { title: 'Reports & exports', items: ['Daily, weekly and monthly reports', 'Customer ledger, jar status, cash and udhari reports', 'Pending payments: who owes you money', 'Export to Excel or PDF, or print'] },
+      { title: 'WhatsApp & reminders', items: ['Udhari reminders and statements to customers in Marathi', 'Your UPI QR or UPI ID added to udhari messages', 'Send today’s summary on WhatsApp', 'Phone notifications for jar returns, udhari and advance bookings'] },
+    ],
+    extras: [
+      'Marathi, Hindi and English', 'Installs on Android and iPhone like an app', 'Light and dark mode',
+      'Your business name and logo in the app and WhatsApp messages', 'Works with WhatsApp or WhatsApp Business', 'Advance bookings for weddings and events',
+    ],
+    pricing: [
+      { name: 'Monthly', price: '₹250', per: '/ month', note: 'Under ₹9 a day' },
+      { name: 'Yearly', price: '₹1,999', per: '/ year', note: 'Just ₹167 a month — save ₹1,001 a year', best: true },
+    ],
+    pricingIncludes: ['Every feature, unlimited customers and entries', 'WhatsApp messages, reports, Excel / PDF', 'Automatic reminders for advance bookings and udhari', 'One-time payment, no auto-debit — paid securely via Razorpay'],
+    extraFaqs: [
+      { q: 'Is EasyJar available in Marathi?', a: 'Yes. EasyJar works in Marathi, Hindi and English, and WhatsApp messages to customers are sent in Marathi.' },
+      { q: 'How much does EasyJar cost?', a: 'EasyJar costs ₹250 a month or ₹1,999 a year. Every plan includes every feature, unlimited customers and entries, WhatsApp messages and Excel / PDF reports. Payment is one-time through Razorpay — no auto-debit.' },
+      { q: 'Does it work on my phone?', a: 'Yes. EasyJar runs in the browser and can be installed on Android and iPhone like an app, with notifications for jar returns, udhari and advance bookings.' },
+      { q: 'Can it track jar deposits and lost or damaged jars?', a: 'Yes. EasyJar keeps the deposit held for each customer and tracks available, with-customer, damaged and lost jars — with optional individual jar numbers.' },
+      { q: 'Can I send udhari reminders on WhatsApp?', a: 'Yes. Send udhari reminders, statements and payment receipts on WhatsApp, with your UPI QR or UPI ID included so customers can pay straight away.' },
+    ],
   },
   {
     path: 'products/face-recognition-attendance-system',
@@ -267,12 +310,18 @@ export const PRODUCT_PAGES = [
   },
 ].map((p) => ({ ...p, product: PRODUCTS.find((x) => x.page === `/${p.path}`) }))
 
-export const productFaqs = (p) => [
+export const productFaqs = (p) => {
+  const name = p.product.brand ?? `the ${p.product.name}`
+  return [
   p.faq,
-  { q: `Can I see a demo of the ${p.product.name}?`, a: `Yes. Message us on WhatsApp or send an enquiry and we will show you the ${p.product.name} and answer your questions.` },
+  ...(p.extraFaqs ?? []),
+  { q: `Can I see a free demo of ${name}?`, a: `Yes. Message us on WhatsApp or send an enquiry and we will show you ${name} and answer your questions.` },
   { q: 'Can it be customised for my business?', a: 'Yes. We also build custom versions — tell us how your business works and we will discuss the changes you need.' },
-  { q: 'How much does it cost?', a: 'Pricing depends on your business and any customisation you need. Ask us and we will give you a clear quote.' },
+  ...(p.pricing
+    ? []
+    : [{ q: 'How much does it cost?', a: 'Pricing depends on your business and any customisation you need. Ask us and we will give you a clear quote.' }]),
 ]
+}
 
 export const pageByPath = (path) =>
   [...SERVICE_PAGES, ...PRODUCT_PAGES].find((p) => p.path === path.replace(/^\//, ''))

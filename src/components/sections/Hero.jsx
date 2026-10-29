@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { ArrowRight } from 'lucide-react'
-import { COMPANY } from '../../lib/data'
 
 // Markers sitting on the orbit (r = 196 around the 400×400 centre).
 const MARKERS = [
@@ -100,7 +99,7 @@ export default function Hero() {
           {/* the H1 carries the keywords; the slogan below keeps the visual lead */}
           <h1 className="tag reveal flex flex-wrap items-center gap-3 text-muted">
             <span className="rule" />
-            Website &amp; software development company in {COMPANY.baseCity}, {COMPANY.region}
+            Website &amp; software development company in Pune, Mumbai, Kolhapur, Satara, Sangli &amp; Karad
           </h1>
 
           <p className="reveal lines mt-7 font-display text-[2.7rem] font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-[5.4rem]">
